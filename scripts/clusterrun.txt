@@ -1,0 +1,12 @@
+Useful commands for the cluster:
+• qstat to know the state of you running jobs.
+• qstat -g c to know what racks are used.
+• qstat -q "long3" -u "*" to know who is using rack "long3"
+It is better to use mpi as it will reserve processors for your jobs. There
+is a script made to use irace and mpi. Use it like so ./parallel-irace-mpi
+1-1 test –parallel 50 where 50 is the number of parallel jobs, test is the
+execution directory and 1-1 is not really understood.
+It is important to check first what racks/machine is free and modify in
+the script what machine to use accordingly! Also, since manchines are
+different, it is important to test run different experiments/settings on the
+same one if we need comparisons.

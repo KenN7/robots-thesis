@@ -1,0 +1,60 @@
+{
+    "automode": {
+        "id" : "30,46,47,35,50",
+        "bin" : "argos3-AutoMoDe/automode",
+        "xml" : "../src/argos3-AutoMoDe/automode_test2.argos",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "proximity": {
+        "id" : "46,30,53,55,35,44,39,47,32,33",
+        "bin" : "testing/calibration",
+        "xml" : "../src/testing/calibration_epuck.xml",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "range_and_bearing": {
+        "id" : "46,30,53,55,35,44,39,47,32,33",
+        "bin" : "testing/calibration",
+        "xml" : "../src/testing/calibration_epuck.xml",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "light": {
+        "id" : "46,30,53,55,35,44,39,47,32,33",
+        "bin" : "testing/calibration",
+        "xml" : "../src/testing/calibration_epuck.xml",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "ground": {
+        "id" : "46,30,53,55,35,44,39,47,32,33",
+        "bin" : "testing/calibration",
+        "xml" : "../src/testing/calibration_epuck.xml",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "l0": {
+        "id" : "46,30,53,55,35,44,39,47,32,33",
+        "bin" : "test_lightsensors_epuck/epuck_test_lightsensors",
+        "xml" : "../src/test_lightsensors_epuck/epuck_testlight.argos",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    }
+
+
+
+
+
+}

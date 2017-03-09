@@ -1,0 +1,37 @@
+--fsm-config --nstates 2 --s0 6 --att0 4 --n0 1 --n0x0 1 --c0x0 0 --p0x0 0.5 --s1 1 --brd1 1 --n1 1 --n1x0 0 --c1x0 5 --p1x0 0.5
+--fsm-config --nstates 3 --s0 0 --rwm0 10 --brd0 0 --n0 2 --n0x0 1 --c0x0 0 --p0x0 0.5 --n0x1 2 --c0x1 6 --p0x1 5 --w0x1 2 --s1 1 --brd1 1 --n1 1 --n1x0 0 --c1x0 5 --p1x0 0 --s2 6 --att2 4 --n2 1 --n2x0 1 --c2x0 0 --p2x0 0.5
+
+--fsm-config --nstates 2 --s0 0 --brd0 0 --rwm0 10 --n0 2 --n0x0 1 --c0x0 0 --p0x0 0.9 --n0x1 1 --c0x1 6 --p0x1 0.9 --w0x1 5 --s1 1 --brd1 1 --n1 0
+
+
+nesting my state :
+./automode_main -c experiments/automodegianduja_nesting.xml -r --fsm-config --nstates 3 --s0 3 --brd0 0 --n0 3 --n0x0 1 --c0x0 4 --p0x0 9 --w0x0 10 --n0x1 2 --c0x1 0 --p0x1 0.9 --n0x2 2 --c0x2 6 --p0x2 2 --w0x2 5 --s1 0 --rwm1 16 --brd1 0 --n1 2 --n1x0 2 --c1x0 0 --p1x0 0.9 --n1x1 2 --c1x1 6 --p1x1 2 --w1x1 5 --s2 2 --brd2 1 --n2 0
+
+Mean : 16039.200000
+StdDev : 8954.768428
+
+
+best : 
+--nstates 3 --s0 0 --rwm0 18 --brd0 1 --n0 2 --n0x0 3 --c0x0 2 --p0x0 0.49 --n0x1 1 --c0x1 6 --p0x1 7 --w0x1 5.38 --s1 1 --brd1 1 --n1 3 --n1x0 3 --c1x0 4 --p1x0 2 --w1x0 7.77 --n1x1 2 --c1x1 7 --p1x1 6 --w1x1 2.69 --n1x2 3 --c1x2 0 --p1x2 0.14 --s2 2 --brd2 1 --n2 3 --n2x0 3 --c2x0 3 --p2x0 5 --w2x0 12.02 --n2x1 0 --c2x1 1 --p2x1 0.93 --n2x2 1 --c2x2 3 --p2x2 10 --w2x2 14.36
+
+Mean : 21425.580000
+StdDev : 12372.498710
+
+
+
+HideNesting :
+
+my state machine :
+--nstates 3 --s0 0 --brd0 0 --rwm0 10 --n0 3 --n0x0 1 --c0x0 2 --p0x0 0.8 --n0x1 2 --c0x1 0 --p0x1 0.8 --n0x2 2 --c0x2 6 --p0x2 2 --w0x2 5 --s1 3 --brd1 0 --n1 2 --n1x0 0 --c1x0 1 --p1x0 0.5 --n1x1 2 --c1x1 6 --p1x1 2 --w1x1 5 --s2 2 --brd2 1 --n2 0
+
+Mean : 6822.800000
+StdDev : 2088.489778
+
+
+
+state from irace :
+
+--nstates 4 --s0 3 --brd0 1 --n0 3 --n0x0 1 --c0x0 6 --p0x0 7 --w0x0 14.43 --n0x1 3 --c0x1 0 --p0x1 0.23 --n0x2 1 --c0x2 0 --p0x2 0.34 --s1 2 --brd1 1 --n1 1 --n1x0 2 --c1x0 1 --p1x0 0.99 --s2 0 --rwm2 73 --brd2 0 --n2 2 --n2x0 1 --c2x0 4 --p2x0 10 --w2x0 16.44 --n2x1 3 --c2x1 0 --p2x1 0.03 --s3 1 --brd3 1 --n3 3 --n3x0 0 --c3x0 3 --p3x0 6 --w3x0 6.17 --n3x1 2 --c3x1 6 --p3x1 5 --w3x1 10.62 --n3x2 2 --c3x2 2 --p3x2 0.52
+
+Mean : 5696.940000
+StdDev : 1310.417232

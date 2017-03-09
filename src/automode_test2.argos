@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+<argos-configuration>
+  <!-- ************* -->
+  <!-- * Framework * -->
+  <!-- ************* -->
+  <framework>
+    <experiment length="600"
+                ticks_per_second="10" random_seed="0"/>
+  </framework>
+
+  <!-- ****************** -->
+  <!-- * Loop functions * -->
+  <!-- ****************** -->
+  <!--loop_functions label="rab_selective_test" output="output.txt" /-->
+
+      <loop_functions library="/home/ken/depots/ken-epuck-argos3/build/argos3-AutoMoDe/libblackspot_loopfunc.so"
+       label="blackspot_loop_functions">
+      </loop_functions>
+  <!-- *************** -->
+  <!-- * Controllers * -->
+  <!-- *************** -->
+  <controllers>
+	<!-- TRANSMITTER -->
+    <automode_controller id="automode"
+                        library="/home/ken/depots/ken-epuck-argos3/build/argos3-AutoMoDe/libautomode.so">
+      <actuators>
+        <epuck_wheels implementation="default"/>
+        <epuck_rgb_leds implementation="default" medium="leds"/>
+        <epuck_range_and_bearing implementation="medium" show_rays="false" medium="rab" data_size="4"/>
+      </actuators>
+      <sensors>
+		<epuck_proximity implementation="default" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/proximity_sensor.xml" show_rays="false"/>
+        <epuck_range_and_bearing implementation="medium" medium="rab" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/range_and_bearing_sensor.xml" show_rays="true" data_size="4"/>
+		<epuck_light implementation="default" show_rays="false"/>
+		<epuck_ground implementation="rot_z_only" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml" />
+		 <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
+      </sensors>
+      <params readable='true' history='false' fsm-config="--nstates 2 --s0 4 --att0 5 --n0 1 --n0x0 1 --c0x0 0 --p0x0 1 --s1 1 --n1 2 --n1x0 0 --c1x0 1 --p1x0 1 --n1x1 0 --c1x1 5 --p1x1 0.25"/>
+    </automode_controller>
+  </controllers>
+
+  <!-- ********* -->
+  <!-- * Arena * -->
+  <!-- ********* -->
+  <arena size="5, 5, 1" center="0,0,0">
+	<!-- Change the floor here -->
+    <!-- libblackspot_loopfunc.so -->
+	<!-- <floor id="floor" source="image" path="./images_floor/no_spot.png"/> -->
+    <floor id="floor" source="loop_functions" pixels_per_meter="100"/>
+    <!-- Change the light here -->
+	<light id="light" position="0,0.5,0" orientation="0.5,0,0" color="yellow" intensity="0.0" medium="leds"/>
+
+    <box id="wall_n" size="2, 0.12, 0.12" movable="false">    <!-- Longueur, largeur, hauter -->
+       <body position="2, 0, 0" orientation="90, 0, 0"/>
+    </box>
+    <box id="wall_s" size="2, 0.12, 0.12" movable="false">
+     <body position="-2, 0, 0" orientation="90, 0, 0"/>
+    </box>
+    <box id="wall_w" size="2, 0.12, 0.12" movable="false">
+     <body position="0, 2, 0" orientation="0, 0, 0"/>
+    </box>
+    <box id="wall_e" size="2, 0.12, 0.12" movable="false">
+     <body position="0, -2, 0" orientation="0, 0, 0"/>
+    </box>
+    <box id="wall_n_w" size="1.5, 0.12, 0.12" movable="false">
+       <body position="1.5, 1.5, 0" orientation="315, 0, 0"/>
+    </box>
+  <box id="wall_n_e" size="1.5, 0.12, 0.12" movable="false">
+       <body position="1.5, -1.5, 0" orientation="45, 0, 0"/>
+    </box>
+    <box id="wall_s_w" size="1.5, 0.12, 0.12" movable="false">
+       <body position="-1.5, -1.5, 0" orientation="135, 0, 0"/>
+    </box>
+  <box id="wall_s_e" size="1.5, 0.12, 0.12" movable="false">
+       <body position="-1.5, 1.5, 0" orientation="225, 0, 0"/>
+    </box>
+
+  <!-- ********** -->
+  <!-- * E-Puck * -->
+  <!-- ********** -->
+    <!-- <e-puck id="epuck1">
+      <body position="0.5, 0, 0"
+            orientation="180, 0, 0"/>
+      <controller config="automode" />
+    </e-puck>
+
+    <e-puck id="epuck2">
+      <body position="0.5, 0.5, 0"
+            orientation="180, 0, 0"/>
+      <controller config="automode" />
+    </e-puck> -->
+
+    <distribute>
+      <position method="uniform" min="-1,-1,0" max="1,1,0" />
+      <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" />
+      <entity quantity="10" max_trials="100">
+        <e-puck id="epuck">
+          <controller config="automode" />
+        </e-puck>
+      </entity>
+    </distribute>
+
+  </arena>
+
+  <!-- ******************* -->
+  <!-- * Physics engines * -->
+  <!-- ******************* -->
+  <physics_engines>
+    <dynamics2d id="dyn2d" />
+  </physics_engines>
+
+  <!-- ********* -->
+  <!-- * Media * -->
+  <!-- ********* -->
+  <media>
+    <led id="leds" grid_size="1,1,1"/>
+    <range_and_bearing id="ircom"/>
+    <range_and_bearing id="rab"/>
+  </media>
+
+  <!-- ***************** -->
+  <!-- * Visualization * -->
+  <!-- ***************** -->
+  <visualization>
+    <qt-opengl>
+      <camera>
+        <placement idx="0"
+                   position="0,0,4.5"
+                   look_at="0,0,0"
+                   lens_focal_length="30" />
+      </camera>
+    </qt-opengl>
+  </visualization>
+
+</argos-configuration>
