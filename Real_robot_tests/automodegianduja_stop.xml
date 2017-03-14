@@ -29,13 +29,13 @@
         <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" range="0.7"/>
       </actuators>
       <sensors>
-		    <epuck_proximity implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/proximity_sensor.xml"/>
-        <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" nois_std_deviation="1.5" loss_probability="0.8" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/range_and_bearing_sensor.xml"/>
-		    <epuck_light implementation="default" show_rays="true" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/light_sensor.xml"/>
-		    <epuck_ground implementation="rot_z_only" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/ground_sensor.xml"/>
+		    <epuck_proximity implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/proximity_sensor.xml"/>
+        <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" nois_std_deviation="1.5" loss_probability="0.8" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/range_and_bearing_sensor.xml"/>
+		    <epuck_light implementation="default" show_rays="true" noise_level="0.05" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/light_sensor.xml"/>
+		    <epuck_ground implementation="rot_z_only" noise_level="0.05" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml"/>
 		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
       </sensors>
-    <params readable='false' history='false' hist-folder='./fsm_history/' fsm-config="--nstates 1 --s0 1 --brd0 0"/>
+    <params readable='false' history='false' fsm-config="--nstates 4 --s0 0 --rwm0 14 --brd0 0 --n0 4 --n0x0 0 --c0x0 6 --p0x0 6 --w0x0 19.38 --n0x1 0 --c0x1 6 --p0x1 8 --w0x1 18.06 --n0x2 0 --c0x2 0 --p0x2 0.57 --n0x3 0 --c0x3 6 --p0x3 1 --w0x3 16.26 --s1 1 --brd1 1 --n1 3 --n1x0 2 --c1x0 2 --p1x0 0.15 --n1x1 2 --c1x1 0 --p1x1 0.56 --n1x2 2 --c1x2 2 --p1x2 0.6 --s2 4 --att2 3.02 --brd2 1 --n2 3 --n2x0 0 --c2x0 4 --p2x0 9 --w2x0 16.48 --n2x1 0 --c2x1 6 --p2x1 9 --w2x1 12.84 --n2x2 0 --c2x2 6 --p2x2 6 --w2x2 16.68 --s3 2 --brd3 0 --n3 4 --n3x0 0 --c3x0 2 --p3x0 0.89 --n3x1 0 --c3x1 1 --p3x1 0.32 --n3x2 0 --c3x2 2 --p3x2 0.04 --n3x3 0 --c3x3 1 --p3x3 0.71"/>
     </automode_controller>
   </controllers>
 

@@ -40,11 +40,11 @@ def main():
     fs = open('start%s.sh' % args.controller, 'w')
     fs.write(
     "#!/bin/sh\n./%s -i %s -c %s"\
-    % (os.path.basename(d["bin"]),args.controller,os.path.basename(d["xml"])))
+    % (os.path.basename(d["bin"]),d["controller"],os.path.basename(d["xml"])))
     fs.close()
 
-    #st_file = os.stat('start%s.sh' % args.controller)
-    #os.chmod('start%s.sh' % args.controller, st_file.st_mode | stat.S_IEXEC)
+    st_file = os.stat('start%s.sh' % args.controller)
+    os.chmod('start%s.sh' % args.controller, st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
     try:
         robots = d["id"].split(',')

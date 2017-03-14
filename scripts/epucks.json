@@ -1,44 +1,69 @@
 {
     "automode": {
-        "id" : "30,46,47,35,50",
-        "bin" : "argos3-AutoMoDe/automode",
-        "xml" : "../src/argos3-AutoMoDe/automode_test2.argos",
+        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_test.xml",
+        "controller" : "automode",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "gianduja": {
+        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_aggregation.xml",
+        "controller" : "automode",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "giandujastop": {
+        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_stop.xml",
+        "controller" : "automode",
         "baseip" : "10.0.1",
         "username" : "root",
         "uploadfolder" : "khasselm/"
     },
 
     "proximity": {
-        "id" : "46,30,53,55,35,44,39,47,32,33",
-        "bin" : "testing/calibration",
-        "xml" : "../src/testing/calibration_epuck.xml",
+        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
+        "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
+        "controller" : "proximity",
         "baseip" : "10.0.1",
         "username" : "root",
         "uploadfolder" : "khasselm/"
     },
 
     "range_and_bearing": {
-        "id" : "46,30,53,55,35,44,39,47,32,33",
-        "bin" : "testing/calibration",
-        "xml" : "../src/testing/calibration_epuck.xml",
+        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
+        "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
+        "controller" : "range_and_bearing",
         "baseip" : "10.0.1",
         "username" : "root",
         "uploadfolder" : "khasselm/"
     },
 
     "light": {
-        "id" : "46,30,53,55,35,44,39,47,32,33",
-        "bin" : "testing/calibration",
-        "xml" : "../src/testing/calibration_epuck.xml",
+        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
+        "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
+        "controller" : "light",
         "baseip" : "10.0.1",
         "username" : "root",
         "uploadfolder" : "khasselm/"
     },
 
     "ground": {
-        "id" : "46,30,53,55,35,44,39,47,32,33",
-        "bin" : "testing/calibration",
-        "xml" : "../src/testing/calibration_epuck.xml",
+        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
+        "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
+        "controller" : "ground",
         "baseip" : "10.0.1",
         "username" : "root",
         "uploadfolder" : "khasselm/"
@@ -46,8 +71,9 @@
 
     "l0": {
         "id" : "46,30,53,55,35,44,39,47,32,33",
-        "bin" : "test_lightsensors_epuck/epuck_test_lightsensors",
+        "bin" : "/home/ken/depots/robots-thesis/cross_build/test_lightsensors_epuck/epuck_test_lightsensors",
         "xml" : "../src/test_lightsensors_epuck/epuck_testlight.argos",
+        "controller" : "l0",
         "baseip" : "10.0.1",
         "username" : "root",
         "uploadfolder" : "khasselm/"
