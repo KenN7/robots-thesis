@@ -1,6 +1,46 @@
 {
+    "neat": {
+        "id" : "47,46,55,35,44,61,50,32,29,45,42,39,33,36,51,53,37,34,57,40",
+        "bin" : "/home/ken/depots/neat-argos3/build_epuck/src/controllers/epuck_nn/epuck_nn",
+        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/neat_test_aggregation.xml",
+        "controller" : "epuck_nn_controller",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "neat2": {
+        "id" : "48",
+        "bin" : "/home/ken/depots/neat-argos3/build_epuck/src/controllers/epuck_nn/epuck_nn",
+        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/neat_test_aggregation.xml",
+        "controller" : "epuck_nn_controller",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "randomtv": {
+        "id" : "46,40,51,50,34,35,54,39",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_randomwalk.xml",
+        "controller" : "automode",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "automodetest": {
+        "id" : "39,40",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_aggregation.xml",
+        "controller" : "automode",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
     "automode": {
-        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "id" : "33,40,44,46,45,51,47,41,42,39,50,35,32,29,61,55,30,36,34,53",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_test.xml",
         "controller" : "automode",
@@ -10,7 +50,7 @@
     },
 
     "gianduja": {
-        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "id" : "33,40,44,46,45,51,47,41,42,39,50,35,32,29,61,55,30,36,34,53",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_aggregation.xml",
         "controller" : "automode",
@@ -20,7 +60,7 @@
     },
 
     "giandujastop": {
-        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "id" : "39,33,48,40,42,36,44,61,53,45,32,37,29,34,36,35,55,28",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_stop.xml",
         "controller" : "automode",
@@ -30,7 +70,7 @@
     },
 
     "proximity": {
-        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "id" : "39,33,48,40,42,36,44,61,53,45,32,37,29,34,36,35,55,28",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "proximity",
@@ -40,7 +80,7 @@
     },
 
     "range_and_bearing": {
-        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "id" : "39,33,48,40,42,36,44,61,53,45,32,37,29,34,36,35,55,28",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "range_and_bearing",
@@ -50,7 +90,7 @@
     },
 
     "light": {
-        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "id" : "39,33,48,40,42,36,44,61,53,45,32,37,29,34,36,35,55,28",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "light",
@@ -60,7 +100,7 @@
     },
 
     "ground": {
-        "id" : "47,46,55,35,44,61,50,32,30,45,42,39,33,36,51,53,37,34,54,40",
+        "id" : "39,33,48,40,42,36,44,61,53,45,32,37,29,34,36,35,55,28",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "ground",
