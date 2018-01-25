@@ -64,8 +64,6 @@ def genXml(i, xmlfile, seed, controllers, output):
     e.write(output)
     return output
 
-#after, when everything is generated, shuffle experiments and output table and create script files for robots startexpN.sh, and startexpN.sh for PC
-# note that robot only need 1 startpos because seed is from PC, whereas PC needs N startpos and N startexp
 
 if __name__ == "__main__":
     args = p.parse_args()
@@ -73,11 +71,14 @@ if __name__ == "__main__":
     tablefile = args.outputtable
 
     ### define here all experiments to run and shuffle and load FSM or GEN files
+    ###
+    ###
     exps = []
-    exps.append(Experiment('automode_controller', 'fsm-config', 'automode_main'))
+    exps.append(Experiment('automode_gianduja', 'fsm-config', 'automode'))
     exps[0].load_fsm('../../../argos3-Automode/optimization/aggreg-200k-0208exp-results.txt')
-    #exps.append(Experiment())
-
+    exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn'))
+    exps[1].load_gen('/home/ken/depots/neat-argos3/optimization/expAGG/results-evo-agg227')
+    ###
     ###
     with open(args.seeds, 'r') as f:
         seeds = f.read().splitlines()
@@ -86,9 +87,14 @@ if __name__ == "__main__":
     print(missionname)
 
     #generate XML files and list all experiments to do
+    try:
+        os.mkdir("Robotfiles")
+    except OSError:
+        print("XMLFiles folder already exists, continuing..")
+
     experiments = []
     for i in range(int(args.number)):
-        generatedxml = genXml(i, xmlfile, seeds[i], exps, "%s_%s.xml" % (missionname,seeds[i]))
+        generatedxml = genXml(i, xmlfile, seeds[i], exps, os.path.join('Robotfiles',"%s_%s.xml" % (missionname,seeds[i])))
         for exp in exps:
             experiments.append((seeds[i],exp,generatedxml))
 
@@ -101,20 +107,20 @@ if __name__ == "__main__":
     f1.write('| Num of exp | xml | seed | controller\n')
     f1.write('| ---- | ---- | ---- | ----\n')
 
-    f2 = open("startE.sh", 'w')
+    f2 = open(os.path.join('Robotfiles',"startE.sh"), 'w')
     f2.write("#!/bin/sh\n")
 
-    f3 = open('startPathPla.sh', 'w')
+    f3 = open(os.path.join('Robotfiles','startPathPla.sh'), 'w')
     f3.write("#!/bin/sh\n")
 
     for (i,(seed,exp,xml)) in enumerate(experiments):
         f1.write("| %s | %s | %s | %s\n" % (i,xml,seed,exp.name))
 
         if i==0:
-            f2.write('if [ "$1" == "0" ]; then ./%s -i %s -c %s\n' % (exp.executable,exp.name,os.path.basename(xmlfile)))
+            f2.write('if [ "$1" == "0" ]; then ./%s -i %s -c %s\n' % (exp.executable,exp.name,os.path.basename(xml)))
             f3.write('if [ "$1" == "0" ]; then exec argos3 -c %s\n' % os.path.abspath(xml))
         else:
-            f2.write('elif [ "$1" == "%i" ]; then ./%s -i %s -c %s\n' % (i,exp.executable,exp.name,os.path.basename(xmlfile)))
+            f2.write('elif [ "$1" == "%i" ]; then ./%s -i %s -c %s\n' % (i,exp.executable,exp.name,os.path.basename(xml)))
             f3.write('elif [ "$1" == "%i" ]; then exec argos3 -c %s\n' % (i,os.path.abspath(xml)))
         #  ./%s -i %s -c %s
     f2.write('else echo "ERROR: Unknown expe number $1"\nfi')

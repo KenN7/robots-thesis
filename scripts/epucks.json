@@ -117,10 +117,16 @@
         "baseip" : "10.0.1",
         "username" : "root",
         "uploadfolder" : "khasselm/"
-    }
+    },
 
-
-
+    "gianduja_realexp": {
+        "id" : "33,40,44,46,45,51,47,41,42,39,50,35,32,29,61,55,30,36,34,53",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "robotfolder" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Robotfiles",
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
 
 
 }
