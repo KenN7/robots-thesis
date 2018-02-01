@@ -5,43 +5,30 @@ import os
 import re
 import sys
 import shlex
+import shutil
+from paramiko import SSHClient
 
-# EXPFILE = "automodegianduja_aggregation.xml"
-# EXPFILE = "automodegianduja_decision.xml"
-# EXPFILE = "automodegianduja_stop.xml"
-#
-# GENFOLDER = "/home/ken/depots/neat-argos3/optimization/expAGG/results-evo-agg227"
-# GENFOLDER = "/home/ken/depots/neat-argos3/optimization/expDEC/results-evo-dec227"
-# GENFOLDER = "/home/ken/depots/neat-argos3/optimization/expSTOP/results-evo-stop227"
-#
-# AUTOPFSM = "/home/ken/depots/argos3-Automode/optimization/aggreg-200k-0208exp-results.txt"
-# AUTOPFSM = "/home/ken/depots/argos3-Automode/optimization/decision-results.txt"
-# AUTOPFSM = "/home/ken/depots/argos3-Automode/optimization/stop-results.txt"
-#
-# TASK = "aggreg"
-# TASK = "decision"
-# TASK = "stop"
 
 CONF = {
-    "Aggregation":
-        (
-            "automodegianduja_aggregation.xml", ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg227' ),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggreg')
-            ("/home/ken/depots/argos3-Automode/optimization/aggreg-200k-0208exp-results.txt", 'auto', 'stopnogian1801')
-        ),
-    "Decision making":
-        (
-            "automodegianduja_decision.xml",
-            ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'dec227'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'decision')
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian1801')
-        ),
+    # "Aggregation":
+    #     (
+    #         "automodegianduja_aggregation.xml", ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg227' ),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggreg'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian3101')
+    #     ),
+    # "Decision making":
+    #     (
+    #         "automodegianduja_decision.xml",
+    #         ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'dec227'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'decision'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian3101')
+    #     ),
     "Stop":
         (
             "automodegianduja_stop.xml",
             ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop227'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop')
-            ("/home/ken/depots/argos3-Automode/optimization/stop-results.txt", 'auto', 'stopREALnogian1801')
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop'),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian3101')
         ),
     # "Aggregation 2 Spots":
     #     ( "automodegianduja_aggregation_2spots.xml",
@@ -66,7 +53,8 @@ def evo(seed, genome, xml):
         print("running %s" % command)
         pro = subprocess.run(command, stdout=subprocess.PIPE)
         #print("this is stdout : %s" % pro.stdout)
-        m = re.search("Score (\d+.\d+)", str(pro.stdout))
+        #m = re.search("Score (\d+.\d+)", str(pro.stdout))
+        m = re.search("Score (\d*)", str(pro.stdout))
         #print(m.group(1))
         return m.group(1)
     except Exception as e:
@@ -82,7 +70,8 @@ def auto(seed, statem, xml):
         print("running %s" % command)
         pro = subprocess.run(command, stdout=subprocess.PIPE)
         #print("this is stdout : %s" % pro.stdout)
-        m = re.search("Score (\d+.\d+)", str(pro.stdout))
+        #m = re.search("Score (\d+.\d+)", str(pro.stdout))
+        m = re.search("Score (\d*)", str(pro.stdout))
         #print(m.group(1))
         return m.group(1)
     except Exception as e:
@@ -94,9 +83,9 @@ def write_res(scores, task):
     f = open('scores-%s.txt' % task, 'w')
     f.write('"res" "alg" "task"\n')
     i = 0
-    for method in scores:
-        for i,res in enumerate(method):
-            f.write('"%i" "%s" "%s" "%s"\n' % (i,res,METHODS[i],task))
+    for j,method in enumerate(scores):
+        for res in method:
+            f.write('"%i" "%s" "%s" "%s"\n' % (i,res,METHODS[j],task))
             i+=1
     print('finished writing score file..')
 
@@ -111,28 +100,33 @@ def run_R(filen, title):
 
 def extract_res_evo(name, folder):
     t = re.compile('%s-(\d+)' % name)
-    os.makedirs('temp/results-evo-%s' % name)
+    try:
+        os.makedirs('temp/results-evo-%s' % name)
+    except Exception as e:
+        print(e)
     for i in os.listdir(folder):
         if t.match(i):
             y = t.match(i)
             print(i)
-            shutil.copyfile( i+"/gen/gen_last_1_champ",'temp/results-evo-%s/gen_champ_%s' % (sys.argv[1],y.group(1)) )
+            shutil.copyfile( "temp/"+i+"/gen/gen_last_1_champ",'temp/results-evo-%s/gen_champ_%s' % (name,y.group(1)) )
     return os.path.abspath('temp/results-evo-%s' % name)
 
 
 
-def extract_res_auto(name, folder):
+def extract_res_auto(name, remotefolder, sftp):
     t = re.compile('%s-200k-exp-(\d\d)' % name)
     m = re.compile(r"# Best configurations as commandlines \(first number is the configuration ID\)\n\d*  (.*)")
-
-    os.mkdir('temp')
+    try:
+        os.mkdir('temp')
+    except Exception as e:
+        print(e)
     f2 = open('temp/%s-results.txt' % name,'w')
-    for i in os.listdir(folder):
+    for i in sftp.listdir(remotefolder):
         if t.match(i):
             print(i)
             y = t.match(i)
-            f = open("%s/irace.stdout" % i)
-            g = f.read()
+            f = sftp.open("%s/%s/irace.stdout" % (remotefolder,i))
+            g = f.read().decode()
             fi = m.search(g)
             print(fi.group(1))
             f2.write(fi.group(1))
@@ -148,22 +142,19 @@ def main(task):
     #evo
     #args = p.parse_args()
 
-    #scp:
-    #make dir temp
-
-
     scores = []
 
     expfile = CONF[task][0]
     for method in CONF[task][1:]:
         if method[1] == 'evo':
 
-            scpcom = "scp -r khasselmann@majorana.ulb.ac.be:%s temp/" % method[0]
-            command = shlex.split(command)
+            scpcom = "scp -r khasselmann@majorana.ulb.ac.be:%s/* temp/" % method[0]
+            command = shlex.split(scpcom)
             print("running %s" % command)
             pro = subprocess.run(command, stdout=subprocess.PIPE)
+            print(pro.stdout)
             #os.mkdir
-            direxp = extract_res_evo(method[2],os.path.join('temp',os.path.basename(method[0])))
+            direxp = extract_res_evo(method[2],'temp/')
 
             xml = os.path.join(NEATFOLDER,'experiments',expfile)
             g = os.listdir(direxp)
@@ -174,15 +165,21 @@ def main(task):
                 print(sc)
             scores.append(scoresevo)
 
-        else if method[1] == "auto":
+        elif method[1] == "auto":
 
-            scpcom = """rsync -rav -e ssh --include='*.stdout' khasselmann@majorana.ulb.ac.be:%s temp/""" % method[0]
-            command = shlex.split(command)
-            print("running %s" % command)
-            pro = subprocess.run(command, stdout=subprocess.PIPE)
-            print(pro.stdout)
+            #scpcom = """rsync -rav -e ssh --include='' --include='*.stdout' khasselmann@majorana.ulb.ac.be:%s temp/""" % method[0]
+            #command = shlex.split(command)
+            #print("running %s" % command)
+            #pro = subprocess.run(command, stdout=subprocess.PIPE)
+            #print(pro.stdout)
+            client = SSHClient()
+            client.load_system_host_keys()
+            client.connect('majorana.ulb.ac.be', username='khasselmann')
+            sftp = client.open_sftp()
             #os.mkdir
-            autopfsm = extract_res_auto(method[2],os.path.join('temp',os.path.basename(method[0])))
+            autopfsm = extract_res_auto(method[2],method[0],sftp)
+
+            client.close()
 
             xml = os.path.join(AUTOFOLDER,'experiments',expfile)
             f = open(autopfsm)
@@ -193,6 +190,7 @@ def main(task):
                 print(sc)
             f.close()
             scores.append(scoresauto)
+
 
     # xml = os.path.join(NEATFOLDER,'experiments',expfile)
     # g = os.listdir(genfolder)
