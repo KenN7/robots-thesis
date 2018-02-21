@@ -75,9 +75,23 @@ if __name__ == "__main__":
     ###
     exps = []
     exps.append(Experiment('automode_gianduja', 'fsm-config', 'automode'))
-    exps[0].load_fsm('../../../argos3-Automode/optimization/aggreg-200k-0208exp-results.txt')
+    exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/stop-results.txt')
     exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn'))
-    exps[1].load_gen('/home/ken/depots/neat-argos3/optimization/expAGG/results-evo-agg227')
+    exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test/temp/results-evo-stop227')
+    exps.append(Experiment('automode_controller', 'fsm-config', 'automode'))
+    exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/stopnogian0102-results.txt')
+    # exps.append(Experiment('automode_gianduja', 'fsm-config', 'automode'))
+    # exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/decision-results.txt')
+    # exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn'))
+    # exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test/temp/results-evo-dec227')
+    # exps.append(Experiment('automode_controller', 'fsm-config', 'automode'))
+    # exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/desinogian0102-results.txt')
+    #exps.append(Experiment('automode_gianduja', 'fsm-config', 'automode'))
+    #exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/aggreg-results.txt')
+    #exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn'))
+    #exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test/temp/results-evo-agg227')
+    #exps.append(Experiment('automode_controller', 'fsm-config', 'automode'))
+    #exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/aggnogian0102-results.txt')
     ###
     ###
     with open(args.seeds, 'r') as f:
@@ -129,8 +143,8 @@ if __name__ == "__main__":
     f2.close()
     f3.close()
 
-    st_file = os.stat('startE.sh')
-    os.chmod('startE.sh', st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+    st_file = os.stat(os.path.join('Robotfiles',"startE.sh"))
+    os.chmod(os.path.join('Robotfiles',"startE.sh"), st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
-    st_file = os.stat('startPathPla.sh')
-    os.chmod('startPathPla.sh', st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+    st_file = os.stat(os.path.join('Robotfiles',"startPathPla.sh"))
+    os.chmod(os.path.join('Robotfiles',"startPathPla.sh"), st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
