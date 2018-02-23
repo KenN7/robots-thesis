@@ -11,7 +11,7 @@ import argparse
 import os
 import stat
 
-p = argparse.ArgumentParser(description='maker and uploader software for e-pucks, this should be run in the "build" folder where the makefile is')
+p = argparse.ArgumentParser(description='uploader software for e-pucks')
 p.add_argument('-c', '--controller', help='Id of the controller you want to compile/upload (first item of the json file)', required=True)
 p.add_argument('-j', '--json', help='config json file to parse to get controllers, lists of robots, options...', required=True)
 p.add_argument('-r', '--robots', nargs='*', help="id of one of more robots to send the files to (overides json file data if used)", required=False)
@@ -32,7 +32,7 @@ def main():
             robots = list(args.robots)
 
         for rob in robots:
-            run(["scp -r", upfolder , d["bin"],\
+            run(["scp -r", upfolder, d["bin"],\
             "%s@%s.%s:%s" % (d["username"],d["baseip"],rob,d["uploadfolder"])], check=True)
 
     except Exception as e:
