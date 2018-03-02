@@ -43,6 +43,4 @@ set(ARGOS_THREADSAFE_LOG OFF)
 set(ARGOS_USE_DOUBLE OFF)
 
 set(ARGOS_INCLUDE_DIRS /home/ken/arm-unknown-linux-gnueabi/arm-unknown-linux-gnueabi/sysroot/usr/include)
-#set(ARGOS_INCLUDE_DIRS /home/ken/depots/argos3/src /home/ken/depots/argos3/cross_build)
-#set(ARGOS_LIBRARY_DIRS /home/ken/depots/argos3/cross_build/core)
 set(ARGOS_LIBRARY_DIRS /home/ken/arm-unknown-linux-gnueabi/arm-unknown-linux-gnueabi/sysroot/usr/lib/argos3)

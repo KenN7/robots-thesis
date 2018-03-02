@@ -128,5 +128,16 @@
         "uploadfolder" : "khasselm/"
     },
 
+    "test_realexp": {
+        "id" : "46,50,41,51,57,30",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "robotfolder" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Stop/Robotfiles/*",
+        "baseip" : "10.0.1",
+        "controller" : "automode",
+        "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    }
+
 
 }

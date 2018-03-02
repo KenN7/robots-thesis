@@ -22,6 +22,11 @@ def main():
 
     jsonfile = open(args.json)
     di = json.load(jsonfile)
+    try:
+        d = di[args.controller]
+    except KeyError:
+        print("Controller not found in json file, stopping.")
+        raise
 
     upfolder = d['robotfolder']
 
@@ -32,8 +37,7 @@ def main():
             robots = list(args.robots)
 
         for rob in robots:
-            run(["scp -r", upfolder, d["bin"],\
-            "%s@%s.%s:%s" % (d["username"],d["baseip"],rob,d["uploadfolder"])], check=True)
+            run("scp -r %s %s %s@%s.%s:%s" % (d["bin"],upfolder,d["username"],d["baseip"],rob,d["uploadfolder"]), check=True, shell=True)
 
     except Exception as e:
         print(e)

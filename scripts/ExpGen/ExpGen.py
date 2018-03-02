@@ -122,10 +122,10 @@ if __name__ == "__main__":
     f1.write('| ---- | ---- | ---- | ----\n')
 
     f2 = open(os.path.join('Robotfiles',"startE.sh"), 'w')
-    f2.write("#!/bin/sh\n")
+    f2.write("#!/bin/bash\n")
 
     f3 = open(os.path.join('Robotfiles','startPathPla.sh'), 'w')
-    f3.write("#!/bin/sh\n")
+    f3.write("#!/bin/bash\n")
 
     for (i,(seed,exp,xml)) in enumerate(experiments):
         f1.write("| %s | %s | %s | %s\n" % (i,xml,seed,exp.name))
