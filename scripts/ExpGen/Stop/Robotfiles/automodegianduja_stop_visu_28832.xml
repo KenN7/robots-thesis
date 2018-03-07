@@ -65,7 +65,7 @@
             <epuck_ground calibrated="true" implementation="rot_z_only" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml" noise_level="0.05" />
             <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
-    <params genome_file="gen_champ_27" rab_time="10" />
+    <params genome_file="gen_champ_3" rab_time="10" />
     
 </epuck_nn_controller>
   </controllers>

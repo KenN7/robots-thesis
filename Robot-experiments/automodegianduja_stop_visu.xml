@@ -81,34 +81,6 @@
     <params genome_file="/home/root/khasselm/genome256_1" rab_time="10"/>
     <!-- <params genome_file="/home/ken/depots/robots-thesis/Real_robot_tests/genome256_1" rab_time="10"/> -->
 </epuck_nn_controller>
-
-<path_planning_controller id="path"
-                              library="/home/ken/depots/iridia-tracking-system/build/testing/controllers/libpathplanning.so">
-  <actuators>
-    <epuck_wheels implementation="default"/>
-  <epuck_base_leds implementation="default" medium="leds"/>
-  </actuators>
-  <sensors>
-    <epuck_proximity implementation="default" show_rays="false"/>
-    <gps_virtual_sensor implementation="default" />
-    <destination_virtual_sensor implementation="default"/>
-    <epuck_battery implementation="default" />
-  </sensors>
-  <params placementPrecision="0.03"
-          anglePrecision="5"
-
-          proximitySignificativeThreshold="0.4"
-
-          proximityRepulsionForce="8"
-          proximityRepulsionForceNoise="4"
-
-          batteryTimeStepThreshold="30"
-
-          forceRandomWalkAfterNoUpdateFor="0">
-
-    <recharge_destination x="0.0" y="0.0" rot="0"/>
-  </params>
-</path_planning_controller>
   </controllers>
 
   <!-- ********* -->
