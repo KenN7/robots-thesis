@@ -87,7 +87,7 @@ if __name__ == "__main__":
     ###
     ###
     exps = []
-    exps.append(Experiment('automode_gianduja', 'fsm-config', 'automode'))
+    exps.append(Experiment('automode_controller', 'fsm-config', 'automode'))
     exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/stop-results.txt')
     exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn'))
     exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test/temp/results-evo-stop227')
@@ -151,7 +151,7 @@ if __name__ == "__main__":
 
         if i==0:
             f2.write('if [ "$1" == "0" ]; then ./%s -i %s -c %s\n' % (exp.executable,exp.name,os.path.basename(xml)))
-            f3.write('if [ "$1" == "0" ]; then exec argos3 -c %s\n' % os.path.abspath(xml))
+            f3.write('if [ "$1" == "0" ]; then exec argos3 -c %s\n' % os.path.abspath(pathxml))
         else:
             f2.write('elif [ "$1" == "%i" ]; then ./%s -i %s -c %s\n' % (i,exp.executable,exp.name,os.path.basename(xml)))
             f3.write('elif [ "$1" == "%i" ]; then exec argos3 -c %s\n' % (i,os.path.abspath(pathxml)))
@@ -166,4 +166,4 @@ if __name__ == "__main__":
     os.chmod(os.path.join('Robotfiles',"startE.sh"), st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
     st_file = os.stat(os.path.join('PCfiles',"startPathPla.sh"))
-    os.chmod(os.path.join('Robotfiles',"startPathPla.sh"), st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+    os.chmod(os.path.join('PCfiles',"startPathPla.sh"), st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)

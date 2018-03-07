@@ -47,7 +47,7 @@
     <params readable='false' history='false' hist-folder='./fsm_history/' fsm-config="--nstates 1 --s0 1 --brd0 0"/>
     </automode_controller>
 
-    <automode_gianduja id="automode"
+    <automode_controller id="automode_gianduja"
                         library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05"/>
@@ -62,7 +62,7 @@
 		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
       </sensors>
     <params readable='false' history='false' fsm-config="--nstates 1 --s0 1 --brd0 0"/>
-    </automode_gianduja>
+    </automode_controller>
 
     <epuck_nn_controller id="epuck_nn_controller"
                         library="/home/ken/depots/neat-argos3/build/src/controllers/epuck_nn/libepuck_nn.so">

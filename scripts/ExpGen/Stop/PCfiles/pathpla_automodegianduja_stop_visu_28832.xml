@@ -36,7 +36,7 @@
   
   
   
-  <loop_functions label="simplified_pathplanning_loop_functions" library="/home/arena/repos/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so">
+  <loop_functions label="simplified_pathplanning_loop_functions" library="/home/ken/depots/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so">
 
 
     <pathplanning assigment="min_max_assignment_generator" maxTimeAfterBudgetPlacement="30" minProcentPlacementBudget="0.9" path="dijkstra_path_generator" randomDistribution="true" robotType="epuck" robots="4" sharedDestination="true" tickBudget="0" timestepInPosition="0">
@@ -122,7 +122,7 @@
     <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.57" translate_y="4.565" />
 
 
-  </physics_engines>
+  </physics_engines>delete
 
   
   
@@ -138,7 +138,7 @@
   
   <visualization>
     <qt-opengl splash="false">
-        <user_functions label="pathplanning_qt_user_functions" library="/home/arena/repos/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libpathplanning_loop_functions.so" />
+        <user_functions label="pathplanning_qt_user_functions" library="/home/ken/depots/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so" />
         <camera>
           <placement idx="0" lens_focal_length="20" look_at="-0.0999109,-0.656846,2.85428" position="-0.0996717,-0.805497,3.84317" />
           <placement idx="1" lens_focal_length="20" look_at="0.0626103,-0.878381,4.21662" position="11.0602409,-1.0072,5.20828" />

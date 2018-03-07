@@ -73,7 +73,7 @@
   <!-- ****************** -->
   <!-- * Loop functions * -->
   <!-- ****************** -->
-  <loop_functions library="/home/arena/repos/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so"
+  <loop_functions library="/home/ken/depots/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so"
                   label="simplified_pathplanning_loop_functions">
 
 
@@ -204,7 +204,7 @@
     />
 
 
-  </physics_engines>
+  </physics_engines>delete
 
   <!-- ********* -->
   <!-- * Media * -->
@@ -221,7 +221,7 @@
   -->
   <visualization>
     <qt-opengl splash="false">
-        <user_functions library="/home/arena/repos/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libpathplanning_loop_functions.so"
+        <user_functions library="/home/ken/depots/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so"
                         label="pathplanning_qt_user_functions" />
         <camera>
           <placement idx="0" position="-0.0996717,-0.805497,3.84317" look_at="-0.0999109,-0.656846,2.85428" lens_focal_length="20" />
