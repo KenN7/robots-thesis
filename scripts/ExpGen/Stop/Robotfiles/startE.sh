@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [ "$1" == "0" ]; then ./epuck_nn -i epuck_nn_controller -c automodegianduja_stop_visu_95415.xml
 elif [ "$1" == "1" ]; then ./automode -i automode_gianduja -c automodegianduja_stop_visu_9221.xml
 elif [ "$1" == "2" ]; then ./epuck_nn -i epuck_nn_controller -c automodegianduja_stop_visu_5081.xml

@@ -131,13 +131,52 @@
     "test_realexp": {
         "id" : "46,50,41,51,57,30",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
-        "robotfolder" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Stop/Robotfiles/*",
+        "robotfolder" : {
+          "khasselm/" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Stop/Robotfiles/*"
+        },
         "baseip" : "10.0.1",
         "controller" : "automode",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "username" : "root",
         "uploadfolder" : "khasselm/"
-    }
+    },
 
+    "test_one": {
+        "id" : "36",
+        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
+        "robotfolder" : {
+          "khasselm/" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Stop/Robotfiles/*"
+        },
+        "baseip" : "10.0.1",
+        "controller" : "automode",
+        "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "pathpla": {
+        "id" : "36",
+        "bin" : "/home/ken/depots/iridia-tracking-system/build_epuck/testing/controllers/path_planning_controller",
+        "baseip" : "10.0.1",
+        "controller" : "path",
+        "xml" : "/home/ken/depots/iridia-tracking-system/src/testing/path_planning_dodecagonal_arena.argos",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "libs": {
+        "id" : "46,50,41,51,57,30",
+        "robotfolder" : {
+          "/home/root/ARGoS/lib/" : [
+            "/home/ken/depots/argos3/build_epuck/core/libargos3core_epuck.so",
+            "/home/ken/depots/argos3/build_epuck/plugins/robots/generic/libargos3plugin_epuck_genericrobot.so",
+            "/home/ken/depots/argos3-epuck/build_epuck/plugins/robots/e-puck/libargos3plugin_epuck_epuck.so",
+            "/home/ken/depots/iridia-tracking-system/build_epuck/plugins/robots/libargos3plugin_epuck_genericvirtualsensorsandactuators.so"
+          ]
+        },
+        "baseip" : "10.0.1",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    }
 
 }

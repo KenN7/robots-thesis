@@ -37,7 +37,14 @@ def main():
             robots = list(args.robots)
 
         for rob in robots:
-            run("scp -r %s %s %s@%s.%s:%s" % (d["bin"],upfolder,d["username"],d["baseip"],rob,d["uploadfolder"]), check=True, shell=True)
+            for dist,local in upfolder.items():
+                if isinstance(local, list):
+                    for f in local:
+                        run("scp -r {} {}@{}.{}:{}".format(f,d["username"],d["baseip"],rob,dist), check=True, shell=True)
+                else:
+                    #run("scp -r %s %s %s@%s.%s:%s" % (d["bin"],upfolder,d["username"],d["baseip"],rob,d["uploadfolder"]), check=True, shell=True)
+                    run("scp -r {} {}@{}.{}:{}".format(local,d["username"],d["baseip"],rob,dist), check=True, shell=True)
+
 
     except Exception as e:
         print(e)

@@ -170,7 +170,7 @@
     <body orientation="0,0,0" position="0.4,-0.6,0" />
     <controller config="path" />
   </e-puck>
-  <e-puck id="epuck_11_30">
+  <e-puck id="epuck_11_36">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
     <controller config="path" />
   </e-puck>
