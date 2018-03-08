@@ -21,8 +21,9 @@ p.add_argument('-o', '--outputtable', help='the table output file summing up all
 
 
 class Experiment:
-    def __init__(self, controller, xmlparam, exe):
+    def __init__(self, controller, xmlparam, exe, id_controller):
         self.name = controller
+        self.id = id_controller
         self.xmlparam = xmlparam
         self.executable = exe
         self.controllerslist = None
@@ -52,7 +53,8 @@ def genXml(i, xmlfile, seed, controllers, output):
     for controller in controllers:
         #auto = c.find('epuck_nn_controller')
         try:
-            con = c.find(controller.name)
+            con = c.find("{}[@id='{}']".format(controller.name, controller.id))
+            #con = c.find("automode_controller[@id='automode_gianduja']")
             pa = con.find('params')
             pa.set(controller.xmlparam, controller.controllerslist[i])
                 #pa.set('fsm-config', gen)
@@ -87,11 +89,11 @@ if __name__ == "__main__":
     ###
     ###
     exps = []
-    exps.append(Experiment('automode_controller', 'fsm-config', 'automode'))
+    exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_gianduja'))
     exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/stop-results.txt')
-    exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn'))
+    exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn', 'epuck_nn_controller'))
     exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test/temp/results-evo-stop227')
-    exps.append(Experiment('automode_controller', 'fsm-config', 'automode'))
+    exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_choco'))
     exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/stopnogian0102-results.txt')
     # exps.append(Experiment('automode_gianduja', 'fsm-config', 'automode'))
     # exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/decision-results.txt')
@@ -150,11 +152,11 @@ if __name__ == "__main__":
         f1.write("| %s | %s | %s | %s\n" % (i,xml,seed,exp.name))
 
         if i==0:
-            f2.write('if [ "$1" == "0" ]; then ./%s -i %s -c %s\n' % (exp.executable,exp.name,os.path.basename(xml)))
-            f3.write('if [ "$1" == "0" ]; then exec argos3 -c %s\n' % os.path.abspath(pathxml))
+            f2.write('if [ "$1" == "0" ]; then ./{} -i {} -c {}\n'.format(exp.executable,exp.id,os.path.basename(xml)))
+            f3.write('if [ "$1" == "0" ]; then exec argos3 -c {}\n'.format(os.path.abspath(pathxml)))
         else:
-            f2.write('elif [ "$1" == "%i" ]; then ./%s -i %s -c %s\n' % (i,exp.executable,exp.name,os.path.basename(xml)))
-            f3.write('elif [ "$1" == "%i" ]; then exec argos3 -c %s\n' % (i,os.path.abspath(pathxml)))
+            f2.write('elif [ "$1" == "%i" ]; then ./{} -i {} -c {}\n' % (i,exp.executable,exp.id,os.path.basename(xml)))
+            f3.write('elif [ "$1" == "%i" ]; then exec argos3 -c {}\n' % (i,os.path.abspath(pathxml)))
         #  ./%s -i %s -c %s
     f2.write('else echo "ERROR: Unknown expe number $1"\nfi')
     f3.write('else echo "ERROR: Unknown expe number $1"\nfi')

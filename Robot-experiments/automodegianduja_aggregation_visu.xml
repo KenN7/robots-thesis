@@ -26,7 +26,7 @@
   <!-- *************** -->
   <controllers>
 	<!-- TRANSMITTER -->
-    <automode_controller id="automode"
+    <automode_controller id="automode_choco"
                         library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05"/>
