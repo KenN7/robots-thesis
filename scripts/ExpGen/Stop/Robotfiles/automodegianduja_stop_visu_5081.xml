@@ -20,7 +20,7 @@
   
   <controllers>
 	
-    <automode_controller id="automode" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
+    <automode_controller id="automode_choco" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05" />
         <epuck_rgb_leds implementation="default" medium="leds" />
@@ -36,7 +36,7 @@
     <params fsm-config="--nstates 4 --s0 0 --rwm0 87 --brd0 0 --n0 2 --n0x0 1 --c0x0 4 --p0x0 7 --w0x0 7.57 --n0x1 2 --c0x1 5 --p0x1 0.04 --s1 1 --brd1 0 --n1 2 --n1x0 1 --c1x0 2 --p1x0 0.14 --n1x1 1 --c1x1 2 --p1x1 0.01 --s2 0 --rwm2 55 --brd2 0 --n2 3 --n2x0 1 --c2x0 2 --p2x0 0.64 --n2x1 1 --c2x1 0 --p2x1 0.27 --n2x2 0 --c2x2 4 --p2x2 7 --w2x2 5.71 --s3 1 --brd3 0 --n3 3 --n3x0 1 --c3x0 5 --p3x0 0.75 --n3x1 0 --c3x1 0 --p3x1 0.77 --n3x2 1 --c3x2 3 --p3x2 7 --w3x2 12.59" hist-folder="./fsm_history/" history="false" readable="false" />
     </automode_controller>
 
-    <automode_gianduja id="automode" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
+    <automode_controller id="automode_gianduja" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05" />
         <epuck_rgb_leds implementation="default" medium="leds" />
@@ -50,7 +50,7 @@
 		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
     <params fsm-config="--nstates 2 --s0 0 --rwm0 1 --brd0 0 --n0 4 --n0x0 0 --c0x0 6 --p0x0 4 --w0x0 8.99 --n0x1 0 --c0x1 6 --p0x1 6 --w0x1 10.81 --n0x2 0 --c0x2 0 --p0x2 0.57 --n0x3 0 --c0x3 6 --p0x3 1 --w0x3 14.24 --s1 1 --brd1 1 --n1 1 --n1x0 0 --c1x0 2 --p1x0 0.32" history="false" readable="false" />
-    </automode_gianduja>
+    </automode_controller>
 
     <epuck_nn_controller id="epuck_nn_controller" library="/home/ken/depots/neat-argos3/build/src/controllers/epuck_nn/libepuck_nn.so">
       <actuators>

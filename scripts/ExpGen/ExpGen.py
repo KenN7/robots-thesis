@@ -155,8 +155,8 @@ if __name__ == "__main__":
             f2.write('if [ "$1" == "0" ]; then ./{} -i {} -c {}\n'.format(exp.executable,exp.id,os.path.basename(xml)))
             f3.write('if [ "$1" == "0" ]; then exec argos3 -c {}\n'.format(os.path.abspath(pathxml)))
         else:
-            f2.write('elif [ "$1" == "%i" ]; then ./{} -i {} -c {}\n' % (i,exp.executable,exp.id,os.path.basename(xml)))
-            f3.write('elif [ "$1" == "%i" ]; then exec argos3 -c {}\n' % (i,os.path.abspath(pathxml)))
+            f2.write('elif [ "$1" == "{}" ]; then ./{} -i {} -c {}\n'.format(i,exp.executable,exp.id,os.path.basename(xml)))
+            f3.write('elif [ "$1" == "{}" ]; then exec argos3 -c {}\n'.format(i,os.path.abspath(pathxml)))
         #  ./%s -i %s -c %s
     f2.write('else echo "ERROR: Unknown expe number $1"\nfi')
     f3.write('else echo "ERROR: Unknown expe number $1"\nfi')
