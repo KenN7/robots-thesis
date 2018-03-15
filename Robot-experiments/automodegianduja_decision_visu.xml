@@ -4,15 +4,17 @@
   <!-- * Framework * -->
   <!-- ************* -->
   <framework>
-      <experiment length="120"
-                  ticks_per_second="10" random_seed="0"
+    <system threads="0" />
+    <experiment length="120"
+                ticks_per_second="10" random_seed="0"
 
-                  real_time="true"
+                real_time="true"
 
-                  vss_host="10.0.1.199"
-                  vss_port="4050"
+                vss_host="10.0.1.199"
+                vss_port="4050"
 
-                  />
+                />
+
   </framework>
 
   <!-- ****************** -->
@@ -42,7 +44,7 @@
 		    <epuck_ground implementation="rot_z_only" noise_level="0.1" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml"/>
 		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
       </sensors>
-    <params readable='false' history='false' hist-folder='./fsm_history/' fsm-config="--nstates 1 --s0 1 --brd0 0"/>
+    <params readable='false' history='false' hist-folder='./fsm_history/' fsm-config="--nstates 1 --s0 2 --brd0 0 -n0 0"/>
     </automode_controller>
 
     <automode_controller id="automode_gianduja"
@@ -59,7 +61,7 @@
             <epuck_ground implementation="rot_z_only" noise_level="0.05" calibrated="true" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml"/>
             <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
       </sensors>
-    <params readable='false' history='false' fsm-config="--nstates 1 --s0 1 --brd0 0"/>
+    <params readable='false' history='false' fsm-config="--nstates 1 --s0 2 --brd0 0 -n0 0"/>
     </automode_controller>
 
     <epuck_nn_controller id="epuck_nn_controller"
@@ -79,6 +81,7 @@
     <params genome_file="/home/root/khasselm/genome256_1" rab_time="10"/>
     <!-- <params genome_file="/home/ken/depots/robots-thesis/Real_robot_tests/genome256_1" rab_time="10"/> -->
 </epuck_nn_controller>
+
   </controllers>
 
   <!-- ********* -->
@@ -133,26 +136,87 @@
   <!-- ********** -->
   <!-- * E-Puck * -->
   <!-- ********** -->
-  <e-puck id="epuck_3_61">
+  <e-puck id="epuck_11_30">
     <body position="0,-0.4,0" orientation="0,0,0"/>
-    <controller config="path"/>
+    <controller config="automode_choco"/>
   </e-puck>
-  <e-puck id="epuck_5_29">
+  <e-puck id="epuck_3_37">
     <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="path"/>
+    <controller config="automode_choco"/>
   </e-puck>
-  <e-puck id="epuck_9_28">
+  <e-puck id="epuck_6_50">
     <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="path"/>
+    <controller config="automode_choco"/>
   </e-puck>
-  <e-puck id="epuck_15_55">
+  <e-puck id="epuck_5_51">
     <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="path"/>
+    <controller config="automode_choco"/>
   </e-puck>
-  <e-puck id="epuck_17_39">
+  <e-puck id="epuck_4_55">
     <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="path"/>
+    <controller config="automode_choco"/>
   </e-puck>
+  <e-puck id="epuck_8_46">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_10_34">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_1_35">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_2_36">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_0_40">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_18_44">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_19_48">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_21_61">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_20_41">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_7_32">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_15_33">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_16_39">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_9_42">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_12_47">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+  <e-puck id="epuck_14_53">
+    <body position="0.4,-0.6,0" orientation="0,0,0"/>
+    <controller config="automode_choco"/>
+  </e-puck>
+
 
   </arena>
 
@@ -163,8 +227,8 @@
       <iridia_tracking_system
         id="its"
 
-        translate_y="2.5"
-        translate_x="3.5"
+      translate_y="4.565"
+      translate_x="2.57"
 
         its_host="164.15.10.153"
         its_port="4040"

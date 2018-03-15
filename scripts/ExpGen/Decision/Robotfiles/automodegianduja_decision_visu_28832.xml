@@ -3,7 +3,9 @@
   
   
   <framework>
-      <experiment length="120" random_seed="28832" real_time="true" ticks_per_second="10" vss_host="10.0.1.199" vss_port="4050" />
+    <system threads="0" />
+    <experiment length="120" random_seed="28832" real_time="true" ticks_per_second="10" vss_host="10.0.1.199" vss_port="4050" />
+
   </framework>
 
   
@@ -18,7 +20,7 @@
   
   <controllers>
 	
-    <automode_controller id="automode" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
+    <automode_controller id="automode_choco" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05" />
         <epuck_rgb_leds implementation="default" medium="leds" />
@@ -34,7 +36,7 @@
     <params fsm-config="--nstates 3 --s0 5 --rep0 1.83 --brd0 0 --n0 1 --n0x0 1 --c0x0 1 --p0x0 0.22 --s1 3 --brd1 0 --n1 1 --n1x0 1 --c1x0 3 --p1x0 7 --w1x0 6.43 --s2 2 --brd2 0 --n2 1 --n2x0 1 --c2x0 0 --p2x0 0.99" hist-folder="./fsm_history/" history="false" readable="false" />
     </automode_controller>
 
-    <automode_gianduja id="automode" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
+    <automode_controller id="automode_gianduja" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05" />
         <epuck_rgb_leds implementation="default" medium="leds" />
@@ -48,7 +50,7 @@
             <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
     <params fsm-config="--nstates 4 --s0 0 --rwm0 78 --brd0 1 --n0 1 --n0x0 0 --c0x0 7 --p0x0 7 --w0x0 13.05 --s1 3 --brd1 0 --n1 3 --n1x0 1 --c1x0 2 --p1x0 0.56 --n1x1 1 --c1x1 2 --p1x1 0.55 --n1x2 1 --c1x2 6 --p1x2 3 --w1x2 16.29 --s2 2 --brd2 1 --n2 2 --n2x0 0 --c2x0 0 --p2x0 0.61 --n2x1 1 --c2x1 0 --p2x1 0.87 --s3 1 --brd3 1 --n3 2 --n3x0 2 --c3x0 7 --p3x0 8 --w3x0 15.39 --n3x1 1 --c3x1 5 --p3x1 0.55" history="false" readable="false" />
-    </automode_gianduja>
+    </automode_controller>
 
     <epuck_nn_controller id="epuck_nn_controller" library="/home/ken/depots/neat-argos3/build/src/controllers/epuck_nn/libepuck_nn.so">
       <actuators>
@@ -63,9 +65,10 @@
             <epuck_ground calibrated="true" implementation="rot_z_only" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml" noise_level="0.05" />
             <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
-    <params genome_file="gen_champ_27" rab_time="10" />
+    <params genome_file="gen_champ_3" rab_time="10" />
     
 </epuck_nn_controller>
+
   </controllers>
 
   
@@ -122,23 +125,23 @@
   
   <e-puck id="epuck_3_61">
     <body orientation="0,0,0" position="0,-0.4,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_5_29">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_9_28">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_15_55">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_17_39">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
 
   </arena>
@@ -147,7 +150,7 @@
   
   
   <physics_engines>
-      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="3.5" translate_y="2.5" />
+      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.57" translate_y="4.565" />
 
 
     

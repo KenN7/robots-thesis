@@ -3,7 +3,9 @@
   
   
   <framework>
-      <experiment length="120" random_seed="34385" real_time="true" ticks_per_second="10" vss_host="10.0.1.199" vss_port="4050" />
+    <system threads="0" />
+    <experiment length="120" random_seed="34385" real_time="true" ticks_per_second="10" vss_host="10.0.1.199" vss_port="4050" />
+
   </framework>
 
   
@@ -18,7 +20,7 @@
   
   <controllers>
 	
-    <automode_controller id="automode" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
+    <automode_controller id="automode_choco" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05" />
         <epuck_rgb_leds implementation="default" medium="leds" />
@@ -34,7 +36,7 @@
     <params fsm-config="--nstates 4 --s0 1 --brd0 0 --n0 4 --n0x0 1 --c0x0 4 --p0x0 10 --w0x0 14.92 --n0x1 2 --c0x1 0 --p0x1 0.28 --n0x2 1 --c0x2 0 --p0x2 0.19 --n0x3 0 --c0x3 2 --p0x3 0.93 --s1 2 --brd1 0 --n1 1 --n1x0 0 --c1x0 0 --p1x0 0.84 --s2 3 --brd2 0 --n2 3 --n2x0 1 --c2x0 2 --p2x0 0.43 --n2x1 1 --c2x1 2 --p2x1 0.72 --n2x2 2 --c2x2 0 --p2x2 0.09 --s3 2 --brd3 0 --n3 2 --n3x0 0 --c3x0 3 --p3x0 5 --w3x0 18.09 --n3x1 1 --c3x1 4 --p3x1 8 --w3x1 5.31" hist-folder="./fsm_history/" history="false" readable="false" />
     </automode_controller>
 
-    <automode_gianduja id="automode" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
+    <automode_controller id="automode_gianduja" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.05" />
         <epuck_rgb_leds implementation="default" medium="leds" />
@@ -48,7 +50,7 @@
             <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
     <params fsm-config="--nstates 3 --s0 5 --rep0 3.07 --brd0 0 --n0 1 --n0x0 1 --c0x0 5 --p0x0 0.59 --s1 2 --brd1 1 --n1 4 --n1x0 1 --c1x0 0 --p1x0 0.53 --n1x1 0 --c1x1 0 --p1x1 0.83 --n1x2 1 --c1x2 0 --p1x2 0.77 --n1x3 0 --c1x3 0 --p1x3 0.26 --s2 3 --brd2 0 --n2 4 --n2x0 0 --c2x0 2 --p2x0 0.9 --n2x1 1 --c2x1 2 --p2x1 0.98 --n2x2 0 --c2x2 3 --p2x2 6 --w2x2 6.69 --n2x3 1 --c2x3 6 --p2x3 2 --w2x3 10.18" history="false" readable="false" />
-    </automode_gianduja>
+    </automode_controller>
 
     <epuck_nn_controller id="epuck_nn_controller" library="/home/ken/depots/neat-argos3/build/src/controllers/epuck_nn/libepuck_nn.so">
       <actuators>
@@ -63,9 +65,10 @@
             <epuck_ground calibrated="true" implementation="rot_z_only" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml" noise_level="0.05" />
             <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
-    <params genome_file="gen_champ_7" rab_time="10" />
+    <params genome_file="gen_champ_13" rab_time="10" />
     
 </epuck_nn_controller>
+
   </controllers>
 
   
@@ -122,23 +125,23 @@
   
   <e-puck id="epuck_3_61">
     <body orientation="0,0,0" position="0,-0.4,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_5_29">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_9_28">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_15_55">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
   <e-puck id="epuck_17_39">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
 
   </arena>
@@ -147,7 +150,7 @@
   
   
   <physics_engines>
-      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="3.5" translate_y="2.5" />
+      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.57" translate_y="4.565" />
 
 
     

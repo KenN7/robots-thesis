@@ -162,19 +162,19 @@
 
           epuck_tag_robot
       -->
-    <e-puck id="epuck_20_33">
+    <e-puck id="epuck_8_33">
       <body position="0,-0.4,0" orientation="0,0,0"/>
       <controller config="path"/>
     </e-puck>
-    <e-puck id="epuck_15_55">
+    <e-puck id="epuck_3_55">
       <body position="0.4,-0.6,0" orientation="0,0,0"/>
       <controller config="path"/>
     </e-puck>
-    <e-puck id="epuck_7_46">
+    <e-puck id="epuck_5_46">
       <body position="0.4,-0.6,0" orientation="0,0,0"/>
       <controller config="path"/>
     </e-puck>
-    <e-puck id="epuck_10_37">
+    <e-puck id="epuck_4_37">
       <body position="0.4,-0.6,0" orientation="0,0,0"/>
       <controller config="path"/>
     </e-puck>
@@ -204,7 +204,7 @@
     />
 
 
-  </physics_engines>delete
+  </physics_engines>
 
   <!-- ********* -->
   <!-- * Media * -->

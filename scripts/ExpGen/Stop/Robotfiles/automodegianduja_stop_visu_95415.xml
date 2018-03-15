@@ -12,7 +12,7 @@
   
   
   <loop_functions label="gianduja_stop_loop_functions" library="/home/ken/depots/experiments-loop-functions/build/loop-functions/libgianduja_stop_loopfunc.so">
-   <params dist_radius="1.2" number_robots="20" />
+   <params dist_radius="1.2" number_robots="4" />
   </loop_functions>
 
   
@@ -122,25 +122,21 @@
   
   
   
-  <e-puck id="epuck_3_61">
+  <e-puck id="epuck_8_33">
     <body orientation="0,0,0" position="0,-0.4,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
-  <e-puck id="epuck_5_29">
+  <e-puck id="epuck_3_55">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
-  <e-puck id="epuck_9_28">
+  <e-puck id="epuck_5_46">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
-  <e-puck id="epuck_15_55">
+  <e-puck id="epuck_4_37">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
-  </e-puck>
-  <e-puck id="epuck_17_39">
-    <body orientation="0,0,0" position="0.4,-0.6,0" />
-    <controller config="path" />
+    <controller config="automode_choco" />
   </e-puck>
 
   </arena>
@@ -149,7 +145,7 @@
   
   
   <physics_engines>
-      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="3.5" translate_y="2.5" />
+      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.57" translate_y="4.565" />
 
 
     
