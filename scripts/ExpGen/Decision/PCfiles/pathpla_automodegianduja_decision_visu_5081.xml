@@ -20,10 +20,9 @@
       <epuck_base_leds implementation="default" medium="leds" />
       </actuators>
       <sensors>
-        <epuck_proximity implementation="default" show_rays="false" />
+        <epuck_proximity calibrated="true" implementation="default" low_level_config="/home/root/khasselm/low_level_configuration/proximity_sensor.xml" show_rays="false" />
         <gps_virtual_sensor implementation="default" />
         <destination_virtual_sensor implementation="default" />
-        <epuck_battery implementation="default" />
       </sensors>
       <params anglePrecision="5" batteryTimeStepThreshold="30" forceRandomWalkAfterNoUpdateFor="0" placementPrecision="0.03" proximityRepulsionForce="8" proximityRepulsionForceNoise="4" proximitySignificativeThreshold="0.4">
 

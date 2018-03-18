@@ -153,7 +153,17 @@
         "bin" : "/home/ken/depots/iridia-tracking-system/build_epuck/testing/controllers/path_planning_controller",
         "baseip" : "10.0.1",
         "controller" : "path",
-        "xml" : "/home/ken/depots/iridia-tracking-system/src/testing/path_planning_dodecagonal_arena.argos",
+        "xml" : "/home/ken/depots/robots-thesis/Robot-experiments/path_planning_dodecagonal_arena.argos",
+        "username" : "root",
+        "uploadfolder" : "khasselm/"
+    },
+
+    "testpathpla": {
+        "id" : "30,37",
+        "bin" : "/home/ken/depots/iridia-tracking-system/build_epuck/testing/controllers/path_planning_controller",
+        "baseip" : "10.0.1",
+        "controller" : "path",
+        "xml" : "/home/ken/depots/robots-thesis/Robot-experiments/path_planning_dodecagonal_arena_test.argos",
         "username" : "root",
         "uploadfolder" : "khasselm/"
     },

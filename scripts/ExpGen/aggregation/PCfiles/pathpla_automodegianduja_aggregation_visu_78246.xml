@@ -20,10 +20,9 @@
       <epuck_base_leds implementation="default" medium="leds" />
       </actuators>
       <sensors>
-        <epuck_proximity implementation="default" show_rays="false" />
+        <epuck_proximity calibrated="true" implementation="default" low_level_config="/home/root/khasselm/low_level_configuration/proximity_sensor.xml" show_rays="false" />
         <gps_virtual_sensor implementation="default" />
         <destination_virtual_sensor implementation="default" />
-        <epuck_battery implementation="default" />
       </sensors>
       <params anglePrecision="5" batteryTimeStepThreshold="30" forceRandomWalkAfterNoUpdateFor="0" placementPrecision="0.03" proximityRepulsionForce="8" proximityRepulsionForceNoise="4" proximitySignificativeThreshold="0.4">
 
@@ -39,7 +38,7 @@
   <loop_functions label="simplified_pathplanning_loop_functions" library="/home/ken/depots/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so">
 
 
-    <pathplanning assigment="min_max_assignment_generator" maxTimeAfterBudgetPlacement="30" minProcentPlacementBudget="0.9" path="dijkstra_path_generator" randomDistribution="true" robotType="epuck" robots="4" sharedDestination="true" tickBudget="0" timestepInPosition="0">
+    <pathplanning assigment="min_max_assignment_generator" maxTimeAfterBudgetPlacement="30" minProcentPlacementBudget="0.9" path="dijkstra_path_generator" randomDistribution="true" robotType="epuck" robots="20" sharedDestination="true" tickBudget="0" timestepInPosition="0">
       
       
       <distribute>
@@ -95,22 +94,86 @@
       </box>
 
     
-    <e-puck id="epuck_8_33">
-      <body orientation="0,0,0" position="0,-0.4,0" />
-      <controller config="path" />
-    </e-puck>
-    <e-puck id="epuck_3_55">
-      <body orientation="0,0,0" position="0.4,-0.6,0" />
-      <controller config="path" />
-    </e-puck>
-    <e-puck id="epuck_5_46">
-      <body orientation="0,0,0" position="0.4,-0.6,0" />
-      <controller config="path" />
-    </e-puck>
-    <e-puck id="epuck_4_37">
-      <body orientation="0,0,0" position="0.4,-0.6,0" />
-      <controller config="path" />
-    </e-puck>
+      <e-puck id="epuck_11_30">
+        <body orientation="0,0,0" position="0,-0.4,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_3_37">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_6_50">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_5_51">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_4_55">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_8_46">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_10_34">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_1_35">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_2_36">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_0_40">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_18_44">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_19_48">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_21_61">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_20_41">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_7_32">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_15_33">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_16_39">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_9_42">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_12_47">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
+      <e-puck id="epuck_14_53">
+        <body orientation="0,0,0" position="0.4,-0.6,0" />
+        <controller config="path" />
+      </e-puck>
 
   </arena>
 
