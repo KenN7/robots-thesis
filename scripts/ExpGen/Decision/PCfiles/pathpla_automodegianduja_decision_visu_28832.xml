@@ -1,18 +1,18 @@
 <argos-configuration>
 
-  
-  
-  
+
+
+
   <framework>
-    
+
     <system threads="0" />
-    
+
     <experiment length="120" random_seed="28832" real_time="true" ticks_per_second="10" vss_host="10.0.1.199" vss_port="4050" />
   </framework>
 
-  
-  
-  
+
+
+
   <controllers>
     <path_planning_controller id="path" library="/home/ken/depots/iridia-tracking-system/build/testing/controllers/libpathplanning.so">
       <actuators>
@@ -32,15 +32,15 @@
 
   </controllers>
 
-  
-  
-  
+
+
+
   <loop_functions label="simplified_pathplanning_loop_functions" library="/home/ken/depots/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so">
 
 
     <pathplanning assigment="min_max_assignment_generator" maxTimeAfterBudgetPlacement="30" minProcentPlacementBudget="0.9" path="dijkstra_path_generator" randomDistribution="true" robotType="epuck" robots="20" sharedDestination="true" tickBudget="0" timestepInPosition="0">
-      
-      
+
+
       <distribute>
           <position center="0,0,0" method="circularUniform" radius="1.2" />
           <orientation max="0,0,360" method="uniform" min="0,0,0" />
@@ -49,13 +49,13 @@
     </pathplanning>
   </loop_functions>
 
-  
-  
-  
+
+
+
   <arena center="0,0,0" size="2.5, 2.5, 1">
       <floor id="floor" pixels_per_meter="50" source="loop_functions" />
 
-      
+
       <box id="wall_1" movable="false" size="0.01,.66,0.08">
         <body orientation="0,0,0" position="-1.231,0,0" />
       </box>
@@ -93,7 +93,7 @@
         <body orientation="-30,0,0" position="1.066,-.615,0" />
       </box>
 
-    
+
       <e-puck id="epuck_11_30">
         <body orientation="0,0,0" position="0,-0.4,0" />
         <controller config="path" />
@@ -177,28 +177,28 @@
 
   </arena>
 
-  
-  
-  
+
+
+
   <physics_engines>
-    
-    <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.57" translate_y="4.565" />
+
+    <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.58" translate_y="4.54" />
 
 
   </physics_engines>
 
-  
-  
-  
-  
+
+
+
+
   <media>
     <led id="leds" />
   </media>
 
-  
-  
-  
-  
+
+
+
+
   <visualization>
     <qt-opengl splash="false">
         <user_functions label="pathplanning_qt_user_functions" library="/home/ken/depots/iridia-tracking-system/build/testing/loop_functions/pathplanning_loop_functions/libsimplified_pathplanning_loop_functions.so" />

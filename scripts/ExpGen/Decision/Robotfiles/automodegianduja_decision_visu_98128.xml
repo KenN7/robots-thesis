@@ -211,7 +211,7 @@
 
 
   <physics_engines>
-      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.57" translate_y="4.565" />
+      <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.58" translate_y="4.54" />
 
 
 

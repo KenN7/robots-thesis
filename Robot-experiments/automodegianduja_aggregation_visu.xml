@@ -233,8 +233,7 @@
       <iridia_tracking_system
         id="its"
 
-      translate_y="4.565"
-      translate_x="2.57"
+      translate_x="2.58" translate_y="4.54"
 
         its_host="164.15.10.153"
         its_port="4040"
