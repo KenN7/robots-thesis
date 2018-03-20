@@ -18,6 +18,7 @@ import stat
 p = argparse.ArgumentParser(description='maker and uploader software for e-pucks, this should be run in the "build" folder where the makefile is')
 p.add_argument('-c', '--controller', help='Id of the controller you want to compile/upload (first item of the json file)', required=True)
 p.add_argument('-j', '--json', help='config json file to parse to get controllers, lists of robots, options...', required=True)
+p.add_argument('-r', '--robots', nargs='*', help="id of one of more robots to send the files to (overides json file data if used)", required=False)
 
 
 def main():
@@ -47,7 +48,11 @@ def main():
     os.chmod('start%s.sh' % args.controller, st_file.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
     try:
-        robots = d["id"].split(',')
+        if (args.robots == None or args.robots == []):
+            robots = d["id"].split(',')
+        else:
+            robots = list(args.robots)
+        #robots = d["id"].split(',')
         for rob in robots:
             run(["scp", "start%s.sh" % args.controller, d["bin"], d["xml"],\
             "%s@%s.%s:%s" % (d["username"],d["baseip"],rob,d["uploadfolder"])], check=True)

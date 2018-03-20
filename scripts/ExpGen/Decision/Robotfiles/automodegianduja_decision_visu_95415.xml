@@ -159,7 +159,7 @@
     <body orientation="0,0,0" position="0.4,-0.6,0" />
     <controller config="automode_choco" />
   </e-puck>
-  <e-puck id="epuck_0_40">
+  <e-puck id="epuck_13_57">
     <body orientation="0,0,0" position="0.4,-0.6,0" />
     <controller config="automode_choco" />
   </e-puck>
