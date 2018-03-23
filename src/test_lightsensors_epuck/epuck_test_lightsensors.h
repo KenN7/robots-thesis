@@ -86,7 +86,7 @@ private:
    CCI_EPuckProximitySensor* m_pcProximity;
    CCI_EPuckLightSensor* m_pcLightSensors;
    CCI_EPuckBaseLEDsActuator* m_pcBaseLeds;
-
+   CRandom::CRNG* m_pcRng;
    /*
     * The following variables are used as parameters for the
     * algorithm. You can set their value in the <parameters> section

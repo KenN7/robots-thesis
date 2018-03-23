@@ -130,7 +130,7 @@
         },
         "baseip" : "10.0.1",
         "controller" : "automode",
-        "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
+        "xml" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Decision/Robotfiles/automodegianduja_decision_visu_78246.xml",
         "username" : "root",
         "uploadfolder" : "khasselm/"
     },

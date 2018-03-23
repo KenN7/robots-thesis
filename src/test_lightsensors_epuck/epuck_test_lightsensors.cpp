@@ -45,6 +45,9 @@ void CEPuckTestlight::Init(TConfigurationNode& t_node) {
 
    m_pcProximity = GetSensor<CCI_EPuckProximitySensor>("epuck_proximity");
    m_pcLightSensors = GetSensor<CCI_EPuckLightSensor>("epuck_light");
+
+   m_pcRng = CRandom::CreateRNG("argos");
+
    /*
     * Parse the configuration file
     *
@@ -102,6 +105,13 @@ void CEPuckTestlight::ControlStep() {
        {
            m_pcBaseLeds->SwitchLED(i,false);
        }
+   }
+
+
+   Real decision;
+   decision = m_pcRng->Uniform(CRange<UInt32>(0,2));
+   if (decision == 2) {
+     LOG<< "DECISION=2 !!! :" << decision << std::endl;
    }
 
 
