@@ -7,7 +7,7 @@
 
     <system threads="0" />
 
-    <experiment length="120" random_seed="37383" real_time="true" ticks_per_second="10" vss_host="10.0.1.199" vss_port="4050" />
+    <experiment length="120" random_seed="40383" real_time="true" ticks_per_second="10" vss_host="10.0.1.199" vss_port="4050" />
   </framework>
 
 
@@ -98,7 +98,7 @@
         <body orientation="0,0,0" position="0,-0.4,0" />
         <controller config="path" />
       </e-puck>
-      <e-puck id="epuck_3_37">
+      <e-puck id="epuck_3_40">
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>
@@ -146,7 +146,7 @@
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>
-      <e-puck id="epuck_20_41">
+      <e-puck id="epuck_20_45">
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>

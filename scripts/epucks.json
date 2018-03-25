@@ -1,6 +1,6 @@
 {
     "neat": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/neat-argos3/build_epuck/controllers/epuck_nn/epuck_nn",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "epuck_nn_controller",
@@ -40,7 +40,7 @@
     },
 
     "automode": {
-        "id" : "33,57,44,46,45,51,47,41,42,39,50,35,32,29,61,55,30,36,34,53",
+        "id" : "33,57,44,46,45,51,47,45,42,39,50,35,32,29,61,55,30,36,34,53",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_test.xml",
         "controller" : "automode",
@@ -50,7 +50,7 @@
     },
 
     "gianduja": {
-        "id" : "33,57,44,46,45,51,47,41,42,39,50,35,32,29,61,55,30,36,34,53",
+        "id" : "33,57,44,46,45,51,47,45,42,39,50,35,32,29,61,55,30,36,34,53",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_aggregation.xml",
         "controller" : "automode",
@@ -59,18 +59,8 @@
         "uploadfolder" : "khasselm/"
     },
 
-    "giandujastop": {
-        "id" : "39,33,48,57,42,36,44,61,53,45,32,37,29,34,36,35,55,28",
-        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
-        "xml" : "/home/ken/depots/robots-thesis/Real_robot_tests/automodegianduja_stop.xml",
-        "controller" : "automode",
-        "baseip" : "10.0.1",
-        "username" : "root",
-        "uploadfolder" : "khasselm/"
-    },
-
     "proximity": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "proximity",
@@ -80,7 +70,7 @@
     },
 
     "range_and_bearing": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "range_and_bearing",
@@ -90,7 +80,7 @@
     },
 
     "light": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "light",
@@ -100,7 +90,7 @@
     },
 
     "ground": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/robots-thesis/cross_build/testing/calibration",
         "xml" : "/home/ken/depots/robots-thesis/src/testing/calibration_epuck.xml",
         "controller" : "ground",
@@ -120,7 +110,7 @@
     },
 
     "test_realexp": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "robotfolder" : {
           "khasselm/" : [
@@ -135,21 +125,8 @@
         "uploadfolder" : "khasselm/"
     },
 
-    "test_one": {
-        "id" : "55",
-        "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
-        "robotfolder" : {
-          "khasselm/" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Stop/Robotfiles/*"
-        },
-        "baseip" : "10.0.1",
-        "controller" : "automode_gianduja",
-        "xml" : "/home/ken/depots/robots-thesis/Robot-experiments/automodegianduja_decision_visu.xml",
-        "username" : "root",
-        "uploadfolder" : "khasselm/"
-    },
-
     "pathpla": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/iridia-tracking-system/build_epuck/testing/controllers/path_planning_controller",
         "baseip" : "10.0.1",
         "controller" : "path",
@@ -158,18 +135,8 @@
         "uploadfolder" : "khasselm/"
     },
 
-    "testpathpla": {
-        "id" : "30,37",
-        "bin" : "/home/ken/depots/iridia-tracking-system/build_epuck/testing/controllers/path_planning_controller",
-        "baseip" : "10.0.1",
-        "controller" : "path",
-        "xml" : "/home/ken/depots/robots-thesis/Robot-experiments/path_planning_dodecagonal_arena_test.argos",
-        "username" : "root",
-        "uploadfolder" : "khasselm/"
-    },
-
     "libs": {
-        "id" : "30,37,50,51,55,46,34,35,36,57,44,48,61,41,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,45,32,33,39,42,47,53",
         "robotfolder" : {
           "/home/root/ARGoS/lib/" : [
             "/home/ken/depots/argos3/build_epuck/core/libargos3core_epuck.so",
