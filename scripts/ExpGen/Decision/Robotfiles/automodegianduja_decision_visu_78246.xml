@@ -12,7 +12,7 @@
 
 
   <loop_functions label="gianduja_decision_loop_functions" library="/home/ken/depots/experiments-loop-functions/build/loop-functions/libgianduja_decision_loopfunc.so">
-   <params dist_radius="1.2" number_robots="20" />
+   <params dist_radius="1.2" number_robots="20" patch="1"/>
   </loop_functions>
 
 
@@ -33,7 +33,7 @@
 		    <epuck_ground calibrated="true" implementation="rot_z_only" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml" noise_level="0.1" />
 		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
-    <params fsm-config="--nstates 3 --s0 2 --brd0 0 --n0 3 --n0x0 1 --c0x0 0 --p0x0 0.39 --n0x1 0 --c0x1 1 --p0x1 0.12 --n0x2 0 --c0x2 2 --p0x2 0.67 --s1 0 --rwm1 49 --brd1 0 --n1 4 --n1x0 0 --c1x0 0 --p1x0 0.12 --n1x1 0 --c1x1 3 --p1x1 7 --w1x1 15.09 --n1x2 0 --c1x2 5 --p1x2 0.38 --n1x3 0 --c1x3 0 --p1x3 0.17 --s2 3 --brd2 0 --n2 1 --n2x0 1 --c2x0 2 --p2x0 0.29" hist-folder="./fsm_history/" history="false" readable="false" />
+    <params fsm-config="--nstates 4 --s0 0 --rwm0 87 --brd0 0 --n0 3 --n0x0 0 --c0x0 3 --p0x0 5 --w0x0 3.97 --n0x1 0 --c0x1 5 --p0x1 0.85 --n0x2 1 --c0x2 2 --p0x2 0.2 --s1 2 --brd1 0 --n1 2 --n1x0 0 --c1x0 1 --p1x0 0.16 --n1x1 2 --c1x1 0 --p1x1 0.56 --s2 2 --brd2 0 --n2 3 --n2x0 2 --c2x0 5 --p2x0 0.64 --n2x1 0 --c2x1 2 --p2x1 0.25 --n2x2 2 --c2x2 3 --p2x2 6 --w2x2 7.33 --s3 1 --brd3 0 --n3 3 --n3x0 2 --c3x0 2 --p3x0 0.35 --n3x1 0 --c3x1 3 --p3x1 5 --w3x1 13.65 --n3x2 2 --c3x2 2 --p3x2 0.05" hist-folder="./fsm_history/" history="false" readable="false" />
     </automode_controller>
 
     <automode_controller id="automode_gianduja" library="/home/ken/depots/argos3-Automode/build/src/libautomode.so">
@@ -49,7 +49,7 @@
             <epuck_ground calibrated="true" implementation="rot_z_only" low_level_config="/home/root/khasselm/low_level_configuration/ground_sensor.xml" noise_level="0.05" />
             <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
-    <params fsm-config="--nstates 3 --s0 2 --brd0 0 --n0 2 --n0x0 0 --c0x0 0 --p0x0 0.24 --n0x1 1 --c0x1 1 --p0x1 0.46 --s1 3 --brd1 0 --n1 2 --n1x0 1 --c1x0 6 --p1x0 6 --w1x0 4.5 --n1x1 0 --c1x1 2 --p1x1 0.27 --s2 0 --rwm2 35 --brd2 0 --n2 3 --n2x0 0 --c2x0 1 --p2x0 0.63 --n2x1 0 --c2x1 4 --p2x1 10 --w2x1 7.08 --n2x2 0 --c2x2 7 --p2x2 2 --w2x2 19.3" history="false" readable="false" />
+    <params fsm-config="--nstates 4 --s0 3 --brd0 0 --n0 3 --n0x0 2 --c0x0 6 --p0x0 1 --w0x0 18.82 --n0x1 2 --c0x1 2 --p0x1 0.85 --n0x2 2 --c0x2 6 --p0x2 4 --w0x2 15.41 --s1 0 --rwm1 16 --brd1 1 --n1 3 --n1x0 1 --c1x0 3 --p1x0 3 --w1x0 13.89 --n1x1 2 --c1x1 3 --p1x1 9 --w1x1 8.54 --n1x2 1 --c1x2 5 --p1x2 0.64 --s2 2 --brd2 1 --n2 4 --n2x0 2 --c2x0 0 --p2x0 0.22 --n2x1 1 --c2x1 7 --p2x1 2 --w2x1 4.58 --n2x2 1 --c2x2 7 --p2x2 2 --w2x2 9.25 --n2x3 2 --c2x3 7 --p2x3 3 --w2x3 9.71 --s3 2 --brd3 1 --n3 3 --n3x0 2 --c3x0 2 --p3x0 0.82 --n3x1 0 --c3x1 2 --p3x1 0.67 --n3x2 2 --c3x2 2 --p3x2 0.79" history="false" readable="false" />
     </automode_controller>
 
     <epuck_nn_controller id="epuck_nn_controller" library="/home/ken/depots/neat-argos3/build/src/controllers/epuck_nn/libepuck_nn.so">
