@@ -9,31 +9,30 @@ import shutil
 from paramiko import SSHClient
 
 p = argparse.ArgumentParser(description='getter, runner and grapher of results, options are choosed by editting the python file.')
-
 p.add_argument('-s', '--skipget', action='store_true', help="if present skips getting the results from majorana and just runs based of content of temp/ folder", required=False)
-
+p.add_argument('-n', '--numberexp', help="number of tests to conduct (if not present test all available)", required=False)
 
 CONF = {
     "Decision making":
         (
             "automodegianduja_decision.xml",
             ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'dec227'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'decision'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian0102')
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2103'),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian2103')
         ),
-    "Aggregation":
-        (
-            "automodegianduja_aggregation.xml", ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg227' ),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggreg'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0102')
-        ),
-    "Stop":
-        (
-            "automodegianduja_stop.xml",
-            ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop227'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian0102')
-        ),
+    # "Aggregation":
+    #     (
+    #         "automodegianduja_aggregation.xml", ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg227' ),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggreg'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0102')
+    #     ),
+    # "Stop":
+    #     (
+    #         "automodegianduja_stop.xml",
+    #         ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop227'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian0102')
+    #     ),
     # "Aggregation 2 Spots":
     #     ( "automodegianduja_aggregation_2spots.xml",
     #     "/home/ken/depots/neat-argos3/optimization/expAGG2/results-evo-agg298",
@@ -95,6 +94,18 @@ def write_res(scores, task):
         for res in method:
             f.write('"%i" "%s" "%s" "%s"\n' % (i,res,METHODS[j],task))
             i+=1
+    print('finished writing score file..')
+
+
+def write_res_2(scores, tasks):
+    print('opening score file')
+    f = open('scores-%s.txt' % task, 'w')
+    f.write('"score","seed","alg","task","real"\n')
+    #i = 0
+    for j,method in enumerate(scores):
+        for k,res in enumerate(method):
+            f.write( '{},{},"{}","{}","simulation"\n'.format(res,SEED[k],METHODS[j],task) )
+            #i+=1
     print('finished writing score file..')
 
 
@@ -209,6 +220,11 @@ def main(task):
                     sc = evo(SEEDS[i],os.path.join(direxp,l),xml)
                     scoresevo.append(sc)
                     print(sc)
+                    try:
+                        if (i == args.numberexp):
+                                break
+                    except:
+                        pass
                 scores.append(scoresevo)
 
             elif method[1] == "auto":
@@ -221,6 +237,11 @@ def main(task):
                     sc = auto(SEEDS[i],l.strip(),xml)
                     scoresauto.append(sc)
                     print(sc)
+                    try:
+                        if (i == args.numberexp):
+                                break
+                    except:
+                        pass
                 f.close()
                 scores.append(scoresauto)
 
@@ -242,7 +263,7 @@ def main(task):
     #     print(sc)
 
     write_res(scores, task)
-    run_R('scores-%s.txt' % task, task)
+    #run_R('scores-%s.txt' % task, task)
 
 
 if __name__ == "__main__":
