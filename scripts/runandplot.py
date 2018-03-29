@@ -51,10 +51,10 @@ def evo(seed, genome, xml):
     binary = os.path.join(NEATFOLDER,"bin/evostick_launch")
     command =  "%s -c %s --seed %i -g %s" % (binary,xml,seed,genome)
     try:
-        command = shlex.split(command)
+        #command = shlex.split(command)
         #command[3:3] = [ '--seed', str(seed) ]
         print("running %s" % command)
-        pro = subprocess.run(command, stdout=subprocess.PIPE)
+        pro = subprocess.run(command, shell=True, stdout=subprocess.PIPE)
         #print("this is stdout : %s" % pro.stdout)
         #m = re.search("Score (\d+.\d+)", str(pro.stdout))
         m = re.search("Score (\d*)", str(pro.stdout))
@@ -68,10 +68,10 @@ def auto(seed, statem, xml):
     binary = os.path.join(AUTOFOLDER,"bin/automode_main")
     command = "%s -c %s --seed %i --fsm-config %s" % (binary,xml,seed,statem)
     try:
-        command = shlex.split(command)
+        #command = shlex.split(command)
         #command[3:3] = [ '--seed', str(seed) ]
         print("running %s" % command)
-        pro = subprocess.run(command, stdout=subprocess.PIPE)
+        pro = subprocess.run(command, shell=True ,stdout=subprocess.PIPE)
         #print("this is stdout : %s" % pro.stdout)
         #m = re.search("Score (\d+.\d+)", str(pro.stdout))
         c = re.search("(CCBLACK|CCWHITE)", str(pro.stdout))
@@ -95,18 +95,20 @@ def write_res(scores, task):
             f.write('"%i" "%s" "%s" "%s"\n' % (i,res,METHODS[j],task))
             i+=1
     print('finished writing score file..')
+    f.close()
 
 
-def write_res_2(scores, tasks):
+def write_res_2(scores, task):
     print('opening score file')
     f = open('scores-%s.txt' % task, 'w')
     f.write('"score","seed","alg","task","real"\n')
     #i = 0
     for j,method in enumerate(scores):
         for k,res in enumerate(method):
-            f.write( '{},{},"{}","{}","simulation"\n'.format(res,SEED[k],METHODS[j],task) )
+            f.write( '{},{},"{}","{}","simulation"\n'.format(res,SEEDS[k],METHODS[j],task) )
             #i+=1
     print('finished writing score file..')
+    f.close()
 
 
 def run_R(filen, title):
@@ -166,16 +168,17 @@ def main(task):
     for method in CONF[task][1:]:
         if (args.skipget == False):
             if method[1] == 'evo':
-                scpcom = "scp -r khasselmann@majorana.ulb.ac.be:%s/* temp/" % method[0]
-                command = shlex.split(scpcom)
+                command = 'scp -r "khasselmann@majorana.ulb.ac.be:%s/*" temp/' % method[0]
+                #command = shlex.split(scpcom)
                 print("running %s" % command)
-                pro = subprocess.run(command, stdout=subprocess.PIPE)
-                print(pro.stdout)
+                pro = subprocess.run(command, shell=True)
+                #print(pro.stdout)
                 #os.mkdir
                 direxp = extract_res_evo(method[2],'temp/')
 
                 xml = os.path.join(NEATFOLDER,'experiments',expfile)
                 g = os.listdir(direxp)
+                print(g)
                 scoresevo = []
                 for i,l in enumerate(g):
                     sc = evo(SEEDS[i],os.path.join(direxp,l),xml)
@@ -262,7 +265,7 @@ def main(task):
     #     scoreauto.append(sc)
     #     print(sc)
 
-    write_res(scores, task)
+    write_res_2(scores, task)
     #run_R('scores-%s.txt' % task, task)
 
 

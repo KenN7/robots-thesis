@@ -110,7 +110,7 @@
     },
 
     "test_realexp": {
-        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,28,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,57,44,48,61,28,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "robotfolder" : {
           "khasselm/" : [
@@ -119,8 +119,8 @@
           ]
         },
         "baseip" : "10.0.1",
-        "controller" : "automode",
-        "xml" : "/home/ken/depots/robots-thesis/scripts/ExpGen/Decision/Robotfiles/automodegianduja_decision_visu_78246.xml",
+        "controller" : "automode_gianduja",
+        "xml" : "/home/ken/depots/robots-thesis/scripts/ExpGen/aggregation/Robotfiles/automodegianduja_aggregation_visu_5081.xml",
         "username" : "root",
         "uploadfolder" : "khasselm/"
     },

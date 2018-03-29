@@ -45,8 +45,9 @@ void CEPuckTestlight::Init(TConfigurationNode& t_node) {
 
    m_pcProximity = GetSensor<CCI_EPuckProximitySensor>("epuck_proximity");
    m_pcLightSensors = GetSensor<CCI_EPuckLightSensor>("epuck_light");
+   m_pcGroundSensor = GetSensor<CCI_EPuckGroundSensor>("epuck_ground");
 
-   m_pcRng = CRandom::CreateRNG("argos");
+   //m_pcRng = CRandom::CreateRNG("argos");
 
    /*
     * Parse the configuration file
@@ -107,12 +108,17 @@ void CEPuckTestlight::ControlStep() {
        }
    }
 
-
-   Real decision;
-   decision = m_pcRng->Uniform(CRange<UInt32>(0,2));
-   if (decision == 2) {
-     LOG<< "DECISION=2 !!! :" << decision << std::endl;
+   if (m_pcGroundSensor != NULL) {
+     const CCI_EPuckGroundSensor::SReadings& readings = m_pcGroundSensor->GetReadings();
+     LOG << readings.Left << "::" << readings.Center << "::" << readings.Right << std::endl;
    }
+
+
+   // Real decision;
+   // decision = m_pcRng->Uniform(CRange<UInt32>(0,2));
+   // if (decision == 2) {
+   //   LOG<< "DECISION=2 !!! :" << decision << std::endl;
+   // }
 
 
 }

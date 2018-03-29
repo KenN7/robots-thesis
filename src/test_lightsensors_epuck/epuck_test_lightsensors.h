@@ -25,6 +25,7 @@
 
 #include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_light_sensor.h>
 #include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_base_leds_actuator.h>
+#include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_ground_sensor.h>
 
 
 
@@ -84,9 +85,10 @@ private:
    CCI_EPuckWheelsActuator* m_pcWheels;
    /* Pointer to the e-puck proximity sensor */
    CCI_EPuckProximitySensor* m_pcProximity;
-   CCI_EPuckLightSensor* m_pcLightSensors;
    CCI_EPuckBaseLEDsActuator* m_pcBaseLeds;
-   CRandom::CRNG* m_pcRng;
+   CCI_EPuckLightSensor* m_pcLightSensors;
+   CCI_EPuckGroundSensor* m_pcGroundSensor;
+   //CRandom::CRNG* m_pcRng;
    /*
     * The following variables are used as parameters for the
     * algorithm. You can set their value in the <parameters> section
