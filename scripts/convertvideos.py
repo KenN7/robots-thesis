@@ -26,7 +26,7 @@ def main(args):
                 videofile = "{}-{}.avi".format(dirname,d2.group(1))
                 subprocess.check_call("avconv -r 12.0205 -i '{}/{}' -vcodec libx264 -threads 8 -preset medium -tune stillimage {}".format(path,CAMFILES,videofile), shell=True)
                 try:
-                    os.makedirs(os.path.join( "images-{}".format(dirname,d2.group(0) ) ))
+                    os.makedirs(os.path.join( "images-{}".format(dirname),d2.group(0) ))
                 except Exception as e:
                     print(e)
                 runimages = os.listdir( path )
