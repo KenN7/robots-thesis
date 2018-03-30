@@ -18,19 +18,20 @@ def main(args):
     rungex = re.compile('run_(\d\d\d)')
     for d in args.dir:
         rundirs = os.listdir(d)
+        dirname = os.path.basename(d)
         for run in rundirs:
             d2 = rungex.match(run)
             if d:
-                path = os.path.join(d,d2.group(0),"images")
-                videofile = "{}-{}.avi".format(d,d2.group(1))
+                path = os.path.join(os.path.abspath(d),d2.group(0),"images")
+                videofile = "{}-{}.avi".format(dirname,d2.group(1))
                 subprocess.check_call("avconv -r 12.0205 -i '{}/{}' -vcodec libx264 -threads 8 -preset medium -tune stillimage {}".format(path,CAMFILES,videofile), shell=True)
                 try:
-                    os.makedirs(os.path.join( "images-{}".format(d),d2.group(0) ) )
+                    os.makedirs(os.path.join( "images-{}".format(dirname,d2.group(0) ) )
                 except Exception as e:
                     print(e)
                 runimages = os.listdir( path )
                 for image in runimages[::180]: ##take one images every 15sec (at 12fps)
-                    shutil.copy( os.path.abspath(image), os.path.join("images-{}".format(d),d2.group(0)) )
+                    shutil.copy( os.path.abspath(image), os.path.join("images-{}".format(dirname),d2.group(0)) )
 
 
 if __name__ == '__main__':
