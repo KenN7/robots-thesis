@@ -31,7 +31,7 @@ def main(args):
                     print(e)
                 runimages = os.listdir( path )
                 for image in runimages[::180]: ##take one images every 15sec (at 12fps)
-                    shutil.copy( os.path.abspath(image), os.path.join("images-{}".format(dirname),d2.group(0)) )
+                    shutil.copy( os.path.join(path, image), os.path.join("images-{}".format(dirname),d2.group(0)) )
 
 
 if __name__ == '__main__':
