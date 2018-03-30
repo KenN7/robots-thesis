@@ -8,7 +8,7 @@ import sys
 import shutil
 
 p = argparse.ArgumentParser(description='video generation based on images')
-p.add_argument('-d', '--dir', nargs='+', help='input dirs')
+p.add_argument('-d', '--dir', nargs='+', help='input dirs', required=True)
 
 
 CAMFILES = "CAM_CST37_TS_%06d.bmp"
