@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 import argparse
 import subprocess
 import os
@@ -6,11 +6,9 @@ import re
 import sys
 import shlex
 import shutil
-from paramiko import SSHClient
 
-p = argparse.ArgumentParser(description='getter, runner and grapher of results, options are choosed by editting the python file.')
-p.add_argument('-s', '--skipget', action='store_true', help="if present skips getting the results from majorana and just runs based of content of temp/ folder", required=False)
-p.add_argument('-n', '--numberexp', help="number of tests to conduct (if not present test all available)", required=False)
+p = argparse.ArgumentParser(description='runner and grapher of results, options are choosed by editting the python file.')
+#p.add_argument('-n', '--numberexp', help="number of tests to conduct (if not present test all available)", required=False)
 
 CONF = {
     "Decision making":
@@ -51,8 +49,6 @@ def evo(seed, genome, xml):
     binary = os.path.join(NEATFOLDER,"bin/evostick_launch")
     command =  "%s -c %s --seed %i -g %s" % (binary,xml,seed,genome)
     try:
-        #command = shlex.split(command)
-        #command[3:3] = [ '--seed', str(seed) ]
         print("running %s" % command)
         pro = subprocess.run(command, shell=True, stdout=subprocess.PIPE)
         #print("this is stdout : %s" % pro.stdout)
@@ -68,8 +64,6 @@ def auto(seed, statem, xml):
     binary = os.path.join(AUTOFOLDER,"bin/automode_main")
     command = "%s -c %s --seed %i --fsm-config %s" % (binary,xml,seed,statem)
     try:
-        #command = shlex.split(command)
-        #command[3:3] = [ '--seed', str(seed) ]
         print("running %s" % command)
         pro = subprocess.run(command, shell=True ,stdout=subprocess.PIPE)
         #print("this is stdout : %s" % pro.stdout)
@@ -119,44 +113,6 @@ def run_R(filen, title):
     pro = subprocess.run(c, stdout=subprocess.PIPE)
 
 
-def extract_res_evo(name, folder):
-    t = re.compile('%s-(\d+)' % name)
-    try:
-        os.makedirs('temp/results-evo-%s' % name)
-    except Exception as e:
-        print(e)
-    for i in os.listdir(folder):
-        if t.match(i):
-            y = t.match(i)
-            print(i)
-            shutil.copyfile( "temp/"+i+"/gen/gen_last_1_champ",'temp/results-evo-%s/gen_champ_%s' % (name,y.group(1)) )
-    return os.path.abspath('temp/results-evo-%s' % name)
-
-
-def extract_res_auto(name, remotefolder, sftp):
-    t = re.compile('%s-200k-exp-(\d\d)' % name)
-    m = re.compile(r"# Best configurations as commandlines \(first number is the configuration ID\)\n\d*  (.*)")
-    try:
-        os.mkdir('temp')
-    except Exception as e:
-        print(e)
-    f2 = open('temp/%s-results.txt' % name,'w')
-    for i in sftp.listdir(remotefolder):
-        if t.match(i):
-            print(i)
-            y = t.match(i)
-            f = sftp.open("%s/%s/irace.stdout" % (remotefolder,i))
-            g = f.read().decode()
-            fi = m.search(g)
-            print(fi.group(1))
-            f2.write(fi.group(1))
-            f2.write('\n')
-            f.close()
-            #print(y.group(1))
-    f2.close()
-    return os.path.abspath('temp/%s-results.txt' % name)
-
-
 def main(task):
     # expfile, genfolder, autopfsm
     #evo
@@ -166,104 +122,37 @@ def main(task):
 
     expfile = CONF[task][0]
     for method in CONF[task][1:]:
-        if (args.skipget == False):
-            if method[1] == 'evo':
-                command = 'scp -r "khasselmann@majorana.ulb.ac.be:%s/*" temp/' % method[0]
-                #command = shlex.split(scpcom)
-                print("running %s" % command)
-                pro = subprocess.run(command, shell=True)
-                #print(pro.stdout)
-                #os.mkdir
-                direxp = extract_res_evo(method[2],'temp/')
+        if method[1] == 'evo':
+            xml = os.path.join(NEATFOLDER,'experiments',expfile)
+            g = os.listdir(direxp)
+            scoresevo = []
+            for i,l in enumerate(g):
+                sc = evo(SEEDS[i],os.path.join(direxp,l),xml)
+                scoresevo.append(sc)
+                print(sc)
+                try:
+                    if (i == args.numberexp):
+                            break
+                except:
+                    pass
+            scores.append(scoresevo)
 
-                xml = os.path.join(NEATFOLDER,'experiments',expfile)
-                g = os.listdir(direxp)
-                print(g)
-                scoresevo = []
-                for i,l in enumerate(g):
-                    sc = evo(SEEDS[i],os.path.join(direxp,l),xml)
-                    scoresevo.append(sc)
-                    print(sc)
-                scores.append(scoresevo)
+        elif method[1] == "auto":
+            xml = os.path.join(AUTOFOLDER,'experiments',expfile)
+            f = open(autopfsm)
+            scoresauto = []
+            for i,l in enumerate(f):
+                sc = auto(SEEDS[i],l.strip(),xml)
+                scoresauto.append(sc)
+                print(sc)
+                try:
+                    if (i == args.numberexp):
+                            break
+                except:
+                    pass
+            f.close()
+            scores.append(scoresauto)
 
-            elif method[1] == "auto":
-
-                #scpcom = """rsync -rav -e ssh --include='' --include='*.stdout' khasselmann@majorana.ulb.ac.be:%s temp/""" % method[0]
-                #command = shlex.split(command)
-                #print("running %s" % command)
-                #pro = subprocess.run(command, stdout=subprocess.PIPE)
-                #print(pro.stdout)
-                client = SSHClient()
-                client.load_system_host_keys()
-                client.connect('majorana.ulb.ac.be', username='khasselmann')
-                sftp = client.open_sftp()
-                #os.mkdir
-                autopfsm = extract_res_auto(method[2],method[0],sftp)
-
-                client.close()
-
-                xml = os.path.join(AUTOFOLDER,'experiments',expfile)
-                f = open(autopfsm)
-                scoresauto = []
-                for i,l in enumerate(f):
-                    sc = auto(SEEDS[i],l.strip(),xml)
-                    scoresauto.append(sc)
-                    print(sc)
-                f.close()
-                scores.append(scoresauto)
-
-        elif (args.skipget == True):
-            if method[1] == 'evo':
-                direxp = extract_res_evo(method[2],'temp/')
-
-                xml = os.path.join(NEATFOLDER,'experiments',expfile)
-                g = os.listdir(direxp)
-                scoresevo = []
-                for i,l in enumerate(g):
-                    sc = evo(SEEDS[i],os.path.join(direxp,l),xml)
-                    scoresevo.append(sc)
-                    print(sc)
-                    try:
-                        if (i == args.numberexp):
-                                break
-                    except:
-                        pass
-                scores.append(scoresevo)
-
-            elif method[1] == "auto":
-                autopfsm = os.path.abspath('temp/%s-results.txt' % method[2])
-
-                xml = os.path.join(AUTOFOLDER,'experiments',expfile)
-                f = open(autopfsm)
-                scoresauto = []
-                for i,l in enumerate(f):
-                    sc = auto(SEEDS[i],l.strip(),xml)
-                    scoresauto.append(sc)
-                    print(sc)
-                    try:
-                        if (i == args.numberexp):
-                                break
-                    except:
-                        pass
-                f.close()
-                scores.append(scoresauto)
-
-    # xml = os.path.join(NEATFOLDER,'experiments',expfile)
-    # g = os.listdir(genfolder)
-    # scoreevo = []
-    # for i,l in enumerate(g):
-    #     sc = evo(SEEDS[i],os.path.join(genfolder,l),xml)
-    #     scoreevo.append(sc)
-    #     print(sc)
-    #
-    # #auto
-    # xml = os.path.join(AUTOFOLDER,'experiments',expfile)
-    # f = open(autopfsm)
-    # scoreauto = []
-    # for i,l in enumerate(f):
-    #     sc = auto(SEEDS[i],l.strip(),xml)
-    #     scoreauto.append(sc)
-    #     print(sc)
 
     write_res_2(scores, task)
     #run_R('scores-%s.txt' % task, task)

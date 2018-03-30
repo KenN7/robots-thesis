@@ -5,6 +5,7 @@ import seaborn as sea
 import pandas as pd
 import matplotlib.pyplot as plt
 import argparse
+import scipy
 
 p = argparse.ArgumentParser(description='plots box plots based on files')
 p.add_argument('-f', '--files', nargs='+', help='input files')
@@ -18,6 +19,9 @@ def main(args):
     ax = sea.violinplot(x="alg", y="score", data=d, cut=0, hue="real")
     #ax = sea.boxplot(x="alg", y="score", data=d, notch=True, hue="real")
     #ax = sea.swarmplot(x="alg", y="score", data=d, hue="real")
+
+
+    #scipy.stats.wilcoxon()
 
     plt.show()
 

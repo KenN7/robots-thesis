@@ -136,85 +136,86 @@
   <!-- ********** -->
   <!-- * E-Puck * -->
   <!-- ********** -->
+
   <e-puck id="epuck_11_30">
-    <body position="0,-0.4,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0,-0.4,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_3_40">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_6_50">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_5_51">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_4_55">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_8_46">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_10_34">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_1_35">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_2_36">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
-  <e-puck id="epuck_0_40">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+  <e-puck id="epuck_13_57">
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_18_44">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_19_48">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_21_61">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_20_28">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_7_32">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_15_33">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_16_39">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_9_42">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_12_47">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
   <e-puck id="epuck_14_53">
-    <body position="0.4,-0.6,0" orientation="0,0,0"/>
-    <controller config="automode_choco"/>
+    <body orientation="0,0,0" position="0.4,-0.6,0" />
+    <controller config="automode_gianduja" />
   </e-puck>
 
 
