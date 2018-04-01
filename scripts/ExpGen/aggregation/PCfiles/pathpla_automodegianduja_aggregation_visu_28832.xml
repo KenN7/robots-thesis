@@ -42,7 +42,7 @@
       
       
       <distribute>
-        <position max="1,1,0" method="uniform" min="-1,-1,0" />
+        <position max="0.8,-0.2,0" method="uniform" min="-0.8,-1,0" />
         
           
           <orientation max="0,0,360" method="uniform" min="0,0,0" />

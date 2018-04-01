@@ -90,12 +90,12 @@ if __name__ == "__main__":
     ###
     exps = []
 
-    exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_gianduja'))
-    exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test2/stop3003-results.txt')
-    exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn', 'epuck_nn_controller'))
-    exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test2/results-evo-stop3003')
-    exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_choco'))
-    exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test2/stopnogian3003-results.txt')
+    # exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_gianduja'))
+    # exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test2/stop3003-results.txt')
+    # exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn', 'epuck_nn_controller'))
+    # exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test2/results-evo-stop3003')
+    # exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_choco'))
+    # exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test2/stopnogian3003-results.txt')
 
     # exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_gianduja'))
     # exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/decision-results.txt')
@@ -104,12 +104,12 @@ if __name__ == "__main__":
     # exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_choco'))
     # exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/desinogian0102-results.txt')
 
-    # exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_gianduja'))
-    # exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/aggreg-results.txt')
-    # exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn', 'epuck_nn_controller'))
-    # exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test/temp/results-evo-agg227')
-    # exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_choco'))
-    # exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test/temp/aggnogian0102-results.txt')
+    exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_gianduja'))
+    exps[0].load_fsm('/home/ken/depots/robots-thesis/scripts/test2/agg3003-results.txt')
+    exps.append(Experiment('epuck_nn_controller', 'genome_file', 'epuck_nn', 'epuck_nn_controller'))
+    exps[1].load_gen('/home/ken/depots/robots-thesis/scripts/test2/results-evo-agg3003')
+    exps.append(Experiment('automode_controller', 'fsm-config', 'automode', 'automode_choco'))
+    exps[2].load_fsm('/home/ken/depots/robots-thesis/scripts/test2/aggnogian3003-results.txt')
 
 
     with open(args.seeds, 'r') as f:

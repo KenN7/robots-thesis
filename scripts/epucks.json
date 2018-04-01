@@ -114,8 +114,8 @@
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "robotfolder" : {
           "khasselm/" : [
-            "/home/ken/depots/robots-thesis/scripts/ExpGen/Stop/Robotfiles/*",
-            "/home/ken/depots/robots-thesis/scripts/test2/results-evo-stop3003/*"
+            "/home/ken/depots/robots-thesis/scripts/ExpGen/aggregation/Robotfiles/*",
+            "/home/ken/depots/robots-thesis/scripts/test2/results-evo-agg3003/*"
           ]
         },
         "baseip" : "10.0.1",
