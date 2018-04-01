@@ -42,7 +42,9 @@
       
       
       <distribute>
-          <position center="0,0,0" method="circularUniform" radius="1.2" />
+        <position max="1,1,0" method="uniform" min="-1,-1,0" />
+        
+          
           <orientation max="0,0,360" method="uniform" min="0,0,0" />
           <entity max_trials="100" />
       </distribute>
@@ -94,11 +96,12 @@
       </box>
 
     
+
       <e-puck id="epuck_11_30">
         <body orientation="0,0,0" position="0,-0.4,0" />
         <controller config="path" />
       </e-puck>
-      <e-puck id="epuck_3_37">
+      <e-puck id="epuck_3_40">
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>
@@ -130,7 +133,7 @@
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>
-      <e-puck id="epuck_0_40">
+      <e-puck id="epuck_13_57">
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>
@@ -146,7 +149,7 @@
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>
-      <e-puck id="epuck_20_41">
+      <e-puck id="epuck_20_28">
         <body orientation="0,0,0" position="0.4,-0.6,0" />
         <controller config="path" />
       </e-puck>
@@ -182,7 +185,7 @@
   
   <physics_engines>
     
-    <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.57" translate_y="4.565" />
+    <iridia_tracking_system id="its" its_host="164.15.10.153" its_port="4040" translate_x="2.58" translate_y="4.54" />
 
 
   </physics_engines>

@@ -22,7 +22,7 @@
   <!-- ****************** -->
   <loop_functions library="/home/ken/depots/experiments-loop-functions/build/loop-functions/libgianduja_stop_loopfunc.so"
    label="gianduja_stop_loop_functions">
-   <params dist_radius="1.2" number_robots="4"/>
+   <params dist_radius="1.2" number_robots="20"/>
   </loop_functions>
 
   <!-- *************** -->

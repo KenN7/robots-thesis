@@ -18,18 +18,18 @@ CONF = {
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2103'),
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian2103')
     #     ),
-    # "Aggregation":
-    #     (
-    #         ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg227' ),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggreg'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0102')
-    #     ),
-    "Stop":
+    "Aggregation":
         (
-            ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop3003'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop3003'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian3003')
+            ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg3003' ),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg3003'),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian3003')
         ),
+    # "Stop":
+    #     (
+    #         ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop3003'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop3003'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian3003')
+    #     ),
     # "Aggregation 2 Spots":
     #     (
     #     "/home/ken/depots/neat-argos3/optimization/expAGG2/results-evo-agg298",

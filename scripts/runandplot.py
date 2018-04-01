@@ -11,19 +11,19 @@ p = argparse.ArgumentParser(description='runner and grapher of results, options 
 #p.add_argument('-n', '--numberexp', help="number of tests to conduct (if not present test all available)", required=False)
 
 CONF = {
-    "Decision making":
-        (
-            "automodegianduja_decision.xml",
-            ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'dec227'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2103'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian2103')
-        ),
-    # "Aggregation":
+    # "Stop":
     #     (
-    #         "automodegianduja_aggregation.xml", ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg227' ),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggreg'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0102')
+    #         "automodegianduja_stop.xml",
+    #         ("/home/ken/depots/robots-thesis/scripts/test2/results-evo-stop3003", 'evo', 'stop3003'),
+    #         ("/home/ken/depots/robots-thesis/scripts/test2/stop3003-results.txt", 'auto', 'stop3003'),
+    #         ("/home/ken/depots/robots-thesis/scripts/test2/stopnogian3003-results.txt", 'auto', 'stopnogian3003')
     #     ),
+    "Aggregation":
+        (
+            "automodegianduja_aggregation.xml", ("/home/ken/depots/robots-thesis/scripts/test2/results-evo-agg3003", 'evo', 'agg3003' ),
+            ("/home/ken/depots/robots-thesis/scripts/test2/agg3003-results.txt", 'auto', 'agg3003'),
+            ("/home/ken/depots/robots-thesis/scripts/test2/aggnogian3003-results.txt", 'auto', 'aggnogian3003')
+        ),
     # "Stop":
     #     (
     #         "automodegianduja_stop.xml",
@@ -124,32 +124,22 @@ def main(task):
     for method in CONF[task][1:]:
         if method[1] == 'evo':
             xml = os.path.join(NEATFOLDER,'experiments',expfile)
-            g = os.listdir(direxp)
+            g = os.listdir(method[0])
             scoresevo = []
             for i,l in enumerate(g):
-                sc = evo(SEEDS[i],os.path.join(direxp,l),xml)
+                sc = evo(SEEDS[i],os.path.join(method[0],l),xml)
                 scoresevo.append(sc)
                 print(sc)
-                try:
-                    if (i == args.numberexp):
-                            break
-                except:
-                    pass
             scores.append(scoresevo)
 
         elif method[1] == "auto":
             xml = os.path.join(AUTOFOLDER,'experiments',expfile)
-            f = open(autopfsm)
+            f = open(method[0])
             scoresauto = []
             for i,l in enumerate(f):
                 sc = auto(SEEDS[i],l.strip(),xml)
                 scoresauto.append(sc)
                 print(sc)
-                try:
-                    if (i == args.numberexp):
-                            break
-                except:
-                    pass
             f.close()
             scores.append(scoresauto)
 

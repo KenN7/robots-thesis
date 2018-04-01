@@ -110,12 +110,12 @@
     },
 
     "test_realexp": {
-        "id" : "30,40,50,51,55,46,34,35,57,44,48,61,28,32,33,39,42,47,53",
+        "id" : "30,40,50,51,55,46,34,35,36,57,44,48,61,28,32,33,39,42,47,53",
         "bin" : "/home/ken/depots/argos3-Automode/build_epuck/src/automode",
         "robotfolder" : {
           "khasselm/" : [
-            "/home/ken/depots/robots-thesis/scripts/ExpGen/Decision/Robotfiles/*",
-            "/home/ken/depots/robots-thesis/scripts/test/temp/results-evo-dec227/*"
+            "/home/ken/depots/robots-thesis/scripts/ExpGen/Stop/Robotfiles/*",
+            "/home/ken/depots/robots-thesis/scripts/test2/results-evo-stop3003/*"
           ]
         },
         "baseip" : "10.0.1",
