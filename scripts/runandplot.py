@@ -14,23 +14,22 @@ CONF = {
     # "Stop":
     #     (
     #         "automodegianduja_stop.xml",
-    #         ("/home/ken/depots/robots-thesis/scripts/test2/results-evo-stop3003", 'evo', 'stop3003'),
-    #         ("/home/ken/depots/robots-thesis/scripts/test2/stop3003-results.txt", 'auto', 'stop3003'),
-    #         ("/home/ken/depots/robots-thesis/scripts/test2/stopnogian3003-results.txt", 'auto', 'stopnogian3003')
+    #         ("/home/ken/depots/robots-thesis/scripts/test/results-evo-stop3003", 'evo', 'stop3003'),
+    #         ("/home/ken/depots/robots-thesis/scripts/test/stop3003-results.txt", 'auto', 'stop3003'),
+    #         ("/home/ken/depots/robots-thesis/scripts/test/stopnogian3003-results.txt", 'auto', 'stopnogian3003')
     #     ),
-    "Aggregation":
-        (
-            "automodegianduja_aggregation.xml", ("/home/ken/depots/robots-thesis/scripts/test2/results-evo-agg3003", 'evo', 'agg3003' ),
-            ("/home/ken/depots/robots-thesis/scripts/test2/agg3003-results.txt", 'auto', 'agg3003'),
-            ("/home/ken/depots/robots-thesis/scripts/test2/aggnogian3003-results.txt", 'auto', 'aggnogian3003')
-        ),
-    # "Stop":
+    # "Aggregation":
     #     (
-    #         "automodegianduja_stop.xml",
-    #         ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop227'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian0102')
+    #         "automodegianduja_aggregation.xml", ("/home/ken/depots/robots-thesis/scripts/test/results-evo-agg3003", 'evo', 'agg3003' ),
+    #         ("/home/ken/depots/robots-thesis/scripts/test/agg3003-results.txt", 'auto', 'agg3003'),
+    #         ("/home/ken/depots/robots-thesis/scripts/test/aggnogian3003-results.txt", 'auto', 'aggnogian3003')
     #     ),
+    "Decision Making":
+        (
+            "automodegianduja_decision.xml", ("/home/ken/depots/robots-thesis/scripts/test/results-evo-dec227", 'evo', 'dec227' ),
+            ("/home/ken/depots/robots-thesis/scripts/test/desi2103-results.txt", 'auto', 'desi2103'),
+            ("/home/ken/depots/robots-thesis/scripts/test/desinogian2103-results.txt", 'auto', 'desinogian2103')
+        ),
     # "Aggregation 2 Spots":
     #     ( "automodegianduja_aggregation_2spots.xml",
     #     "/home/ken/depots/neat-argos3/optimization/expAGG2/results-evo-agg298",
