@@ -12,11 +12,11 @@ p = argparse.ArgumentParser(description='getter, runner and grapher of results, 
 p.add_argument('-d', '--dir', help="the directory where to save controllers", required=True)
 
 CONF = {
-    "Decision making":
+    "Decision":
         (
-            ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'dec227'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2103'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian2103')
+            ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'desi0204'),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi0204'),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian0204')
         ),
     # "Aggregation":
     #     (
