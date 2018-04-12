@@ -12,23 +12,23 @@ p = argparse.ArgumentParser(description='getter, runner and grapher of results, 
 p.add_argument('-d', '--dir', help="the directory where to save controllers", required=True)
 
 CONF = {
-    "Decision":
-        (
-            ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'desi0204'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi0204'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian0204')
-        ),
-    # "Aggregation":
+    # "Decision":
     #     (
-    #         ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg3003' ),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg3003'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian3003')
+    #         ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'desi0204'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi0204'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian0204')
     #     ),
+    "Aggregation":
+        (
+            ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg0304' ),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg0204'),
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0204')
+        ),
     # "Stop":
     #     (
-    #         ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop3003'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop3003'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian3003')
+    #         ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop0304'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop0204'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian0204')
     #     ),
     # "Aggregation 2 Spots":
     #     (
