@@ -1,10 +1,10 @@
 #!/usr/bin/env Rscript
 args = commandArgs(trailingOnly=TRUE)
 
-#datasim = read.csv(args[1])
-#datareal = read.csv(args[2])
-datasim = read.csv("../Robot-experiments/scores-Decision Making.txt")
-datareal = read.csv("../Robot-experiments/real-scores-deci.txt")
+datasim = read.csv(args[1])
+datareal = read.csv(args[2])
+#datasim = read.csv("../Robot-experiments/scores-Decision Making.txt")
+#datareal = read.csv("../Robot-experiments/real-scores-deci.txt")
 
 data2sim = datasim[order(datasim$seed),]
 

@@ -11,24 +11,24 @@ p = argparse.ArgumentParser(description='runner and grapher of results, options 
 #p.add_argument('-n', '--numberexp', help="number of tests to conduct (if not present test all available)", required=False)
 
 CONF = {
-    # "Stop":
-    #     (
-    #         "automodegianduja_stop.xml",
-    #         ("/home/ken/depots/robots-thesis/scripts/test/results-evo-stop3003", 'evo', 'stop3003'),
-    #         ("/home/ken/depots/robots-thesis/scripts/test/stop3003-results.txt", 'auto', 'stop3003'),
-    #         ("/home/ken/depots/robots-thesis/scripts/test/stopnogian3003-results.txt", 'auto', 'stopnogian3003')
-    #     ),
-    # "Aggregation":
-    #     (
-    #         "automodegianduja_aggregation.xml", ("/home/ken/depots/robots-thesis/scripts/test/results-evo-agg3003", 'evo', 'agg3003' ),
-    #         ("/home/ken/depots/robots-thesis/scripts/test/agg3003-results.txt", 'auto', 'agg3003'),
-    #         ("/home/ken/depots/robots-thesis/scripts/test/aggnogian3003-results.txt", 'auto', 'aggnogian3003')
-    #     ),
-    "Decision Making":
+    "Stop":
         (
-            "automodegianduja_decision.xml", ("/home/ken/depots/robots-thesis/scripts/test/results-evo-dec227", 'evo', 'dec227' ),
-            ("/home/ken/depots/robots-thesis/scripts/test/desi2103-results.txt", 'auto', 'desi2103'),
-            ("/home/ken/depots/robots-thesis/scripts/test/desinogian2103-results.txt", 'auto', 'desinogian2103')
+            "automodegianduja_stop.xml",
+            ("/home/ken/depots/robots-thesis/scripts/allresults/results-evo-stop1304", 'evo', 'stop1304'),
+            ("/home/ken/depots/robots-thesis/scripts/allresults/stop1304-results.txt", 'auto', 'stop1304'),
+            ("/home/ken/depots/robots-thesis/scripts/allresults/stopnogian1304-results.txt", 'auto', 'stopnogian1304')
+        ),
+    "Aggregation":
+        (
+            "automodegianduja_aggregation.xml", ("/home/ken/depots/robots-thesis/scripts/allresults/results-evo-agg1304", 'evo', 'agg1304' ),
+            ("/home/ken/depots/robots-thesis/scripts/allresults/aggreg1304-results.txt", 'auto', 'agg1304'),
+            ("/home/ken/depots/robots-thesis/scripts/allresults/aggnogian1304-results.txt", 'auto', 'aggnogian1304')
+        ),
+    "Decision":
+        (
+            "automodegianduja_decision.xml", ("/home/ken/depots/robots-thesis/scripts/allresults/results-evo-dec1304", 'evo', 'dec1304' ),
+            ("/home/ken/depots/robots-thesis/scripts/allresults/desi1304-results.txt", 'auto', 'desi1304'),
+            ("/home/ken/depots/robots-thesis/scripts/allresults/desinogian1304-results.txt", 'auto', 'desinogian1304')
         ),
     # "Aggregation 2 Spots":
     #     ( "automodegianduja_aggregation_2spots.xml",
