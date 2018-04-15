@@ -89,7 +89,7 @@ generateplot <- function(datareal, datasim, task, max) {
 
 print("Boxplots ...")
 
-pdf.dim <- c(5,6) # width, height
+pdf.dim <- c(4,6) # width, height
 
 
 datasim = read.csv("scores-Decision.txt")

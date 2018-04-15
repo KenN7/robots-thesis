@@ -33,7 +33,7 @@ tikz(file = saving_path, width=pdf.dim[1], height=pdf.dim[2])
 #tikz(file = saving_path)
 fried_test <- ggplot(R, aes(x=y,y=algo,x)) +
   geom_point(size=2) +
-  labs(x="Rank", y="Design Method") +
+  labs(x="rank", y="Design Method") +
   geom_errorbarh(aes(xmax=upper, xmin=lower,height=.2)) +
   theme_light() +
    theme(
