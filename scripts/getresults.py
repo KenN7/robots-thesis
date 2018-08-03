@@ -18,25 +18,25 @@ CONF = {
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi0204'),
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian0204')
     #     ),
-    "Aggregation":
-        (
-            ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg0304' ),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg0204'),
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0204')
-        ),
+    # "Aggregation":
+    #     (
+    #         ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg0304' ),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg0204'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0204')
+    #     ),
     # "Stop":
     #     (
     #         ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop0304'),
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop0204'),
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian0204')
     #     ),
-    # "Aggregation 2 Spots":
-    #     (
-    #     "/home/ken/depots/neat-argos3/optimization/expAGG2/results-evo-agg298",
-    #     "/home/ken/depots/argos3-Automode/optimization/aggreg2spotsng-200k-exp-results.txt" )
+    "Decision 2_0":
+        (
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2_0'),
+        )
     }
 
-METHODS = ('Evostick', 'AutoMoDe-Gianduja', 'AutoMoDe-Chocolate')
+#METHODS = ('Evostick', 'AutoMoDe-Gianduja', 'AutoMoDe-Chocolate')
 
 def extract_res_evo(name, remotefolder, sftp, d):
     t = re.compile('{}-(\d+)'.format(name))
@@ -86,11 +86,13 @@ def main(task):
         client = SSHClient()
         client.load_system_host_keys()
         client.connect('majorana.ulb.ac.be', username='khasselmann')
+        print('connected..')
         if method[1] == 'evo':
             sftp = client.open_sftp()
             direxp = extract_res_evo(method[2],method[0], sftp, args.dir)
 
         elif method[1] == "auto":
+            print('open stfp..')
             sftp = client.open_sftp()
             #os.mkdir
             autopfsm = extract_res_auto(method[2],method[0], sftp, args.dir)
