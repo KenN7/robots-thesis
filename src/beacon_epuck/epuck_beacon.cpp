@@ -69,7 +69,7 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
         m_pcRabActuator->Disable();
     }
     m_pcRng = CRandom::CreateRNG("argos");
-    m_unTBar = m_pcRng->Uniform(CRange<UInt32>(150, 1050));
+    m_unTBar = m_pcRng->Uniform(CRange<UInt32>(400, 1050));
     /*
     * Parse the configuration file
     *
