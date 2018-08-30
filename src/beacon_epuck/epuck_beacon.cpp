@@ -17,7 +17,8 @@ CEPuckBeacon::CEPuckBeacon() :
    m_unTimeStep(0),
    m_unTBar(0),
    m_unState(0),
-   m_fWheelVelocity(2.5f)
+   m_fWheelVelocity(2.5f),
+   m_unMessageToSend(0)
        {}
 
 /****************************************/
@@ -69,7 +70,6 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
         m_pcRabActuator->Disable();
     }
     m_pcRng = CRandom::CreateRNG("argos");
-    m_unTBar = m_pcRng->Uniform(CRange<UInt32>(400, 800));
     /*
     * Parse the configuration file
     *
@@ -78,6 +78,16 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
     * have to recompile if we want to try other settings.
     */
     GetNodeAttributeOrDefault(t_node, "velocity", m_fWheelVelocity, m_fWheelVelocity);
+    GetNodeAttributeOrDefault(t_node, "mes", m_unMesParam, (UInt8) 3 );
+    if (m_unMesParam == 3) {
+        m_unMessageToSend = 0;
+    }
+    else if (m_unMesParam == 0) {
+        m_unMessageToSend = 160;
+    }
+    else if (m_unMesParam == 1) {
+        m_unMessageToSend = 10;
+    }
 }
 
 /****************************************/
@@ -86,6 +96,22 @@ UInt32 CEPuckBeacon::getTBar() {
     return m_unTBar;
 }
 
+void CEPuckBeacon::setTBar(UInt32 un_tbar) {
+    m_unTBar = un_tbar;
+}
+
+void CEPuckBeacon::setMessage(UInt8 un_message_to_send) {
+    if (un_message_to_send == 3) {
+        m_unMessageToSend = 160;
+    }
+    else if (un_message_to_send == 0) {
+        m_unMessageToSend = 160;
+    }
+    else if (un_message_to_send == 1) {
+        m_unMessageToSend = 10;
+    }
+    m_unState = 0;
+}
 
 void CEPuckBeacon::DisableBeacon() {
     if(m_pcRabActuator != NULL) {
@@ -115,8 +141,7 @@ void CEPuckBeacon::SendBeacon(UInt8 un_message) {
 void CEPuckBeacon::ControlStep() {
     /* Get the highest reading in front of the robot, which corresponds to the closest object */
     if (m_unTimeStep > m_unTBar && m_unState == 0) {
-        UInt32 unDefaultMessage = 85;
-        SendBeacon(unDefaultMessage);
+        SendBeacon(m_unMessageToSend);
         m_unState = 1;
     }
     // if (m_pcGroundSensor != NULL) {

@@ -84,9 +84,13 @@ public:
 
    void SendBeacon(UInt8 message);
 
+   void setMessage(UInt8 un_message_to_send);
+
    UInt32 getRobotId();
 
    UInt32 getTBar();
+
+   void setTBar(UInt32 un_tbar);
 
 private:
 
@@ -119,6 +123,8 @@ private:
    UInt8 m_unState;
    Real m_fWheelVelocity;
    SInt32 m_nId;
+   UInt8 m_unMessageToSend;
+   UInt8 m_unMesParam;
 
 };
 
