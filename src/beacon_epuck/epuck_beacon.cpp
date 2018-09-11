@@ -16,6 +16,7 @@ CEPuckBeacon::CEPuckBeacon() :
    m_pcRabSensor(NULL),
    m_unTimeStep(0),
    m_unTBar(0),
+   m_unTBarParam(0),
    m_unState(0),
    m_fWheelVelocity(2.5f),
    m_unMessageToSend(0)
@@ -78,6 +79,14 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
     * have to recompile if we want to try other settings.
     */
     GetNodeAttributeOrDefault(t_node, "velocity", m_fWheelVelocity, m_fWheelVelocity);
+    GetNodeAttributeOrDefault(t_node, "time", m_unTBar, (UInt8) 0 );
+    if (m_unTBarParam == -1) {
+        m_unTBar = m_pcRng->Uniform(CRange<UInt32>(0, 900));
+    }
+    else {
+        m_unTBar = m_unTBarParam;
+    }
+
     GetNodeAttributeOrDefault(t_node, "mes", m_unMesParam, (UInt8) 3 );
     if (m_unMesParam == 3) {
         m_unMessageToSend = 0;
@@ -90,14 +99,22 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
     }
 }
 
+void CEPuckBeacon::Reset() {
+    m_unTimeStep = 0;
+    m_unState = 0;
+
+    if (m_unTBarParam == -1) {
+        m_unTBar = m_pcRng->Uniform(CRange<UInt32>(0, 900));
+    }
+    else {
+        m_unTBar = m_unTBarParam;
+    }
+}
+
 /****************************************/
 /****************************************/
 UInt32 CEPuckBeacon::getTBar() {
     return m_unTBar;
-}
-
-void CEPuckBeacon::setTBar(UInt32 un_tbar) {
-    m_unTBar = un_tbar;
 }
 
 void CEPuckBeacon::setMessage(UInt8 un_message_to_send) {

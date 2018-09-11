@@ -90,8 +90,6 @@ public:
 
    UInt32 getTBar();
 
-   void setTBar(UInt32 un_tbar);
-
 private:
 
    /* Pointer to the differential steering actuator */
@@ -120,6 +118,7 @@ private:
 
    UInt32 m_unTimeStep;
    UInt32 m_unTBar;
+   SInt32 m_unTBarParam;
    UInt8 m_unState;
    Real m_fWheelVelocity;
    SInt32 m_nId;
