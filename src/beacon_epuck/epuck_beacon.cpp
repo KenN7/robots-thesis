@@ -79,7 +79,7 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
     * have to recompile if we want to try other settings.
     */
     GetNodeAttributeOrDefault(t_node, "velocity", m_fWheelVelocity, m_fWheelVelocity);
-    GetNodeAttributeOrDefault(t_node, "time", m_unTBar, (UInt8) 0 );
+    GetNodeAttributeOrDefault(t_node, "time", m_unTBar, (UInt32) 0 );
     if (m_unTBarParam == -1) {
         m_unTBar = m_pcRng->Uniform(CRange<UInt32>(0, 900));
     }
