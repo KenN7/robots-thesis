@@ -6,20 +6,45 @@ USERNAME=`whoami`
 INSTALL_DIR=/home/${USERNAME}/argos3-dist
 
 # ARGoS3 repository
-ARGOS3_REPOSITORY=https://github.com/ilpincy/argos3.git
+ARGOS3_REPOSITORY=git://github.com/ilpincy/argos3.git
 ARGOS3_BRANCH=master
+ARGOS3_TAG=3.0.0-beta48
 ARGOS3_DIR=argos3
 
 # IRIDIA e-puck repository
-#EPUCK_REPOSITORY=https://garattonilorenzo:prova@iridia-dev.ulb.ac.be/projects/argos3-epuck.git
-EPUCK_REPOSITORY=https://github.com/lgarattoni/argos3-epuck.git
+EPUCK_REPOSITORY=git://github.com/demiurge-project/argos3-epuck.git
 EPUCK_BRANCH=master
+EPUCK_TAG=v48
 EPUCK_DIR=argos3-epuck
 
 # TAM repository
 TAM_REPOSITORY=https://garattonilorenzo:prova@iridia-dev.ulb.ac.be/projects/iridia-tam.git
 TAM_BRANCH=master
 TAM_DIR=iridia-tam
+
+#demiurge dao
+DAO_REPO=git@github.com:demiurge-project/demiurge-epuck-dao.git
+DAO_BRANCH=master
+DAO_TAG=master
+DAO_DIR=demiurge-epuck-dao
+
+#demiurge loop functions
+LOOP_REPO=git@github.com:demiurge-project/experiments-loop-functions.git
+LOOP_BRANCH=master
+LOOP_TAG=master
+LOOP_DIR=experiments-loop-functions
+
+#automode
+AUTO_REPO=git@github.com:KenN7/argos3-AutoMoDe.git
+AUTO_BRANCH=gianduja2
+AUTO_TAG=gianduja2
+AUTO_DIR=argos3-AutoMoDe
+
+#neat
+NEAT_REPO=git@github.com:KenN7/neat-argos3.git
+NEAT_BRANCH=gianduja
+NEAT_TAG=gianduja 
+NEAT_DIR=neat-argos3
 
 
 
@@ -36,16 +61,19 @@ function error() {
 function get_code() {
     local REPO=$1
     local BRANCH=$2
-    local OUTDIR=$3
+    local TAG=$3
+    local OUTDIR=$4
   
     if [ ! -d $OUTDIR ]; then
         echo -n "Downloading... "
         git clone --branch=$BRANCH $REPO $OUTDIR || error
+        cd $OUTDIR || error
+        git checkout $TAG|| error
+        cd ..
     else
         echo -n "Updating... "
         cd $OUTDIR || error
-        git checkout $BRANCH || error
-        git pull || error
+        git checkout $TAG|| error
         cd ..
     fi
     echo "done"
@@ -72,10 +100,24 @@ function do_build_install() {
     echo "done"
 }
 
+function do_build() {
+    local SRC=../$1
+    shift
+    rm -rf build || error
+    echo -n "Compiling... "
+    mkdir build || error
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          $* $SRC || error
+    make -j4 || error
+    cd ..
+    echo "done"
+}
+
 # Builds and installs ARGoS3
 function do_argos3() {
     echo "+++ ARGoS3 +++"
-    get_code $ARGOS3_REPOSITORY $ARGOS3_BRANCH $ARGOS3_DIR
+    get_code $ARGOS3_REPOSITORY $ARGOS3_BRANCH $ARGOS3_TAG $ARGOS3_DIR
     cd $ARGOS3_DIR
     do_build_install src -DARGOS_INSTALL_LDSOCONF=OFF -DARGOS_DOCUMENTATION=OFF
     cd ..
@@ -90,9 +132,51 @@ function do_argos3() {
 function do_epuck() {
     echo "+++ e-puck +++"
     export PKG_CONFIG_PATH=$INSTALL_DIR/lib/pkgconfig
-    get_code $EPUCK_REPOSITORY $EPUCK_BRANCH $EPUCK_DIR
+    get_code $EPUCK_REPOSITORY $EPUCK_BRANCH $EPUCK_TAG $EPUCK_DIR
     cd $EPUCK_DIR
+    # modify CMakeList for cluster compiling without QT (desactivate vision tools)
+    sed -i.bak 's/.*VisionTools/#&/' src/plugins/robots/e-puck/CMakeLists.txt
+    echo "sed done, desactivate vision... "
     do_build_install src
+    cd ..
+}
+
+
+function do_dao() {
+    echo "+++ demiurge DAO +++"
+    export PKG_CONFIG_PATH=$INSTALL_DIR/lib/pkgconfig
+    echo $DAO_REPO $DAO_BRANCH $DAO_TAG $DAO_DIR
+    get_code $DAO_REPO $DAO_BRANCH $DAO_TAG $DAO_DIR
+    cd $DAO_DIR
+    do_build_install
+    cd ..
+}
+
+function do_loop() {
+    echo "+++ loop functions +++"
+    export PKG_CONFIG_PATH=$INSTALL_DIR/lib/pkgconfig
+    get_code $LOOP_REPO $LOOP_BRANCH $LOOP_TAG $LOOP_DIR
+    cd $LOOP_DIR
+    do_build_install
+    cd ..
+}
+
+function do_auto() {
+    echo "+++ e-puck +++"
+    export PKG_CONFIG_PATH=$INSTALL_DIR/lib/pkgconfig
+    get_code $AUTO_REPO $AUTO_BRANCH $AUTO_TAG $AUTO_DIR
+    cd $AUTO_DIR
+    do_build
+    cd ..
+}
+
+function do_neat() {
+    echo "+++ e-puck +++"
+    export PKG_CONFIG_PATH=$INSTALL_DIR/lib/pkgconfig
+    get_code $NEAT_REPO $NEAT_BRANCH $NEAT_TAG $NEAT_DIR
+    cd $NEAT_DIR
+    sed -i 's/.*genome_parser/#&/' src/CMakeLists.txt
+    do_build
     cd ..
 }
 
@@ -126,6 +210,10 @@ mkdir $INSTALL_DIR
 # Go through packages
 do_argos3
 do_epuck
+do_dao
+do_loop
+do_auto
+do_neat
 #do_tam
 
 # Create the setup script
