@@ -8,32 +8,32 @@ import shlex
 import shutil
 from paramiko import SSHClient
 
-p = argparse.ArgumentParser(description='getter, runner and grapher of results, options are choosed by editting the python file.')
+p = argparse.ArgumentParser(description='getter of results, options are choosed by editting the python file.')
 p.add_argument('-d', '--dir', help="the directory where to save controllers", required=True)
 
 CONF = {
-    # "Decision":
+    # "Decision1.x":
     #     (
-    #         ("/home/khasselmann/neat-argos3/optimization/expDEC", 'evo', 'desi0204'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi0204'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desinogian0204')
+    #         ("/home/khasselmann/old_neat/optimization/expDEC", 'evo', 'olddec1.21'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'dec1.1'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'dec1.2')
     #     ),
-    # "Aggregation":
+    # "Aggregation1.x":
     #     (
-    #         ("/home/khasselmann/neat-argos3/optimization/expAGG", 'evo', 'agg0304' ),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg0204'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'aggnogian0204')
+    #         ("/home/khasselmann/old_neat/optimization/expAGG", 'evo', 'oldneatagg1.21' ),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg1.1'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg1.2')
     #     ),
-    # "Stop":
-    #     (
-    #         ("/home/khasselmann/neat-argos3/optimization/expSTOP", 'evo', 'stop0304'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop0204'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stopnogian0204')
-    #     ),
-    "Decision 2_0":
+    "Stop1.x":
         (
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2_0'),
-        )
+            ("/home/khasselmann/old_neat/optimization/expSTOP", 'evo', 'stopold1.2[2-4]'),
+            #("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop1.1'),
+            #("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop1.2')
+        ),
+    # "Decision 2_0":
+    #     (
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2_0'),
+    #     )
     }
 
 #METHODS = ('Evostick', 'AutoMoDe-Gianduja', 'AutoMoDe-Chocolate')
@@ -44,17 +44,17 @@ def extract_res_evo(name, remotefolder, sftp, d):
         os.makedirs(os.path.join( d,'results-evo-{}'.format(name) ))
     except Exception as e:
         print(e)
-    for i in sftp.listdir(remotefolder):
+    for j,i in enumerate(sftp.listdir(remotefolder)):
         y = t.match(i)
         if y:
             print(i)
             sftp.get(os.path.join(remotefolder,i,"gen","gen_last_1_champ"),\
-            os.path.join( d,'results-evo-{}/gen_champ_{}'.format(name,y.group(1)) ))
+            os.path.join( d,'results-evo-{}/gen_champ_{}_{}'.format(name,y.group(1),j ) ))
     return os.path.abspath(os.path.join( d,'results-evo-{}'.format(name) ))
 
 
 def extract_res_auto(name, remotefolder, sftp, d):
-    t = re.compile('{}-200k-exp-(\d\d)'.format(name))
+    t = re.compile('{}-exp-(\d\d)'.format(name))
     m = re.compile(r"# Best configurations as commandlines \(first number is the configuration ID\)\n\d*  (.*)")
     try:
         os.mkdir(d)

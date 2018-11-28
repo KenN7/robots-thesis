@@ -81,7 +81,7 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
     GetNodeAttributeOrDefault(t_node, "velocity", m_fWheelVelocity, m_fWheelVelocity);
     GetNodeAttributeOrDefault(t_node, "time", m_unTBarParam, (SInt32) 0 );
     if (m_unTBarParam == -1) {
-        m_unTBar = m_pcRng->Uniform(CRange<UInt32>(0, 900));
+        m_unTBar = m_pcRng->Uniform(CRange<UInt32>(400, 600));
     }
     else {
         m_unTBar = m_unTBarParam;
@@ -104,7 +104,7 @@ void CEPuckBeacon::Reset() {
     m_unState = 0;
 
     if (m_unTBarParam == -1) {
-        m_unTBar = m_pcRng->Uniform(CRange<UInt32>(0, 900));
+        m_unTBar = m_pcRng->Uniform(CRange<UInt32>(400, 600));
     }
     else {
         m_unTBar = m_unTBarParam;
