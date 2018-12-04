@@ -15,25 +15,33 @@ CONF = {
     # "Decision1.x":
     #     (
     #         ("/home/khasselmann/old_neat/optimization/expDEC", 'evo', 'olddec1.21'),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'dec1.1'),
+    #         ("/home/khasselmann/temp", 'auto', 'dec1.3'),
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'dec1.2')
     #     ),
     # "Aggregation1.x":
     #     (
     #         ("/home/khasselmann/old_neat/optimization/expAGG", 'evo', 'oldneatagg1.21' ),
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg1.1'),
+    #         ("/home/khasselmann/temp", 'auto', 'agg1.3'),
     #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'agg1.2')
     #     ),
-    "Stop1.x":
-        (
-            ("/home/khasselmann/old_neat/optimization/expSTOP", 'evo', 'stopold1.2[2-4]'),
-            #("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop1.1'),
-            #("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop1.2')
-        ),
-    # "Decision 2_0":
+    # "Stop1.x":
     #     (
-    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'desi2_0'),
-    #     )
+    #         ("/home/khasselmann/old_neat/optimization/expSTOP", 'evo', 'stopold1.2[2-4]'),
+    #         ("/home/khasselmann/temp", 'auto', 'stop1.3'),
+    #         ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'stop1.2')
+    #     ),
+    "BeacAgg":
+        (
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacagg2.0'),
+            ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacagg2.1'),
+            ("/home/khasselmann/neat-argos3/optimization/expBAG", 'evo', 'beacagg')
+        ),
+    "BeacStop":
+        (
+            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacstop2.0'),
+            ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacstop2.1'),
+            ("/home/khasselmann/neat-argos3/optimization/expBSTOP", 'evo', 'beacstop')
+        )
     }
 
 #METHODS = ('Evostick', 'AutoMoDe-Gianduja', 'AutoMoDe-Chocolate')

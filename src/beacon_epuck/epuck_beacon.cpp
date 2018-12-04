@@ -103,6 +103,10 @@ void CEPuckBeacon::Reset() {
     m_unTimeStep = 0;
     m_unState = 0;
 
+    if (m_unMesParam == 3) {
+        m_unMessageToSend = m_pcRng->Uniform(CRange<UInt32>(0, 2))*150+10;
+    }
+
     if (m_unTBarParam == -1) {
         m_unTBar = m_pcRng->Uniform(CRange<UInt32>(400, 600));
     }
@@ -117,16 +121,13 @@ UInt32 CEPuckBeacon::getTBar() {
     return m_unTBar;
 }
 
+
+UInt32 CEPuckBeacon::getMessage() {
+    return m_unMessageToSend;
+}
+
 void CEPuckBeacon::setMessage(UInt8 un_message_to_send) {
-    if (un_message_to_send == 3) {
-        m_unMessageToSend = 160;
-    }
-    else if (un_message_to_send == 0) {
-        m_unMessageToSend = 160;
-    }
-    else if (un_message_to_send == 1) {
-        m_unMessageToSend = 10;
-    }
+    m_unMessageToSend = un_message_to_send;
     m_unState = 0;
 }
 

@@ -90,6 +90,8 @@ public:
 
    UInt32 getTBar();
 
+   UInt32 getMessage();
+
 private:
 
    /* Pointer to the differential steering actuator */
