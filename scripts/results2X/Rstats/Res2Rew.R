@@ -125,21 +125,21 @@ generateplotsimpr <- function(datasim, datapr, task, max) {
   
   gian2sim = data2sim[which(data2sim[,3]=='Gianduja2'), 1]
   gian2Esim = data2sim[which(data2sim[,3]=='Gianduja2E'), 1]
-  evo2sim = data2sim[which(data2sim[,3]=='Evocom2'), 1]
+  evo2sim = data2sim[which(data2sim[,3]=='EvoCom2'), 1]
   gian3sim = data2sim[which(data2sim[,3]=='Gianduja3'), 1]
   gian3Esim = data2sim[which(data2sim[,3]=='Gianduja3E'), 1]
-  evo3sim = data2sim[which(data2sim[,3]=='Evocom3'), 1]
+  evo3sim = data2sim[which(data2sim[,3]=='EvoCom3'), 1]
   
   data2pr = datapr[order(datasim$seed),]
   
   gian2pr = data2pr[which(data2pr[,3]=='Gianduja2'), 1]
   gian2Epr = data2pr[which(data2pr[,3]=='Gianduja2E'), 1]
-  evo2pr = data2pr[which(data2pr[,3]=='Evocom2'), 1]
+  evo2pr = data2pr[which(data2pr[,3]=='EvoCom2'), 1]
   gian3pr = data2pr[which(data2pr[,3]=='Gianduja3'), 1]
   gian3Epr = data2pr[which(data2pr[,3]=='Gianduja3E'), 1]
-  evo3pr = data2pr[which(data2pr[,3]=='Evocom3'), 1]
+  evo3pr = data2pr[which(data2pr[,3]=='EvoCom3'), 1]
   
-  list_methods <- c( "EvoCom2", "Gianduja2", "Gianduja2E", "Evocom3", "Gianduja3", "Gianduja3E" )
+  list_methods <- c( "EvoCom2", "Gianduja2", "Gianduja2E", "EvoCom3", "Gianduja3", "Gianduja3E" )
   
   saving_path3 <- file.path(".", paste(task, "-BOXplot.tex", sep=""))
   tikz(file = saving_path3, width=pdf.dim[1], height=pdf.dim[2])
@@ -161,7 +161,7 @@ generateplotsimpr <- function(datasim, datapr, task, max) {
   #abline(v=3.25, lty=3)
   #abline(v=6.75, lty=3)
   axis(1, at=c(1.5, 4, 6.5, 9, 11.5, 14), labels=c("EvoCom2", "", "Gianduja2E", "", "Gianduja3", ""), tick=FALSE)
-  axis(1, at=c(1.5, 4, 6.5, 9, 11.5, 14), labels=c("", "Gianduja2", "", "Evocom3", "", "Gianduja3E"), tick=FALSE, padj = 1)
+  axis(1, at=c(1.5, 4, 6.5, 9, 11.5, 14), labels=c("", "Gianduja2", "", "EvoCom3", "", "Gianduja3E"), tick=FALSE, padj = 1)
   title(paste('Results',task, sep=" "))
   axis(2)
   box()

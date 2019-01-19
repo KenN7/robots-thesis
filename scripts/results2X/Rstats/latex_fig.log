@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.22)  3 JAN 2019 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.12.15)  19 JAN 2019 16:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -360,11 +360,11 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
 (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 
 (/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -384,52 +384,52 @@ e
 ))
 (./Beacon Aggregation-BOXplot.tex) (./Beacon Decision-BOXplot.tex)
 (./Beacon Stop-BOXplot.tex) (./Friedman-simtasks.tex) (./Friedman-PRtasks.tex)
-Overfull \hbox (67.48pt too wide) in paragraph at lines 360--19
+Overfull \hbox (67.48pt too wide) in paragraph at lines 442--19
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--19
+Underfull \hbox (badness 10000) in paragraph at lines 442--19
 
  []
 
 
-Overfull \hbox (52.48pt too wide) in paragraph at lines 360--19
+Overfull \hbox (52.48pt too wide) in paragraph at lines 442--19
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--19
+Underfull \hbox (badness 10000) in paragraph at lines 442--19
 
  []
 
 
-Overfull \hbox (52.48pt too wide) in paragraph at lines 360--19
+Overfull \hbox (52.48pt too wide) in paragraph at lines 442--19
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--19
+Underfull \hbox (badness 10000) in paragraph at lines 442--19
 
  []
 
 
-Overfull \hbox (16.35pt too wide) in paragraph at lines 360--19
+Overfull \hbox (16.35pt too wide) in paragraph at lines 442--19
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--19
+Underfull \hbox (badness 10000) in paragraph at lines 442--19
 
  []
 
 
-Overfull \hbox (16.35pt too wide) in paragraph at lines 360--19
+Overfull \hbox (16.35pt too wide) in paragraph at lines 442--19
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--19
+Underfull \hbox (badness 10000) in paragraph at lines 442--19
 
  []
 
@@ -437,17 +437,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 360--19
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./latex_fig.aux) ) 
 Here is how much of TeX's memory you used:
- 11311 strings out of 492642
- 230310 string characters out of 6135566
- 329169 words of memory out of 5000000
- 14995 multiletter control sequences out of 15000+600000
+ 11311 strings out of 492639
+ 230310 string characters out of 6135496
+ 388232 words of memory out of 5000000
+ 14997 multiletter control sequences out of 15000+600000
  3948 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,7n,54p,390b,580s stack positions out of 5000i,500n,10000p,200000b,80000s
 </u
 sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on latex_fig.pdf (2 pages, 39073 bytes).
+Output written on latex_fig.pdf (2 pages, 49754 bytes).
 PDF statistics:
  22 PDF objects out of 1000 (max. 8388607)
  15 compressed objects within 1 object stream
