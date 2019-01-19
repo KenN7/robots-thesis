@@ -32,15 +32,30 @@ CONF = {
     #     ),
     "BeacAgg":
         (
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacagg2.0'),
-            ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacagg2.1'),
-            ("/home/khasselmann/neat-argos3/optimization/expBAG", 'evo', 'beacagg')
+            # ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacagg3.0dev'),
+            # ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacagg3.1dev'),
+            ("/home/khasselmann/neat-argos3/optimization/expBAG3", 'evo', 'beacagg3'),
+            # ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacagg2.0dev'),
+            # ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacagg2.1dev'),
+            # ("/home/khasselmann/neat-argos3/optimization/expBAG", 'evo', 'beacagg')
         ),
     "BeacStop":
         (
-            ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacstop2.0'),
-            ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacstop2.1'),
-            ("/home/khasselmann/neat-argos3/optimization/expBSTOP", 'evo', 'beacstop')
+            # ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacstop3.0dev'),
+            # ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacstop3.1dev'),
+            ("/home/khasselmann/neat-argos3/optimization/expBSTOP3", 'evo', 'beacstop3'),
+            # ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacstop2.0dev'),
+            # ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacstop2.1dev'),
+            # ("/home/khasselmann/neat-argos3/optimization/expBSTOP", 'evo', 'beacstop')
+        ),
+    "BeacDec":
+        (
+            # ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacdec3.0dev'),
+            # ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacdec3.1dev'),
+            ("/home/khasselmann/neat-argos3/optimization/expBDEC3", 'evo', 'beacdec3'),
+            # ("/home/khasselmann/argos3-AutoMoDe/optimization", 'auto', 'beacdec2.0dev'),
+            # ("/home/khasselmann/argos3-AutoMoDe21/optimization", 'auto', 'beacdec2.1dev2'),
+            # ("/home/khasselmann/neat-argos3/optimization/expBDEC", 'evo', 'beacdec')
         )
     }
 

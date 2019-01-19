@@ -1,0 +1,44 @@
+% Title: Block diagram of Third order noise shaper in Compact Disc Players
+% Author: Ramón Jaramillo
+\documentclass{article}
+
+\usepackage{tikz}
+%\usepackage{textcomp}
+\begin{document}
+
+
+
+\begin{figure}[t]
+\centering
+\input{aggreg-BOXplot}
+\hfill
+\input{stop-BOXplot}
+\hfill
+\input{decision-BOXplot}
+\caption{
+Thick gray boxes represent the results of robot experiments;
+Thick white boxes those of pseudo-reality; thin gray ones,
+those of simulations.}
+\label{fig:task1res}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\input{Friedman-simtasks}
+\caption{Friedman test on the aggregated results of the three missions. The
+  plot represents the average rank of the seven methods and their
+  95\% confidence interval. }
+\label{fig:friedmanSIM}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\input{Friedman-PRtasks}
+\caption{Friedman test on the aggregated results of the three missions. The
+  plot represents the average rank of the seven methods and their
+  95\% confidence interval. }
+\label{fig:friedmanPR}
+\end{figure}
+
+
+\end{document}

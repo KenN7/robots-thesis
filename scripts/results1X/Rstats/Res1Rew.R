@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-#library(tikzDevice)
+library(tikzDevice)
 
 args = commandArgs(trailingOnly=TRUE)
 
@@ -156,10 +156,10 @@ generateplotsimpr <- function(datasim, datapr, datareal, task, max) {
   
   list_methods <- c("EvoCom","EvoComPR", "EvoComR", "EvoComX","EvoComXPR", "Gianduja", "GiandujaPR", "GiandujaR", "GiandujaE", "GiandujaEPR", "GiandujaEX", "GiandujaEXPR", "GiandujaX", "GiandujaXPR", "Chocolate", "ChocolatePR", "ChocolateR")
   
-  #saving_path3 <- file.path(".", paste(task, "-BOXplot.tex", sep=""))
-  #tikz(file = saving_path3, width=pdf.dim[1], height=pdf.dim[2])
-  saving_path3 <- file.path(".", paste(task, "-BOXplot.jpg", sep=""))
-  jpeg(file=saving_path3)
+  saving_path3 <- file.path(".", paste(task, "-BOXplot.tex", sep=""))
+  tikz(file = saving_path3, width=pdf.dim[1], height=pdf.dim[2])
+  #saving_path3 <- file.path(".", paste(task, "-BOXplot.jpg", sep=""))
+  #jpeg(file=saving_path3, width=pdf.dim[1], height=pdf.dim[2])
   
   #colours_ab = c("gray", "white", "gray", "gray" ,"white", "gray", "white", "gray", "gray", "white","gray", "white", "gray", "white", "gray")
   #par(cex.axis=1, cex.lab=1.5, cex.main=1.9)
@@ -174,15 +174,15 @@ generateplotsimpr <- function(datasim, datapr, datareal, task, max) {
           ylab="Objective function",
           width=c(0.7, 2, 2,    0.7, 2,   0.7, 2, 2,   0.7, 2,    0.7, 2,   0.7, 2,   0.7, 2, 2),
           names=list_methods)
-  abline(v=3.75, lty=3)
-  abline(v=6.25, lty=3)
-  abline(v=9.75, lty=3)
-  abline(v=12.25, lty=3)
-  abline(v=14.75, lty=3)
-  abline(v=17.25, lty=3)
+  #abline(v=3.75, lty=3)
+  #abline(v=6.25, lty=3)
+  #abline(v=9.75, lty=3)
+  #abline(v=12.25, lty=3)
+  #abline(v=14.75, lty=3)
+  #abline(v=17.25, lty=3)
   axis(1, at =c(2, 8, 13.5, 19), labels=c("EvoCom", "Gianduja", "GiandujaEX", "Chocolate"), tick=FALSE)
-  axis(1, at=c(5, 11, 16), labels=c("EvoComX", "GiandujaE", "GiandujaX"), tick=FALSE, padj = 1)
-  title('Results')
+  axis(1, at=c(5, 11, 16), labels=c("EvoComX", "GiandujaE", "GiandujaX"), tick=FALSE, padj = 1.5)
+  title(paste('Results',task, sep=" "))
   axis(2)
   box()
   dev.off()
@@ -195,7 +195,7 @@ generateplotsimpr <- function(datasim, datapr, datareal, task, max) {
 
 print("Boxplots ...")
 
-#pdf.dim <- c(4,6) # width, height
+pdf.dim <- c(5.5,3) # width, height
 
 datareal = read.csv("real-scores-deci.txt")
 datasim = read.csv("scores-Decision1X.txt")
