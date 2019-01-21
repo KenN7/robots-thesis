@@ -125,19 +125,19 @@ generateplotsimpr <- function(datasim, datapr, task, max) {
   
   gian2sim = data2sim[which(data2sim[,3]=='Gianduja2'), 1]
   gian2Esim = data2sim[which(data2sim[,3]=='Gianduja2E'), 1]
-  evo2sim = data2sim[which(data2sim[,3]=='EvoCom2'), 1]
+  evo2sim = data2sim[which(data2sim[,3]=='Evocom2'), 1]
   gian3sim = data2sim[which(data2sim[,3]=='Gianduja3'), 1]
   gian3Esim = data2sim[which(data2sim[,3]=='Gianduja3E'), 1]
-  evo3sim = data2sim[which(data2sim[,3]=='EvoCom3'), 1]
+  evo3sim = data2sim[which(data2sim[,3]=='Evocom3'), 1]
   
   data2pr = datapr[order(datasim$seed),]
   
   gian2pr = data2pr[which(data2pr[,3]=='Gianduja2'), 1]
   gian2Epr = data2pr[which(data2pr[,3]=='Gianduja2E'), 1]
-  evo2pr = data2pr[which(data2pr[,3]=='EvoCom2'), 1]
+  evo2pr = data2pr[which(data2pr[,3]=='Evocom2'), 1]
   gian3pr = data2pr[which(data2pr[,3]=='Gianduja3'), 1]
   gian3Epr = data2pr[which(data2pr[,3]=='Gianduja3E'), 1]
-  evo3pr = data2pr[which(data2pr[,3]=='EvoCom3'), 1]
+  evo3pr = data2pr[which(data2pr[,3]=='Evocom3'), 1]
   
   list_methods <- c( "EvoCom2", "Gianduja2", "Gianduja2E", "EvoCom3", "Gianduja3", "Gianduja3E" )
   
