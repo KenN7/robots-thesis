@@ -88,6 +88,7 @@ void CEPuckBeacon::Init(TConfigurationNode& t_node) {
     }
 
     GetNodeAttributeOrDefault(t_node, "mes", m_unMesParam, (UInt8) 3 );
+    //m_unMesParam = 1;
     if (m_unMesParam == 3) {
         m_unMessageToSend = m_pcRng->Uniform(CRange<UInt32>(0, 2))*150+10;
     }
