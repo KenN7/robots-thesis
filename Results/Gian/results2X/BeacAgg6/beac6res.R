@@ -190,7 +190,7 @@ generateplotsimpr <- function(data, task, max) {
 
 print("Boxplots ...")
 
-pdf.dim <- c(4.5,2.5) # width, height
+pdf.dim <- c(4,4) # width, height
 
 #datareal = read.csv("real-scores-deci.txt")
 #datasim = read.csv("scores-Decision1X.txt")
@@ -206,9 +206,34 @@ pdf.dim <- c(4.5,2.5) # width, height
 #datapr3 = read.csv("scores3-Beacon AggregationPR.txt")
 #datapr = rbind(datapr2, datapr3)
 
-data = read.csv("scores6t2-Beacon Aggregation.txt")
 
-generateplotsimpr(data, "Beacon Aggregation", 24000)
+saving_path3 <- file.path(".", paste("bagg6", "-ecdf.tex", sep=""))
+tikz(file = saving_path3, width=pdf.dim[1], height=pdf.dim[2])#, bg="red")
+
+data = read.csv("scores6t2-Beacon Aggregation.txt")
+data10 <- data[which(data$scenario=='10'), 1]
+data160 <- data[which(data$scenario=='160'), 1]
+
+par(mar=c(2.5,2.5,2,0.3))
+#plot(ecdf(data$score),ylab='', xlab='', main='')
+#lines(e2, col="blue")
+#lines(e1, col="red")
+
+#par(cex.axis=1.5, cex.lab=1.5, cex.main=1.9)
+plot(ecdf(data$score), verticals=TRUE, do.points=FALSE,
+     xlab= 'Objective function',
+     ylab='',
+     main = 'Empirical Cumulative Distribution for \\textsc{Mbagg}'
+     )
+plot(e2, verticals=TRUE, do.points=FALSE, add=TRUE, col='blue')
+plot(e1, verticals=TRUE, do.points=FALSE, add=TRUE, col='red')
+
+
+title(paste('', sep=""), font.main=1, line=1)
+title(ylab="Objective function",line=2.5)
+dev.off()
+
+#generateplotsimpr(data, "Beacon Aggregation", 24000)
 
 
 #datasim2 = read.csv("scores-Beacon Stop.txt")
