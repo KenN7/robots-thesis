@@ -220,13 +220,17 @@ par(mar=c(2.5,2.5,2,0.3))
 #lines(e1, col="red")
 
 #par(cex.axis=1.5, cex.lab=1.5, cex.main=1.9)
-plot(ecdf(data$score), verticals=TRUE, do.points=FALSE,
+plot(ecdf(30000-data$score), verticals=TRUE, do.points=FALSE,
      xlab= 'Objective function',
      ylab='',
-     main = 'Empirical Cumulative Distribution for \\textsc{Mbagg}'
+     main = 'Empirical Cumulative Distribution',
+     col='white',
+     xaxt = "n"
      )
-plot(e2, verticals=TRUE, do.points=FALSE, add=TRUE, col='blue')
-plot(e1, verticals=TRUE, do.points=FALSE, add=TRUE, col='red')
+plot(ecdf(30000-data160), verticals=TRUE, do.points=FALSE, add=TRUE, col='blue')
+plot(ecdf(30000-data10), verticals=TRUE, do.points=FALSE, add=TRUE, col='red')
+plot(ecdf(30000-data$score), verticals=TRUE, do.points=FALSE, add=TRUE, col='black', lwd=3 )
+axis(1, at = seq(0,30000,by=5000), labels=(seq(30000,0, by = -5000)) )
 
 
 title(paste('', sep=""), font.main=1, line=1)

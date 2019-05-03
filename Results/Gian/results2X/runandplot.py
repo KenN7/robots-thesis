@@ -33,10 +33,10 @@ CONF = {
     #         ("/home/ken/depots/robots-thesis/scripts/results1X/conf/aggreg1304-results.txt", 'auto1', 'agg1'),
     #         ("/home/ken/depots/robots-thesis/scripts/results1X/conf/aggnogian1304-results.txt", 'auto1', 'agg1C')
     #     ),
-    "Beacon Aggregation":
-        (
-         #auto
-                ("/home/ken/depots/robots-thesis/Results/Gian/results2X/BeacAgg6/bagg6_6_2.1d-240-nlongRange-results.txt", 'auto2', 'beacagg2', 'automodegianduja_beacon_aggregation.xml' ),
+    # "Beacon Aggregation":
+    #     (
+    #      #auto
+    #             ("/home/ken/depots/robots-thesis/Results/Gian/results2X/BeacAgg6/bagg6_6_2.1d-240-nlongRange-results.txt", 'auto2', 'beacagg2', 'automodegianduja_beacon_aggregation.xml' ),
 
     #         # auto
     #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacagg2.0dev-results.txt", 'auto', 'beacagg2',
@@ -76,86 +76,94 @@ CONF = {
     #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacagg3x", 'evo', 'beacaggevo3X',
     #            'automodegianduja_beacon_aggregation3XPR.xml' ),
     #     ),
-    # "Beacon Stop":
-    #     (
-    #         #auto
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.0dev-results.txt", 'auto', 'beacstop2',
-    #             "automodegianduja_beacon_stop.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.1dev-results.txt", 'auto2', 'beacstop21',
-    #             "automodegianduja_beacon_stop.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.0dev-results.txt", 'auto', 'beacstop3',
-    #             "automodegianduja_beacon_stop.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.1dev-results.txt", 'auto2', 'beacstop31',
-    #             "automodegianduja_beacon_stop.xml"),
-    #         #evo
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop", 'evo', 'beacstopevo',
-    #             "automodegianduja_beacon_stop.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop2x", 'evo', 'beacstopevo2X',
-    #            "automodegianduja_beacon_stopX.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3", 'evo', 'beacstopevo3',
-    #             "automodegianduja_beacon_stop3.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3x", 'evo', 'beacstopevo3X',
-    #            "automodegianduja_beacon_stop3X.xml"),
-    #         #PR
-    #         #auto
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.0dev-results.txt", 'auto', 'beacstop2',
-    #             "automodegianduja_beacon_stopPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.1dev-results.txt", 'auto2', 'beacstop21',
-    #             "automodegianduja_beacon_stopPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.0dev-results.txt", 'auto', 'beacstop3',
-    #             "automodegianduja_beacon_stopPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.1dev-results.txt", 'auto2', 'beacstop31',
-    #             "automodegianduja_beacon_stopPR.xml"),
-    #         #evo
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop", 'evo', 'beacstopevo',
-    #             "automodegianduja_beacon_stopPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop2x", 'evo', 'beacstopevo2X',
-    #            "automodegianduja_beacon_stopXPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3", 'evo', 'beacstopevo3',
-    #             "automodegianduja_beacon_stop3PR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3x", 'evo', 'beacstopevo3X',
-    #            "automodegianduja_beacon_stop3XPR.xml"),
-    #     ),
+    "Beacon Stop":
+        (
+            #auto
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.0dev-results.txt", 'auto', 'beacstop2',
+                "automodegianduja_beacon_stop.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.1dev-results.txt", 'auto2', 'beacstop21',
+                "automodegianduja_beacon_stop.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.0dev-results.txt", 'auto', 'beacstop3',
+                "automodegianduja_beacon_stop.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.1dev-results.txt", 'auto2', 'beacstop31',
+                "automodegianduja_beacon_stop.xml"),
+            #evo
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop", 'evo', 'beacstopevo',
+                "automodegianduja_beacon_stop.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop2x", 'evo', 'beacstopevo2X',
+               "automodegianduja_beacon_stopX.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3", 'evo', 'beacstopevo3',
+                "automodegianduja_beacon_stop3.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3x", 'evo', 'beacstopevo3X',
+               "automodegianduja_beacon_stop3X.xml"),
+            #PR
+            #auto
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.0dev-results.txt", 'auto', 'beacstop2',
+                "automodegianduja_beacon_stopPR.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.1dev-results.txt", 'auto2', 'beacstop21BIG',
+            #     "automodegianduja_beacon_stopBIG.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.1dev-results.txt", 'auto2', 'beacstop21BIG',
+                # "automodegianduja_beacon_stopBIGPR.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop2.1dev-results.txt", 'auto2', 'beacstop21',
+                "automodegianduja_beacon_stopPR.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.0dev-results.txt", 'auto', 'beacstop3',
+                "automodegianduja_beacon_stopPR.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacstop3.1dev-results.txt", 'auto2', 'beacstop31',
+                "automodegianduja_beacon_stopPR.xml"),
+            #evo
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop", 'evo', 'beacstopevoBIG',
+            #     "automodegianduja_beacon_stopBIG.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop", 'evo', 'beacstopevoBIG',
+                # "automodegianduja_beacon_stopBIGPR.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop", 'evo', 'beacstopevo',
+                "automodegianduja_beacon_stopPR.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop2x", 'evo', 'beacstopevo2X',
+               "automodegianduja_beacon_stopXPR.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3", 'evo', 'beacstopevo3',
+                "automodegianduja_beacon_stop3PR.xml"),
+            ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacstop3x", 'evo', 'beacstopevo3X',
+               "automodegianduja_beacon_stop3XPR.xml"),
+        ),
     # "Beacon Dec":
     #     (
-    #         #auto
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.0dev-results.txt", 'auto', 'beacdec2',
-    #             "automodegianduja_beacon_decision.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.1dev2-results.txt", 'auto2', 'beacdec21',
-    #             "automodegianduja_beacon_decision.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.0dev-results.txt", 'auto', 'beacdec2',
-    #             "automodegianduja_beacon_decision.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.1dev-results.txt", 'auto2', 'beacdec21',
-    #             "automodegianduja_beacon_decision.xml"),
-    #         #evo
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec", 'evo', 'beacdecevo',
-    #             "automodegianduja_beacon_decision.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec2x", 'evo', 'beacdecevo2X',
-    #             "automodegianduja_beacon_decisionX.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3", 'evo', 'beacdecevo3',
-    #             "automodegianduja_beacon_decision3.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3x", 'evo', 'beacdecevo3X',
-    #             "automodegianduja_beacon_decision3X.xml"),
-    #         #PR
-    #         #auto
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.0dev-results.txt", 'auto', 'beacdec2',
-    #             "automodegianduja_beacon_decisionPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.1dev2-results.txt", 'auto2', 'beacdec21',
-    #             "automodegianduja_beacon_decisionPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.0dev-results.txt", 'auto', 'beacdec2',
-    #             "automodegianduja_beacon_decisionPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.1dev-results.txt", 'auto2', 'beacdec21',
-    #             "automodegianduja_beacon_decisionPR.xml"),
-    #         #evo
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec", 'evo', 'beacdecevo',
-    #             "automodegianduja_beacon_decisionPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec2x", 'evo', 'beacdecevo2X',
-    #             "automodegianduja_beacon_decisionXPR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3", 'evo', 'beacdecevo3',
-    #             "automodegianduja_beacon_decision3PR.xml"),
-    #         ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3x", 'evo', 'beacdecevo3X',
-    #             "automodegianduja_beacon_decision3XPR.xml"),
-        ),
+            # #auto
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.0dev-results.txt", 'auto', 'beacdec2',
+            #     "automodegianduja_beacon_decision.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.1dev2-results.txt", 'auto2', 'beacdec21',
+            #     "automodegianduja_beacon_decision.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.0dev-results.txt", 'auto', 'beacdec2',
+            #     "automodegianduja_beacon_decision.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.1dev-results.txt", 'auto2', 'beacdec21',
+            #     "automodegianduja_beacon_decision.xml"),
+            # #evo
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec", 'evo', 'beacdecevo',
+            #     "automodegianduja_beacon_decision.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec2x", 'evo', 'beacdecevo2X',
+            #     "automodegianduja_beacon_decisionX.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3", 'evo', 'beacdecevo3',
+            #     "automodegianduja_beacon_decision3.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3x", 'evo', 'beacdecevo3X',
+            #     "automodegianduja_beacon_decision3X.xml"),
+            # #PR
+            # #auto
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.0dev-results.txt", 'auto', 'beacdec2',
+            #     "automodegianduja_beacon_decisionPR.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec2.1dev2-results.txt", 'auto2', 'beacdec21',
+            #     "automodegianduja_beacon_decisionPR.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.0dev-results.txt", 'auto', 'beacdec2',
+            #     "automodegianduja_beacon_decisionPR.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/beacdec3.1dev-results.txt", 'auto2', 'beacdec21',
+            #     "automodegianduja_beacon_decisionPR.xml"),
+            # #evo
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec", 'evo', 'beacdecevo',
+            #     "automodegianduja_beacon_decisionPR.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec2x", 'evo', 'beacdecevo2X',
+            #     "automodegianduja_beacon_decisionXPR.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3", 'evo', 'beacdecevo3',
+            #     "automodegianduja_beacon_decision3PR.xml"),
+            # ("/home/ken/depots/robots-thesis/Results/Gian/results2X/results15/results-evo-beacdec3x", 'evo', 'beacdecevo3X',
+            #     "automodegianduja_beacon_decision3XPR.xml"),
+        # ),
     }
 
 NEATFOLDER = "/home/ken/depots/neat-argos3"
@@ -166,7 +174,7 @@ AUTO21FOLDER = "/home/ken/depots/argos3-Automode21"
 
 METHODS = ( 'Gianduja2', 'Gianduja2E', 'Gianduja3', 'Gianduja3E', 'EvoCom2', 'EvoCom2X', 'EvoCom3', 'EvoCom3X',
 'Gianduja2PR', 'Gianduja2EPR', 'Gianduja3PR', 'Gianduja3EPR', 'EvoCom2PR', 'EvoCom2XPR', 'EvoCom3PR', 'EvoCom3XPR', )
-#METHODS = ( 'Gianduja2E', )
+#METHODS = ( 'Gianduja2E', 'Gianduja2EPR', 'EvoCom2', 'EvoCom2PR')
 
 SEEDS = [98128,78246,5081,51028,28832,37383,34385,7583,95415,16672,9221,14671,7550,96043,58134,94393,79820,19890,46885,52388,87754,47343,13478,17254,39786,12071,82478,51590,90271,21440,88504,10126,72952,57303,87190,74278,58122,69996,62778,66277,61464,43039,92123,77088,52577,70407,69179,82028,45716,9989,39975,45670,35842,85831,96278,80536,87372,99892,89604,83114,6497,92972,11535,92749,82858,15932,61397,78113,30010,48677,40027,55937,79284,37609,10327,42676,33507,84383,21087,12499,24034,88644,23820,71629,7732,19319,3365,16774,31355,7638,8528,36091,58938,66126,22108,33965,97046,48792,62804,68988,26587,54961,2954,47708,34028,36482,81391,99726,26518,72623,80215,89653,87266,10839,27026,5795,6481,648254,87124,11627,62506,51785,36911,6679,8832,564211,64049,9615,5320,259204,5515,8628,565757,72321,46009,16519,4686,43032,34280,84357,55124,93746,93670,85757,49975,28413,88216,95239,21483,32900,84008,57612,60900,77622,72184,63036,4377,67310,8329,19553,70157,97793,45059,87549,44650,56617,83729,17988,80308,74870,81425,73849,7612,74525,6082,5535,18892,54109,62956,70654,30093,59206,66078,57389,29920,41911,34996,32772,18813,15631,44994,67962,43963,62189,65015,20277,20892,94474,42929,87693]
 
