@@ -29,14 +29,16 @@ friedman <- function(data1, data2, data3, suffix, title) {
   print(R)
   #R <- R[c(1,3,2,6,7,5,4),]
   #rownames(R) <- 1:nrow(R)
-  R$algo <- factor(R$algo, levels = R$algo[c(1,3,2,6,7,5,4)])
+  #R$algo <- factor(R$algo, levels = R$algo[c(1,3,2,6,7,5,4)])
+  R$algo <- factor(R$algo, levels = R$algo[c(6,5,7,4,3,2,1)])
   print(R)
   
   #saving_path <- file.path(".", paste("Friedman-","tasks.jpg", sep=""))
+  
   pdf.dim <- c(5,1.5) # width, height
   saving_path <- file.path(".", paste("Friedman-",suffix,"tasks.tex", sep=""))
   tikz(file = saving_path, width=pdf.dim[1], height=pdf.dim[2])
-  #tikz(file = saving_path)
+  
   fried_test <- ggplot(R, aes(x=y,y=algo,x)) +
     #geom_point(size=2) +
     labs(x=paste("rank in ", title, sep=""), y="Design Method") +
@@ -85,4 +87,11 @@ data2 = read.csv("scores-Decision1XPR.txt")
 data3 = read.csv("scores-Stop1XPR.txt")
 
 friedman(data1, data2, data3, "PR", "Pseudo-reality")
+
+
+data1 = read.csv("real-scores-aggregation.txt")
+data2 = read.csv("real-scores-deci.txt")
+data3 = read.csv("real-scores-stop.txt")
+
+friedman(data1, data2, data3, "real", "Reality")
 

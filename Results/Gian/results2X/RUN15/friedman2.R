@@ -35,12 +35,12 @@ friedman <- function(data1, data2, data3, suffix, title) {
   print(R)
   #R <- R[c(1,3,2,6,7,5,4),]
   #rownames(R) <- 1:nrow(R)
-  R$algo <- factor(R$algo, levels = R$algo[c(6,5,7,8,2,1,3,4)])  
+  R$algo <- factor(R$algo, levels = R$algo[c(4,3,7,8,2,1,5,6)])  
   print(R)
   
   #saving_path <- file.path(".", paste("Friedman-","tasks.jpg", sep=""))
   pdf.dim <- c(5,1.5) # width, height
-  saving_path <- file.path(".", paste("Friedman-",suffix,"tasks.tex", sep=""))
+  saving_path <- file.path(".", paste("FriedmanB2-",suffix,"tasks.tex", sep=""))
   tikz(file = saving_path, width=pdf.dim[1], height=pdf.dim[2])
   #tikz(file = saving_path)
   fried_test <- ggplot(R, aes(x=y,y=algo,x)) +

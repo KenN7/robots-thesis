@@ -173,26 +173,26 @@ generateplotsimpr <- function(datasim, datapr, datareal, task, max) {
   
   #colours_ab = c("gray", "white", "gray", "gray" ,"white", "gray", "white", "gray", "gray", "white","gray", "white", "gray", "white", "gray")
   par(mar=c(2.5,2.5,2,0.3))
-  boxplot(evosim, evopr, evoreal, evoXsim, evoXpr, giansim, gianpr, gianreal, gianEsim, gianEpr, gianEXsim, gianEXpr, gianXsim, gianXpr, chocosim, chocopr, chocoreal,
-          at =c(1, 2, 3,   4.5, 5.5,   7, 8, 9,   10.5, 11.5,   13, 14,   15.5, 16.5,   18, 19, 20 ),
+  boxplot(chocosim, chocopr, chocoreal, evosim, evopr, evoreal, evoXsim, evoXpr, giansim, gianpr, gianreal, gianXsim, gianXpr, gianEsim, gianEpr, gianEXsim, gianEXpr, 
+          at =c(1, 2, 3,   4.5, 5.5, 6.5,   8, 9,   10.5, 11.5, 12.5,   14, 15,   16.5, 17.5,   19, 20 ),
           axes=FALSE,
           notch=FALSE,
           cex=0.5 ,
           #type="l",
           #col=c("gray", "white"),
           #col=c("gray", "white", "gray",    "gray" ,"white",    "gray", "white", "gray",    "gray", "white",     "gray", "white",    "gray", "white",    "gray", "white", "gray"),
-          col=c("gray", "gray", "white",    "gray" ,"gray",    "gray", "gray", "white",    "gray", "gray",     "gray", "gray",    "gray", "gray",    "gray", "gray", "white"),
+          col=c("gray", "gray", "white",    "gray", "gray", "white",    "gray", "gray",    "gray", "gray", "white",     "gray", "gray",    "gray", "gray",    "gray", "gray"),
           #ylim = c(0,130),
-          width=c(0.5, 2, 2,    0.5, 2,   0.5, 2, 2,   0.5, 2,    0.5, 2,   0.5, 2,   0.5, 2, 2),
+          width=c(0.5, 2, 2,    0.5, 2, 2,   0.5, 2,   0.5, 2, 2,    0.5, 2,   0.5, 2,   0.5, 2),
           names=list_methods)
   abline(v=3.75, lty=3, col="gray")
-  abline(v=6.25, lty=3, col="gray")
+  abline(v=7.25, lty=3, col="gray")
   abline(v=9.75, lty=3, col="gray")
-  abline(v=12.25, lty=3, col="gray")
-  abline(v=14.75, lty=3, col="gray")
-  abline(v=17.25, lty=3, col="gray")
-  axis(1, at =c(2, 8, 13.5, 19), labels=c("\\texttt{EvoCom}", "\\texttt{Gianduja}", "\\texttt{GiandujaEX}", "\\texttt{Chocolate}"), tick=FALSE, mgp=c(0,0.2,0))
-  axis(1, at=c(5, 11, 16), labels=c("\\texttt{EvoComX}", "\\texttt{GiandujaE}", "\\texttt{GiandujaX}"), tick=FALSE, mgp=c(0,1.2,0))
+  abline(v=13.25, lty=3, col="gray")
+  abline(v=15.75, lty=3, col="gray")
+  abline(v=18.25, lty=3, col="gray")
+  axis(1, at =c(2, 8.5, 14.5, 19.5), labels=c("\\texttt{Chocolate}", "\\texttt{EvoComX}", "\\texttt{GiandujaX}", "\\texttt{GiandujaEX}"), tick=FALSE, mgp=c(0,0.2,0))
+  axis(1, at=c(5.5, 11.5, 17), labels=c("\\texttt{EvoCom}", "\\texttt{Gianduja}", "\\texttt{GiandujaE}"), tick=FALSE, mgp=c(0,1.2,0))
   title(paste('\\textsc{',task,'}', sep=""), font.main=1, line=0.7)
   title(ylab="Objective function",line=1.5)
   axis(2, tck=-0.03, mgp=c(0,0.3,0))
