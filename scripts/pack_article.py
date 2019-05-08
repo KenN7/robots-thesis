@@ -62,19 +62,21 @@ def main():
     tmp_file = "{}.tmp".format(main_file)
     os.remove(tmp_file)
 
-    make_tarfile(output_dir)
+    #processing finished go into dir
+    os.chdir(output_dir)
+    make_tarfile()
 
 
 
-def make_tarfile(output_dir):
-    files = os.listdir(output_dir)
-    with tarfile.open(os.path.join(output_dir,"manuscript_archive.tar.gz"), "w:gz") as tar:
+def make_tarfile():
+    files = os.listdir()
+    with tarfile.open("manuscript_archive.tar.gz", "w:gz") as tar:
         for file in files:
             tar.add(file)
 
 
 def handle_figs(input,output_dir):
-    regex_figs = re.compile(r'\\includegraphics[^{]*\{\"*((?:(?!#).)*)\"*\}')
+    regex_figs = re.compile(r'\\includegraphics[^{]*\{\"*((?:(?!#).)*?)\"*\}')
     tmp_file = "{}.tmp".format(input)
     with open(input,'r') as main_file:
         with open(tmp_file,'w') as tmp_out_file:
