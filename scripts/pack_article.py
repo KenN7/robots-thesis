@@ -19,8 +19,10 @@ p.add_argument('-x', '--xfiles', help="Copy also .cls, .clo  and .sty files", ac
 #       - add other cases like "includes",
 #       - handle fig convert (for eps,ps,pdf)
 #       - better regexes, for comments and inputs/includes
-#       - handle Bibtex files, create bbl and include it
+#       - handle Bibtex files, create bbl or bib and include it
 #       - compile and produce test pdf
+#       - handle nested inputs
+#       - handle no extension files (especially figs but also inputs)
 #
 
 def main():
