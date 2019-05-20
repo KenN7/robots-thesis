@@ -15,15 +15,19 @@ p.add_argument('-i', '--input', help="Main tex file of your submission.", requir
 p.add_argument('-x', '--xfiles', help="Copy also .cls, .clo  and .sty files", action='store_true', required=False)
 
 #
-# TODO: - handle multiline pattern,
-#       - add other cases like "includes",
-#       - handle fig convert (for eps,ps,pdf)
-#       - better regexes, for comments and inputs/includes
-#       - handle Bibtex files, create bbl or bib and include it
-#       - compile and produce test pdf
-#       - handle nested inputs
-#       - handle no extension files (especially figs but also inputs)
 #
+# TODO: - add other cases like "includes" (done not tested)
+#       - handle fig convert (for eps,ps,pdf)
+#       - even better regexes
+#       - compile and produce test pdf
+#
+
+LIST_HANDLES_FILE = ("includegraphics", "bibliography")
+LIST_HANDLES_INPUT = ("input",)
+# If you use any special commands with paths as arguments,
+# list them in LIST_HANDLES_FILE or INPUT :
+# - LIST_HANDLES_FILE if the command contains a path to copy to the root folder
+# - LIST_HANDLES_INPUT for text inputs that must be directly integrated in the final tex
 
 def main():
     args = p.parse_args() #args.input and output
@@ -34,8 +38,8 @@ def main():
         exit(1)
 
     latex_path = input_path.absolute().parent
-    os.chdir(latex_path)
-    input_file = input_path.name
+    input_file_path = input_path.absolute()
+    input_name = input_path.name
 
     try:
         os.makedirs(args.output)
@@ -44,25 +48,30 @@ def main():
         exit(1)
     output_dir = args.output
 
-    logging.warning('Processing file {} in {}'.format(input_file,output_dir))
+    logging.warning('Processing file {} in {}'.format(input_name,output_dir))
 
     if args.xfiles:
-        cur_files = os.listdir()
+        cur_files = os.listdir(latex_path)
         for file in cur_files:
             name, suffix = os.path.splitext(file)
-            if suffix == ".cls" or suffix == ".clo" or suffix == ".sty":
-                shutil.copy(file,output_dir)
+            if suffix == ".cls" or suffix == ".clo" or suffix == ".sty" or suffix == ".bst":
+                shutil.copy(os.path.join(latex_path,file),output_dir)
 
-    #copy main tex file:
-    main_file = shutil.copy(input_file,output_dir)
 
-    main_file = remove_comments(main_file,output_dir)
-    main_file = integrate_files(main_file,output_dir)
-    main_file = handle_figs(main_file,output_dir)
+    main_file_path = os.path.join(output_dir,input_name)
 
-    #remove temp file
-    tmp_file = "{}.tmp".format(main_file)
-    os.remove(tmp_file)
+    #open main tex file:
+    main_content = None
+    with open(input_file_path,'r') as file:
+        main_content = file.read()
+
+    main_content = remove_comments(main_content)
+    main_content = change_paths(main_content,latex_path,output_dir)
+    main_content = integrate_text(main_content,latex_path)
+
+    #write output file:
+    with open(main_file_path,'w') as file:
+        file.write(main_content)
 
     #processing finished go into dir
     os.chdir(output_dir)
@@ -77,69 +86,64 @@ def make_tarfile():
             tar.add(file)
 
 
-def handle_figs(input,output_dir):
-    regex_figs = re.compile(r'\\includegraphics[^{]*\{\"*((?:(?!#).)*?)\"*\}')
-    tmp_file = "{}.tmp".format(input)
-    with open(input,'r') as main_file:
-        with open(tmp_file,'w') as tmp_out_file:
-            for line in main_file:
-                match_fig = re.search(regex_figs,line)
-                if match_fig:
-                    path_figure = find_fig_file(match_fig.group(1),output_dir)
-                    line = line.replace(match_fig.group(1),path_figure)
-                tmp_out_file.write(line)
-    return shutil.copy(tmp_file,input)
+def change_paths(input,latex_path,output_dir):
+    def repl(match):
+        file_found = find_file(match.group(1),latex_path)
+        new_path = shutil.copy(file_found,output_dir)
+        file_path = Path(new_path)
+        start = match.span(1)[0]-match.start()
+        end = match.span(1)[1]-match.start()
+        return match.group(0)[:start]+file_path.name+match.group(0)[end:]
+
+    for handle in LIST_HANDLES_FILE:
+        regex = re.compile(r'\\{}\s*[^{{]*\s*\{{\s*\"*((?:(?!#).)*?)\"*\s*\}}'.format(handle))
+        # old: r'\\{}[^{{]*\{{\"*((?:(?!#).)*?)\"*\}}'
+        # normal : \\\\{}[^{]*\\{\\"*((?:(?!#).)*?)\\"*\\}
+        input = re.sub(regex,repl,input)
+    return input
 
 
-def find_fig_file(file,output_dir):
-    file_path = Path(file)
+def find_file(filename,latex_path):
+    file_path = Path(os.path.join(latex_path,filename))
     if not file_path.is_file():
-        logging.error("Could not find file {}".format(file_path))
-        exit(1)
-    shutil.copy(file_path,output_dir)
-
-    return file_path.name
-
-
-def integrate_files(input,output_dir):
-    regex_inputs = re.compile(r'\\input\{\"*(.*?)\"*\}')
-    tmp_file = "{}.tmp".format(input)
-    with open(input,'r') as main_file:
-        with open(tmp_file,'w') as tmp_out_file:
-            for line in main_file:
-                match_input = re.search(regex_inputs,line)
-                if match_input:
-                    text_to_add = find_tex_file(match_input.group(1))
-                    line = line.replace(match_input.group(0),text_to_add)
-                tmp_out_file.write(line)
-    return shutil.copy(tmp_file,input)
+        list_files_dir = os.listdir(file_path.parent)
+        try:
+            file_found = next(f for f in list_files_dir if file_path.name in f)
+        except StopIteration:
+            logging.error("Could not find file {}".format(file_path))
+            exit(1)
+        file_path = Path(os.path.join(latex_path,file_path.parent,file_found))
+        if not file_path.is_file():
+            logging.error("Could not find file {}".format(file_path))
+            exit(1)
+    return file_path
 
 
-def find_tex_file(file):
-    if file.endswith(".tex"):
-        file_path = Path(file)
-    else:
-        file_path = Path("{}.tex".format(file))
+def integrate_text(input,latex_path):
+    def repl(match):
+        file_found = find_file(match.group(1),latex_path)
+        with open(file_found) as found_file:
+            text_file_found  = found_file.read()
+            return text_file_found
 
-    if not file_path.is_file():
-        logging.error("Could not find file {}".format(file_path))
-        exit(1)
-    with open(file_path,'r') as file:
-        text = file.read()
-    return text
+    n = 1
+    while (n > 0):
+        for handle in LIST_HANDLES_INPUT:
+            regex = re.compile(r'\\{}\s*[^{{]*\s*\{{\s*\"*((?:(?!#).)*?)\"*\s*\}}'.format(handle))
+            input,n = re.subn(regex,repl,input)
+
+    return input
 
 
-def remove_comments(input,output_dir):
+def remove_comments(input):
     regex_comments = re.compile(r'((?<!\\)(?:\\{2})*)%(.*)')
-    tmp_file = "{}.tmp".format(input)
-    with open(input,'r') as main_file:
-        with open(tmp_file,'w') as tmp_out_file:
-            for line in main_file:
-                match_comment = re.search(regex_comments,line)
-                if match_comment:
-                    line = line.replace(match_comment.group(2),"")
-                tmp_out_file.write(line)
-    return shutil.copy(tmp_file,input)
+    tmp_out_content = ""
+    for line in input.splitlines(True):
+        match_comment = re.search(regex_comments,line)
+        if match_comment:
+            line = line.replace(match_comment.group(2),"")
+        tmp_out_content+=(line)
+    return tmp_out_content
 
 
 
