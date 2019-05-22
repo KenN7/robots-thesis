@@ -13,7 +13,9 @@ p = argparse.ArgumentParser(description='Article packer for putting all your fil
 p.add_argument('-o', '--output', help="Output dir for submission.", required=True)
 p.add_argument('-i', '--input', help="Main tex file of your submission.", required=True)
 p.add_argument('-x', '--xfiles', help="Copy also .cls, .clo  and .sty files", action='store_true', required=False)
+p.add_argument('-b', '--bbl', help="Copy content of bbl file in the file, replacing the bibliography call", action='store_true', required=False)
 
+logging.getLogger().setLevel(logging.INFO)
 #
 #
 # TODO: - add other cases like "includes" (done not tested)
@@ -28,6 +30,10 @@ LIST_HANDLES_INPUT = ("input",)
 # list them in LIST_HANDLES_FILE or INPUT :
 # - LIST_HANDLES_FILE if the command contains a path to copy to the root folder
 # - LIST_HANDLES_INPUT for text inputs that must be directly integrated in the final tex
+
+# The regex for all commands (to use with .format)
+CMD_REGEX = r'\\{}\s*(?:\[+[^{{]+\]+|)\s*\{{\s*\"*((?:(?!#).)*?)\"*\s*\}}'
+
 
 def main():
     args = p.parse_args() #args.input and output
@@ -46,7 +52,7 @@ def main():
     except Exception as e:
         print(e)
         exit(1)
-    output_dir = args.output
+    output_dir = Path(args.output)
 
     logging.warning('Processing file {} in {}'.format(input_name,output_dir))
 
@@ -65,16 +71,25 @@ def main():
     with open(input_file_path,'r') as file:
         main_content = file.read()
 
+    logging.info('Removing comments..')
     main_content = remove_comments(main_content)
+    logging.info('Integrate texts..')
     main_content = integrate_text(main_content,latex_path)
+    logging.info('Changing paths and copying files..')
     main_content = change_paths(main_content,latex_path,output_dir)
 
+    #special process for bibliography if we want to integrate bbl in file
+    logging.info('Integrating bbl file..')
+    main_content = integrate_bbl(main_content,latex_path,input_name)
+
+    logging.info('Wrtiting main tex file..')
     #write output file:
     with open(main_file_path,'w') as file:
         file.write(main_content)
 
     #processing finished go into dir
     os.chdir(output_dir)
+    logging.info('Making tarball..')
     make_tarfile()
 
 
@@ -96,7 +111,7 @@ def change_paths(input,latex_path,output_dir):
         return match.group(0)[:start]+file_path.name+match.group(0)[end:]
 
     for handle in LIST_HANDLES_FILE:
-        regex = re.compile(r'\\{}\s*[^{{]*\s*\{{\s*\"*((?:(?!#).)*?)\"*\s*\}}'.format(handle))
+        regex = re.compile(CMD_REGEX.format(handle))
         # old: r'\\{}[^{{]*\{{\"*((?:(?!#).)*?)\"*\}}'
         # normal : \\\\{}[^{]*\\{\\"*((?:(?!#).)*?)\\"*\\}
         input = re.sub(regex,repl,input)
@@ -129,8 +144,22 @@ def integrate_text(input,latex_path):
     n = 1
     while (n > 0):
         for handle in LIST_HANDLES_INPUT:
-            regex = re.compile(r'\\{}\s*[^{{]*\s*\{{\s*\"*((?:(?!#).)*?)\"*\s*\}}'.format(handle))
+            regex = re.compile(CMD_REGEX.format(handle))
             input,n = re.subn(regex,repl,input)
+
+    return input
+
+
+def integrate_bbl(input,latex_path,input_name):
+    def repl(match):
+        name, suffix = os.path.splitext(input_name)
+        file_found = find_file("{}.bbl".format(name),latex_path)
+        with open(file_found) as found_file:
+            text_file_found  = found_file.read()
+            return text_file_found
+
+    regex = re.compile(CMD_REGEX.format("bibliography"))
+    input = re.sub(regex,repl,input)
 
     return input
 
