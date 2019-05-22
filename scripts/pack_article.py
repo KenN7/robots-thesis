@@ -66,8 +66,8 @@ def main():
         main_content = file.read()
 
     main_content = remove_comments(main_content)
-    main_content = change_paths(main_content,latex_path,output_dir)
     main_content = integrate_text(main_content,latex_path)
+    main_content = change_paths(main_content,latex_path,output_dir)
 
     #write output file:
     with open(main_file_path,'w') as file:
@@ -91,8 +91,8 @@ def change_paths(input,latex_path,output_dir):
         file_found = find_file(match.group(1),latex_path)
         new_path = shutil.copy(file_found,output_dir)
         file_path = Path(new_path)
-        start = match.span(1)[0]-match.start()
-        end = match.span(1)[1]-match.start()
+        start = match.span(1)[0] - match.start()
+        end = match.span(1)[1] - match.start()
         return match.group(0)[:start]+file_path.name+match.group(0)[end:]
 
     for handle in LIST_HANDLES_FILE:
