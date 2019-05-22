@@ -78,9 +78,10 @@ def main():
     logging.info('Changing paths and copying files..')
     main_content = change_paths(main_content,latex_path,output_dir)
 
-    #special process for bibliography if we want to integrate bbl in file
-    logging.info('Integrating bbl file..')
-    main_content = integrate_bbl(main_content,latex_path,input_name)
+    if args.bbl:
+        #special process for bibliography if we want to integrate bbl in file
+        logging.info('Integrating bbl file..')
+        main_content = integrate_bbl(main_content,latex_path,input_name)
 
     logging.info('Wrtiting main tex file..')
     #write output file:
