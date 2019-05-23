@@ -104,12 +104,18 @@ def make_tarfile():
 
 def change_paths(input,latex_path,output_dir):
     def repl(match):
-        file_found = find_file(match.group(1),latex_path)
-        new_path = shutil.copy(file_found,output_dir)
-        file_path = Path(new_path)
+        #maybe there a list is the match?
+        list_files = match.group(1).split(",")
+        print(list_files)
+        list_new_files = []
+        for file in list_files:
+            file_found = find_file(file,latex_path)
+            new_path = shutil.copy(file_found,output_dir)
+            file_path = Path(new_path)
+            list_new_files.append(file_path.name)
         start = match.span(1)[0] - match.start()
         end = match.span(1)[1] - match.start()
-        return match.group(0)[:start]+file_path.name+match.group(0)[end:]
+        return match.group(0)[:start] + ",".join(list_new_files) + match.group(0)[end:]
 
     for handle in LIST_HANDLES_FILE:
         regex = re.compile(CMD_REGEX.format(handle))
