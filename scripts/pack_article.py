@@ -145,6 +145,8 @@ def integrate_text(input,latex_path):
         file_found = find_file(match.group(1),latex_path)
         with open(file_found) as found_file:
             text_file_found  = found_file.read()
+            #remove comments from integrated text
+            text_file_found = remove_comments(text_file_found)
             return text_file_found
 
     n = 1
