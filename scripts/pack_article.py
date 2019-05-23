@@ -106,7 +106,6 @@ def change_paths(input,latex_path,output_dir):
     def repl(match):
         #maybe there a list is the match?
         list_files = match.group(1).split(",")
-        print(list_files)
         list_new_files = []
         for file in list_files:
             file_found = find_file(file,latex_path)
