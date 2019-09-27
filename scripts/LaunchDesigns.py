@@ -26,8 +26,9 @@ def main(args):
                     else:
                         command = "{} {}".format(exe,item[1])
                         print("launch {}".format(command))
-                        proc = sp.run(command, shell=True, capture_output=True)
-                        print("{} {}".format(proc.stdout.decode("utf-8"),proc.stderr.decode("utf-8")))
+                        # proc = sp.run(command, shell=True, capture_output=True)
+                        proc = sp.check_output(command, shell=True, stderr=sp.STDOUT)
+                        print(proc.decode("utf-8"))
 
     search(list(conf_dict.items()), "")
 
