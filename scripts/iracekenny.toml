@@ -1,0 +1,23 @@
+title = "Irace Kenny Experiments"
+
+[irace]
+exec = "./parallel-irace-mpi"
+
+[irace.foraging]
+args = "10 foraging_50kNEWdep --parallel 15 --scenario scenario_foraging_50k.txt"
+
+[irace.foraging2]
+args = "11 foraging_50kNEWdep --parallel 15 --scenario scenario_foraging.txt"
+
+[test]
+exec = "ls"
+
+[neat]
+args = "12 foraging_50kNEWdep --parallel 15 --scenario scenario_foraging_50k.txt"
+
+[neat.foraging]
+exec = "./parallel-irace-mpi2"
+
+[neat.foraging2]
+args = "13 foraging_50kNEWdep --parallel 15 --scenario scenario_foraging.txt"
+
