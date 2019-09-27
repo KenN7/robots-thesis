@@ -1,4 +1,10 @@
 #/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+# Tries to Pack a latex article into one unique file
+#
+# @author: Ken H <me@kenh.fr>
+# @created: 2019
 
 import re
 import argparse
