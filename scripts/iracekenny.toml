@@ -2,7 +2,6 @@ title = "Irace Kenny Experiments"
 
 [test]
 exec = "ls"
-args = "-l"
 
 [irace]
 exec = "./parallel-irace-mpi"
@@ -16,6 +15,7 @@ args = "11 foraging_50kNEWdep --parallel 15 --scenario scenario_foraging.txt"
 
 [neat]
 args = "12 foraging_50kNEWdep --parallel 15 --scenario scenario_foraging_50k.txt"
+exec = "./parallel-irace-mpi2"
 
 [neat.foraging]
 exec = "./parallel-irace-mpi2"
