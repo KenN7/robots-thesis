@@ -19,8 +19,8 @@ def main(args):
                 exe = item[1].get('exec')
             if item[1].get('args') and exe:
                 command = "{} {}".format(exe, item[1].get('args'))
-                print(command)
-                # print(sp.check_output(command, shell=True, stderr=sp.STDOUT))
+                # print(command)
+                print(sp.check_output(command, shell=True, stderr=sp.STDOUT))
             for subitem in item[1].items():
                 subexe = ""
                 if type(subitem[1]) is dict:
@@ -28,10 +28,12 @@ def main(args):
                         subexe = subitem[1].get('exec')
                     if subitem[1].get('args') and subexe:
                         command = "{} {}".format(subexe, subitem[1].get('args'))
-                        print(command)
+                        # print(command)
+                        print(sp.check_output(command, shell=True, stderr=sp.STDOUT))
                     elif subitem[1].get('args') and exe:
                         command = "{} {}".format(exe, subitem[1].get('args'))
-                        print(command)
+                        # print(command)
+                        print(sp.check_output(command, shell=True, stderr=sp.STDOUT))
 
     # def search(items, exe):
     #     for item in items:  
