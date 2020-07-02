@@ -12,6 +12,18 @@ p = argparse.ArgumentParser(description='getter of results, options are choosed 
 p.add_argument('-d', '--dir', help="the directory where to save controllers", required=True)
 
 CONF = {
+    "DecisionNEO":
+        (
+            ("/home/khasselmann/neat-argos3/optimization/expDECCOMNEO3", 'evo', 'deccomneo'),
+        ),
+    "AggregationNEO":
+        (
+            ("/home/khasselmann/neat-argos3/optimization/expAGGCOMNEO2", 'evo', 'aggregcomneo' ),
+        ),
+    "StopNEO":
+        (
+            ("/home/khasselmann/neat-argos3/optimization/expSTOPCOMNEO2", 'evo', 'stopcomneo'),
+        ),
     # "Decision1.x":
     #     (
     #         ("/home/khasselmann/old_neat/optimization/expDEC", 'evo', 'olddec1.21'),
@@ -92,16 +104,16 @@ CONF = {
     #         ("/home/khasselmann/AutoMoDe-private/optimization", "auto", "foraging_50kdep"),
     #         ("/home/khasselmann/AutoMoDe-private/optimization", "auto", "foraging_50kNOdep")
     #     )
-    "shelterblack":
-        (
-            ("/home/khasselmann/AutoMoDe-private/optimization", "auto", "shelterblack"),
-        )
+    # "shelterblack":
+    #     (
+    #         ("/home/khasselmann/AutoMoDe-private/optimization", "auto", "shelterblack"),
+    #     )
     }
 
 #METHODS = ('Evostick', 'AutoMoDe-Gianduja', 'AutoMoDe-Chocolate')
 # METHODS = ('AutoMoDe-Chocolate-dep', 'AutoMoDe-Chocolate-NOdep')
 
-METHODS = ('AutoMoDe-Chocolate')
+METHODS = ('Evostick-2')
 
 def extract_res_evo(name, remotefolder, sftp, d):
     t = re.compile('{}-(\d+)'.format(name))
