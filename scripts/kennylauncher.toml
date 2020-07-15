@@ -1,0 +1,40 @@
+title = "Launcher to get results of experiments"
+
+#machine = "xeon2680"
+machine = "opteron6272"
+queue = "short"
+seeds = "evaluations/seeds.txt"
+
+[launchers]
+[launchers.autoNODEP]
+exe = "/home/khasselmann/AutoMoDe-privateNODEP/bin/automode_main"
+regex = 'Score (\d+)'
+type = "auto"
+
+[launchers.autoDEP]
+exe = "/home/khasselmann/AutoMoDe-privateDEP/bin/automode_main"
+regex = 'Score (\d+)'
+type = "auto"
+
+[experiments]
+[experiments.forag]
+launcher = "autoDEP"
+xml = "/home/khasselmann/IraceKenny/experiments/controllers/Foraging/foraging_ken_DEP.argos"
+controllers = "/home/khasselmann/IraceKenny/experiments/controllers/Foraging/ChocolateDEP/foraging_50kdep-results.txt"
+mission = "Foraging"
+options = "50k_DEP"
+
+[experiments.forag2]
+launcher = "autoDEP"
+xml = "/home/khasselmann/IraceKenny/experiments/controllers/Foraging/foraging_ken_DEP.argos"
+controllers = "/home/khasselmann/IraceKenny/experiments/controllers/Foraging/ChocolateNEWDEP/foraging_50kNEWdep-results.txt"
+mission = "Foraging"
+options = "50k_NEWDEP"
+
+[experiments.forag3]
+launcher = "autoNODEP"
+xml = "/home/khasselmann/IraceKenny/experiments/controllers/Foraging/foraging_ken_DEP.argos"
+controllers = "/home/khasselmann/IraceKenny/experiments/controllers/Foraging/ChocolateNODEP/foraging_50kNOdep-results.txt"
+mission = "Foraging"
+options = "50k_NODEP"
+
