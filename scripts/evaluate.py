@@ -205,7 +205,7 @@ def extract(args):
         if (
             item[1].get("opti_name")
             and item[1].get("opti_dir")
-            and item[1].get("launchers")
+            and item[1].get("launcher")
         ):
             launcher = Launcher.get_launcher(launchers.get(item[1].get("launcher")))
             if not os.path.isdir(Path(args.output)):
