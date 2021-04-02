@@ -6,6 +6,7 @@ import tempfile
 import sys
 import xml.etree.ElementTree as ET
 import config
+import argparse
 
 
 def load_argos():
@@ -58,18 +59,25 @@ def load_argos():
     return mak, arr
 
 
-def main():
+def main(args):
     mak, arr = load_argos()
 
-    tree = ET.parse(sys.argv[1])
+    tree = ET.parse(args.config)
     root = tree.getroot()
     controllers = root.find("controllers")
     if controllers:
         for controller in controllers:
             id = controller.get('id')
             controller.set("library", config.CONTROLLERS[id])
-            # path = pathlib.Path(controller.get("library"))
-            # print(path)
+            path = pathlib.Path(controller.get("library"))
+            print(path)
+            if args.gen and id == "nn_rm_1dot1" :
+                print("Adding gen file")
+                controller.find('params').set('genome_file', args.gen)
+            elif args.fsm_config and id == "automode":
+                print('Adding fsm config')
+                controller.find('params').set('fsm-config', args.fsm_config)
+
     loops = root.find("loop_functions")
     if loops:
         findloop = pathlib.Path(config.LOOP_PREFIX).glob("**/*.so")
@@ -89,17 +97,14 @@ def main():
     tree.write(tmpfile.name)
 
     mak.SetExperimentFileName(tmpfile.name)
-    mak.SetRandomSeed(10)
+    mak.SetRandomSeed(int(args.seed))
     mak.LoadExperiment()
 
+    # print(type(mak), type(args.gen))
     cSpace = mak.GetSpace()
-    cEntities = cSpace.GetEntitiesByType("controller")
-    sizeE = cEntities.size()
-
     mak.Execute()
 
     loopfunc = mak.GetLoopFunctions()
-
     from cppyy.gbl import CoreLoopFunctions
 
     loopfunc = bind_object(addressof(loopfunc), CoreLoopFunctions)
@@ -111,4 +116,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Launch argos with options and automatic path resolving")
+    parser.add_argument('--config', '-c', help="argos configuration file (.argos)")
+    parser.add_argument('--gen', '-g', help="genome file (if launching Neuro evolution method)")
+    parser.add_argument('--fsm-config', '-f', help="fsm descrption (if launching automode method)")
+    parser.add_argument('--seed', '-s', help="random seed to use")
+    args = parser.parse_args()
+    print(args)
+    main(args)
