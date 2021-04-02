@@ -26,7 +26,8 @@ JOB_SCRIPT = """#!/bin/bash
 #$ -pe mpi {nbjob}
 #$ -binding linear:256
 export PATH
-export LD_LIBRARY_PATH=/lustre/home/fpagnozzi/gcc91/lib64/:/home/khasselmann/argos3-dist/lib/argos3:/opt/gridengine/lib/lx-amd64:/opt/openmpi/lib
+#export LD_LIBRARY_PATH=/lustre/home/fpagnozzi/gcc91/lib64/:/home/khasselmann/argos3-dist/lib/argos3:/opt/gridengine/lib/lx-amd64:/opt/openmpi/lib
+export LD_LIBRARY_PATH=/home/khasselmann/toolchain/chain/lib64:/home/khasselmann/toolchain/chain/lib:/home/khasselmann/argos3-dist/lib/argos3:$LD_LIBRARY_PATH
 USERNAME=`whoami`
 COMMAND={command}
 cd {execdir}
@@ -135,6 +136,7 @@ def main(args):
     print("Using conf file: {}".format(args.config))
     conf_dict = toml.load(args.config)
     launchers = conf_dict.get("launchers")
+    print("Using conf file: {}".format(args.config))
     for item in conf_dict.get("experiments").items():
         if (
             item[1].get("launcher")
@@ -145,10 +147,12 @@ def main(args):
         ):
             controllers = item[1].get("controllers")
             if os.path.isdir(Path(controllers)):
-                input_controllers = os.listdir(Path(controllers))
+                input_controllers = args.repeat * [
+                    Path(c).resolve() for c in os.scandir(Path(controllers))
+                ]
             elif os.path.isfile(Path(controllers)):
                 with open(Path(controllers), "r") as input_file:
-                    input_controllers = input_file.readlines()
+                    input_controllers = input_file.readlines() * args.repeat
             else:
                 raise Exception("No input controllers {}".format(controllers))
 
@@ -220,6 +224,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--config", help="config file (toml)")
     parser.add_argument("-o", "--output", help="Output folder")
+    parser.add_argument(
+        "-r", "--repeat", help="repeat multiple times test", default=1, type=int
+    )
     parser.add_argument(
         "-e",
         "--extract",
