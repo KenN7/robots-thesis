@@ -90,8 +90,8 @@ AP.SCI <- function(formula,data=NULL,method=NULL,test=NULL,adj.method=NULL,B=NUL
    
     A <- array(
                T[[response]],
-               dim=c(runs,nlevels(T[[eff.tested]]),nlevels(T[[eff.block]])),
-               dimnames=list(NULL,levels(T[[eff.tested]]),levels(T[[eff.block]]))
+               dim=c(runs,nlevels(factor(T[[eff.tested]])),nlevels(factor(T[[eff.block]]))),
+               dimnames=list(NULL,levels(factor(T[[eff.tested]])),levels(factor(T[[eff.block]])))
                )
 
     if (method=="Parametric")
